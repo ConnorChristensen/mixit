@@ -11,3 +11,6 @@ scss register/register.scss register/register.css
 
 #compile login
 scss login/login.scss login/login.css
+
+#compile search
+scss search/search.scss search/search.css

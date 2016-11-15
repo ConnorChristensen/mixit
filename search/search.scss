@@ -1,0 +1,138 @@
+@import "../scss/variables.scss";
+
+$middle-min-width: 300px;
+$middle-width: 80vw;
+$middle-max-width: 1000px;
+
+* {
+    @include fonts;
+}
+
+body {
+    margin: 0;
+}
+
+.wrapper {
+    @include totalCenter;
+    height: 50vh;
+    width: 100vw;
+    background: 
+        linear-gradient(
+            #e5eec1, 
+            #a2d4ab, 
+            #3eaca8, 
+            #457a82, 
+            #5a5050
+    );
+    .search {
+        @include widthRange($middle-min-width, $middle-width, $middle-max-width);
+        background: rgba(0, 0, 0, 0.6);
+        .by {
+            display: flex;
+            h2 {
+                margin: 0;
+                padding: 20px 0;
+                width: 50%;
+                text-align: center;
+            }
+        }
+    }
+    .feilds {
+        display: flex;
+        align-items: stretch;
+        justify-content: space-around;
+        h2 {
+            text-align: center;
+        }
+        form {
+            text-align: center;
+            input {
+                color: black;
+                text-align: center;
+                font-weight: 300;
+                font-size: 16pt;
+                width: 70%;
+                margin: 8px 0;
+                line-height: 20px;
+                border: none;
+            }
+        }
+        .plusMinus {
+            width: 100px;
+            display: inline-flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            background: #242323;
+            p {
+                font-size: 20pt;
+                margin: 0;
+                padding: 0;
+            }
+        }
+        button {
+            background: none;
+            border: 1px solid white;
+            margin: auto;
+        }
+    }
+}
+
+$item-width: 15vmin;
+$item-height: 15vmin;
+$item-min-width: 100px;
+$item-min-height: 100px;
+.topTens {
+    margin: 0;
+    background: #1d4e60;
+    padding: 20px 5vw 0px 5vw;
+    .list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        background: rgba(0, 0, 0, 0.6);
+        .item {
+            background: #ffffff;
+            width: $item-width;
+            height: $item-height;
+            min-width: $item-min-width;
+            min-height: $item-min-height;
+            .imgContainer {
+                min-height: $item-min-height*.8;
+                height: $item-height*.8;
+                min-width: $item-min-width;
+                width: $item-width;
+                margin: 0;
+                padding: 0;
+                border: none;
+                overflow: hidden;
+                img {
+                    min-width: $item-min-width;
+                    width: $item-width;
+                }
+            }
+            h4 {
+                margin: 0;
+                padding: 0;
+                color: black;
+                font-weight: 300;
+                text-align: center;
+                line-height: $item-height*.2;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .item {
+        margin: 10px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .list {
+        
+        .item {
+            margin: 5px 80vw;
+        }
+    }
+}
