@@ -1,0 +1,120 @@
+@import "../scss/variables.scss";
+
+$space: 10px;
+
+html {
+    background: url(../images/back.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    max-width: 2000px;
+    animation: fadein .5s;
+}
+
+.linkContainer {
+    text-align: center;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+    a {
+        @include fonts;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    font-family: sans-serif;
+    color: white;
+    font-weight: 100;
+}
+
+.error, .success {
+    text-align: center;
+    margin: auto;
+    font-size: 15pt;
+    padding: 30px 0 20px 0;
+    @include fonts;
+}
+.error {
+    color: #841f1f;
+}
+.success {
+    color: #2f841f;
+}
+
+form {
+    margin: auto;
+    width: 30vw;
+    background: rgba(49, 49, 49, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    .textBox {
+        line-height: 25px;
+        font-size: 12pt;
+        margin: $space 0;
+        width: 30vw;
+        border: none;
+        border-bottom: 1px solid white;
+        outline: none;
+        background: none;
+        @include fonts;
+    }
+    .textBox:not(.required) {
+        border-bottom: 1px solid #005f0b;
+    }
+    label {
+        display: block;
+        font-size: 16px;
+        transform: translate(5px, $space + 20px);
+        transition: all 0.5s;
+        color: #e2e2e2;
+        @include fonts;
+    }
+    .is-active, .is-completed {
+        transform: translateY($space - 5px);
+    }
+    .is-completed {
+        color: #9f9f9f;
+    }
+    .is-active {
+        color: #49d2ff;
+    }
+
+    #submit {
+        text-align: center;
+        margin-top: 30px;
+        padding: 15px 0;
+        width: 15vw;
+        min-width: 150px;
+        border: none;
+        background: rgba(25, 123, 255, 0.53);
+        @include fonts;
+        font-size: 12pt;
+        border-radius: 10px;
+    }
+    .error {
+        @include fonts;
+        font-size: 12pt;
+        height: 15px;
+        padding: 0;
+        color: rgba(185, 36, 36, 0.82);
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+    form {
+        width: 300px;
+        .textBox {
+            width: 300px;
+        }
+    }
+    .twoColumn {
+        width: 300px;
+        .textBox {
+            width: 140px;
+        }
+    }
+}
