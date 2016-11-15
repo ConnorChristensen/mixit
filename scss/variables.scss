@@ -1,0 +1,34 @@
+@mixin fonts {
+    font-weight: 100;
+    font-family: 'Lato', sans-serif;
+    color: white;
+}
+
+@mixin totalCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin aStripStyle($color) {
+    text-decoration: none;
+    color: $color;
+    text-align: center;
+    @include fonts;
+}
+
+@mixin transitionBackground($time) {
+    transition: background $time ease;
+}
+
+@mixin heightRange($min, $regular, $max) {
+    min-height: $min;
+    height: $regular;
+    max-height: $max;
+}
+
+@mixin widthRange($min, $regular, $max) {
+    min-width: $min;
+    width: $regular;
+    max-width: $max;
+}

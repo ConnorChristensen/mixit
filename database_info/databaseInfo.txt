@@ -1,0 +1,13 @@
+stinger|cocktail|3oz cocktail glass|stir over ice and strain|2|1 1/2oz|brandy|1/3oz|white creme de menthe
+classic daiquiri|cocktail|5oz champagne saucer|shake with ice and strain|4|1 1/2oz|rum|1oz|lemon juice|1/2oz|sugar syrup|1/2|egg white
+death in the afternoon|cocktail|8oz hi-ball glass|build, no ice|2|1/2oz|pernod|top-off|champagne
+double jeopardy|cocktail|10oz hi-ball glass|blend with ice and stir|4|1 1/2oz|frangelico|1 1/2oz|black sambuca|1 scoop|vanilla ice cream|top-off|milk
+jaffa|non-alcoholic|6oz old fashioned glass|blend with ice and pour|2|scoop|chocolate ice cream|3oz|orange juice
+iron man|non-alcoholic|12oz hi-ball glass|blend with ice and pour|4|1|egg|1 1/2oz|honey|1|banana|5oz|orange juice
+fizzy rush|shooter|tall dutch cordial|pour in order|3|1 tsp|white creme de menthe|1/3oz|apricot brandy|1oz|champagne
+aqua thunder|cocktail|10oz hi-ball glass|build over ice|7|1/3oz|blue curacao liqueur|1/3oz|banana liqueur|1oz|melon liqueur|1/3oz|freshly squeezed lemon|top-off|soda water|1|swizzle stick|1|slice of lemon
+australian gold|cocktail|3oz cocktail glass|build over ice|4|1oz|rum|1oz|mango liqueur|1oz|galliano|garnish|1|small pineapple wedge
+B & B|cocktail|brandy balloon|build, no ice|2|1oz|martell cognac|1oz|benedictine
+banana colada|cocktail|10oz fancy glass|build with ice and pour|9|1oz|bacardi|1oz|sugar syrup|1oz|coconut cream|1oz|cream|4oz|pineapple juice|1/2|banana|spear|pineapple|a few|mint leaves|one or more|straws
+blood bath|shooter|whisky shot|pour in order then layer the tequila|3|1/3oz|rosso vermouth|1/3oz|strawberry liqueur|2/3oz|tequila
+

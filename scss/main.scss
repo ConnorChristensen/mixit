@@ -1,0 +1,204 @@
+@import "variables.scss";
+$middle-height: 25vh;
+$middle-min-height: 200px;
+
+$middle-min-width: 300px;
+$middle-width: 50vw;
+$middle-max-width: 600px;
+
+$colorTime: 1s;
+
+* {
+    @include fonts;
+}
+
+body {
+    min-height: 200vh;
+    margin: 0;
+}
+
+.wrapper {
+    @include totalCenter;
+    margin-top: 60px;
+    height: calc(100vh - 60px);
+    width: 100vw;
+    background: 
+        linear-gradient(
+            #e5eec1, 
+            #a2d4ab, 
+            #3eaca8, 
+            #457a82, 
+            #5a5050
+    );
+    .search {
+        position: absolute;
+        @include aStripStyle(white);
+        font-size: 14pt;
+        text-align: center;
+        
+        
+        top: 0px;
+        left: 0;
+        right: 0;
+        
+        width: 100vw;
+        line-height: 60px;
+        
+        background: #474a3d;
+        @include transitionBackground($colorTime);
+        border-bottom: 1px solid white;
+        
+        &:hover {
+            @include transitionBackground($colorTime);
+            background: #48aaff;
+        }
+    }
+    #middle {
+        background: rgba(0, 0, 0, 0.6);
+        @include widthRange($middle-min-width, $middle-width, $middle-max-width);
+        min-height: $middle-min-height;
+        height: $middle-height;
+        border: 2px solid white;
+        .headline {
+            min-height: $middle-min-height*.75;
+            height: $middle-height*.75;
+            @include totalCenter;
+            .contents {
+                text-align: center;
+                @include fonts;
+                h1 {
+                    @include fonts;
+                    font-size: 32pt;
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+        }
+    }
+    .signIn {
+        display: flex;
+        a:nth-of-type(2) {
+            border-left: 1px solid black;
+        }
+        .box {
+            border-top: 1px solid black;
+            min-height: $middle-min-height*.25;
+            height: $middle-height*.25;
+            @include totalCenter;
+            width: 100%;
+            &:hover {
+                @include transitionBackground($colorTime);
+                background: #48aaff;
+            }
+        }
+        a {
+            @include aStripStyle(white);
+            height: 100%;
+            width: 50%;
+            font-size: 18pt;
+            @include transitionBackground($colorTime);
+        }
+    }
+    .more {
+        margin: auto;
+        margin-top: 12vh;
+        text-align: center;
+        a {
+            @include aStripStyle(white);
+            background: rgba(0, 0, 0, 0.6);
+            font-size: 14pt;
+            padding: 20px;
+            border: 1px solid white;
+            @include transitionBackground($colorTime);
+            &:hover {
+                @include transitionBackground($colorTime);
+                background: #48aaff;
+            }
+        }
+    }
+}
+
+#about {
+    background: #e5eec1;
+    .whatWhy {
+        @include fonts;
+        display: flex;
+        align-items: stretch;
+        justify-content: space-around;
+        padding: 20px 0px;
+        .what, .why {
+            background: #88ba88;
+            padding: 20px;
+            min-height: 200px;
+            min-width: 200px;
+            p {
+                text-indent: 20px;
+            }
+        }
+    }
+    h2 {
+        text-align: center;
+    }
+    .policiesHeader {
+        color: black;
+        font-weight: 300;
+    }
+    .policies {
+         display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        .policyBox {
+            margin: 1vw;
+            background: #88ba88;
+            p {
+                padding: 0 10px;
+            }
+        }
+    }
+}
+
+$break2: 1100px;
+$break1: 600px;
+
+
+@media screen and (min-width: $break2) {
+    .policyBox {
+        width: 20vw;
+    }
+    .whatWhy {
+        .what, .why {
+            width: 40vw;
+            max-width: 400px;
+        }
+    }
+}
+
+
+@media screen and (max-width: $break2) and (min-width: $break1) {
+    .policyBox {
+        width: 40vw;
+    }
+    .whatWhy {
+        flex-wrap: wrap;
+        .what, .why {
+            margin: 1vw;
+            width: 40vw;
+        }
+    }
+}
+
+@media screen and (max-width: $break1) {
+    * {
+        font-weight: 300;
+    }
+    .policyBox {
+        width: 90vw;
+    }
+    .whatWhy {
+        flex-wrap: wrap;
+        .what, .why {
+            margin: 1vw;
+            width: 80vw;
+        }
+    }
+}

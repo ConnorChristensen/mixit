@@ -1,0 +1,8 @@
+.footer {
+    @include fonts;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    background: black;
+    margin-top: 100px;
+}
