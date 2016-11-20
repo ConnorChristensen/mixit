@@ -1,17 +1,17 @@
-INSERT INTO Bevs (`name`, `type`, `glass`, `instructions`, `ingredientList`)
+INSERT INTO Bevs (`name`, `type`, `glass`, `description`, `instructions`, `ingredientList`)
 VALUES 
-	('stinger', 'cocktail', '3oz cocktail glass', './instructions/stinger.txt', './ingredients/stinger.txt'),
-	('classic daiquiri', 'cocktail', '5oz champagne saucer', './instructions/classic_daiquiri.txt', './ingredients/classic_daiquiri.txt'),
-	('death in the afternoon', 'cocktail', '8oz hi-ball glass', './instructions/death_in_the_afternoon.txt', './ingredients/death_in_the_afternoon.txt'),
-	('double jeopardy', 'cocktail', '10oz hi-ball glass', './instructions/double_jeopardy.txt', './ingredients/double_jeopardy.txt'),
-	('jaffa', 'non-alcoholic', '6oz old fashioned glass', './instructions/jaffa.txt', './ingredients/jaffa.txt'),
-	('iron man', 'non-alcoholic', '12oz hi-ball glass', './instructions/iron_man.txt', './ingredients/iron_man.txt'),
-	('fizzy rush', 'shooter', 'tall dutch cordial', './instructions/fizzy_rush.txt', './ingredients/fizzy_rush.txt'),
-	('aqua thunder', 'cocktail', '10oz hi-ball glass', './instructions/aqua_thunder.txt', './ingredients/aqua_thunder.txt'),
-	('australian gold', 'cocktail', '3oz cocktail glass', './instructions/australian_gold.txt', './ingredients/australian_gold.txt'),
-	('B & B', 'cocktail', 'brandy balloon', './instructions/B_&_B.txt', './ingredients/B_&_B.txt'),
-	('banana colada', 'cocktail', '10oz fancy glass', './instructions/banana_colada.txt', './ingredients/banana_colada.txt'),
-	('blood bath', 'shooter', 'whisky shot', './instructions/blood_bath.txt', './ingredients/blood_bath.txt'),;
+	('stinger', 'cocktail', '3oz cocktail glass', './description/stinger.txt', './instructions/stinger.txt', './ingredients/stinger.txt'),
+	('classic daiquiri', 'cocktail', '5oz champagne saucer', './description/classic_daiquiri.txt', './instructions/classic_daiquiri.txt', './ingredients/classic_daiquiri.txt'),
+	('death in the afternoon', 'cocktail', '8oz hi-ball glass', './description/death_in_the_afternoon.txt', './instructions/death_in_the_afternoon.txt', './ingredients/death_in_the_afternoon.txt'),
+	('double jeopardy', 'cocktail', '10oz hi-ball glass', './description/double_jeopardy.txt', './instructions/double_jeopardy.txt', './ingredients/double_jeopardy.txt'),
+	('jaffa', 'non-alcoholic', '6oz old fashioned glass', './description/jaffa.txt', './instructions/jaffa.txt', './ingredients/jaffa.txt'),
+	('iron man', 'non-alcoholic', '12oz hi-ball glass', './description/iron_man.txt', './instructions/iron_man.txt', './ingredients/iron_man.txt'),
+	('fizzy rush', 'shooter', 'tall dutch cordial', './description/fizzy_rush.txt', './instructions/fizzy_rush.txt', './ingredients/fizzy_rush.txt'),
+	('aqua thunder', 'cocktail', '10oz hi-ball glass', './description/aqua_thunder.txt', './instructions/aqua_thunder.txt', './ingredients/aqua_thunder.txt'),
+	('australian gold', 'cocktail', '3oz cocktail glass', './description/australian_gold.txt', './instructions/australian_gold.txt', './ingredients/australian_gold.txt'),
+	('B & B', 'cocktail', 'brandy balloon', './description/B_&_B.txt', './instructions/B_&_B.txt', './ingredients/B_&_B.txt'),
+	('banana colada', 'cocktail', '10oz fancy glass', './description/banana_colada.txt', './instructions/banana_colada.txt', './ingredients/banana_colada.txt'),
+	('blood bath', 'shooter', 'whisky shot', './description/blood_bath.txt', './instructions/blood_bath.txt', './ingredients/blood_bath.txt');
 
 INSERT INTO Ingredients (`name`, `bevId`) 
 VALUES ('brandy', 1), ('white creme de menthe', 1);
@@ -38,7 +38,7 @@ INSERT INTO Ingredients (`name`, `bevId`)
 VALUES ('blue curacao liqueur', 8), ('banana liqueur', 8), ('melon liqueur', 8), ('freshly squeezed lemon', 8), ('soda water', 8), ('swizzle stick', 8), ('slice of lemon', 8);
 
 INSERT INTO Ingredients (`name`, `bevId`) 
-VALUES ('rum', 9), ('mango liqueur', 9), ('galliano', 9), ('1', 9);
+VALUES ('rum', 9), ('mango liqueur', 9), ('galliano', 9), ('1 small pineapple wedge', 9);
 
 INSERT INTO Ingredients (`name`, `bevId`) 
 VALUES ('martell cognac', 10), ('benedictine', 10);
