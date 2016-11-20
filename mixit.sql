@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS Users (
     `username` VARCHAR(30) UNIQUE NOT NULL,
     `password` VARCHAR(120) NOT NULL,
-    `email` VARCHAR(60),
+    `email` VARCHAR(60) NOT NULL,
     `status` VARCHAR(60) DEFAULT "user",
     PRIMARY KEY (`username`),
     FOREIGN KEY (`username`) references Fav_Bevs(`username`)
