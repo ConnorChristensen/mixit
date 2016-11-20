@@ -12,6 +12,7 @@ use strict;
 use warnings;
 
 sub insertStatements {
+    my $filePath = "http://web.engr.oregonstate.edu/~chriconn/mixit/database_info/";
     #bring in passed variables
     my $x = $_[0];
     my $lineCount = $_[1];
@@ -24,6 +25,7 @@ sub insertStatements {
         print outputFile "`$splitLine[0]`, ";
         print outputFile "`$splitLine[1]`, ";
         print outputFile "`$splitLine[2]`, ";
+        print outputFile "`./description/$textFileName.txt`, ";
         print outputFile "`./instructions/$textFileName.txt`, ";
         print outputFile "`./ingredients/$textFileName.txt`";
         if ($x >= $lineCount) {
@@ -37,6 +39,7 @@ sub insertStatements {
         print outputFile "'$splitLine[0]', ";
         print outputFile "'$splitLine[1]', ";
         print outputFile "'$splitLine[2]', ";
+        print outputFile "'./description/$textFileName.txt', ";
         print outputFile "'./instructions/$textFileName.txt', ";
         print outputFile "'./ingredients/$textFileName.txt'";
         if ($x >= $lineCount) {
@@ -69,7 +72,7 @@ sub main() {
     
     
     #print the header for the SQL statement
-    print outputFile "INSERT INTO $databaseName (`name`, `type`, `glass`, `instructions`, `ingredientList`)\nVALUES ";
+    print outputFile "INSERT INTO $databaseName (`name`, `type`, `glass`, `description`, `instructions`, `ingredientList`)\nVALUES ";
     
     #if the instructions folder doesn't already exits create it
     if (! -e "instructions") {

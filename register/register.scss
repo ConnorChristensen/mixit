@@ -3,23 +3,48 @@
 $space: 10px;
 
 html {
-    background: url(../images/back.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    max-width: 2000px;
+//    background: url(../images/back.jpg) no-repeat center center fixed;
+//    -webkit-background-size: cover;
+//    -moz-background-size: cover;
+//    -o-background-size: cover;
+//    background-size: cover;
+//    max-width: 2000px;
+    background: 
+        linear-gradient(
+            $sand, 
+            $mintGreen, 
+            $lightBlue, 
+            $deepBlue, 
+            $grey
+    );
     animation: fadein .5s;
 }
 
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .linkContainer {
-    text-align: center;
-    width: 100vw;
-    position: absolute;
-    left: 0;
-    top: 0;
-    a {
-        @include fonts;
+    @include fonts;
+    font-size: 18pt;
+    text-decoration: none;
+    div {
+        text-align: center;
+        width: 100vw;
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 20px 10px 10px 10px;
+        background: $semiClearBlack;
+        @include transitionBackground(1s);
+        &:hover {
+            @include transitionBackground(1s);
+            background: $selectionBlue;
+        }
     }
 }
 
@@ -49,7 +74,7 @@ form {
     width: 30vw;
     background: rgba(49, 49, 49, 0.95);
     padding: 30px;
-    border-radius: 20px;
+    border: 2px solid white;
     .textBox {
         line-height: 25px;
         font-size: 12pt;
@@ -60,6 +85,7 @@ form {
         outline: none;
         background: none;
         @include fonts;
+        border-radius: 0;
     }
     .textBox:not(.required) {
         border-bottom: 1px solid #005f0b;
@@ -93,6 +119,7 @@ form {
         @include fonts;
         font-size: 12pt;
         border-radius: 10px;
+        -webkit-appearance: none;
     }
     .error {
         @include fonts;

@@ -24,11 +24,11 @@ body {
     width: 100vw;
     background: 
         linear-gradient(
-            #e5eec1, 
-            #a2d4ab, 
-            #3eaca8, 
-            #457a82, 
-            #5a5050
+            $sand, 
+            $mintGreen, 
+            $lightBlue, 
+            $deepBlue, 
+            $grey
     );
     .search {
         position: absolute;
@@ -54,7 +54,7 @@ body {
         }
     }
     #middle {
-        background: rgba(0, 0, 0, 0.6);
+        background: $semiClearBlack;
         @include widthRange($middle-min-width, $middle-width, $middle-max-width);
         min-height: $middle-min-height;
         height: $middle-height;
@@ -105,7 +105,7 @@ body {
         text-align: center;
         a {
             @include aStripStyle(white);
-            background: rgba(0, 0, 0, 0.6);
+            background: $semiClearBlack;
             font-size: 14pt;
             padding: 20px;
             border: 1px solid white;

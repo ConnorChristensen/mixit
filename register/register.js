@@ -94,7 +94,7 @@ $(document).ready(function () {
     //when someone presses a key while focused on the username feild
     $("#userName").keyup(function () {
         var errorString = "Username can only contain letters, numbers and special characters . - _";
-        userNamePass = errorLog("#userName", /^[A-z\-\_0-9]*$/, "#userNameError", errorString);
+        userNamePass = errorLog("#userName", /^[A-z\-_0-9]*$/, "#userNameError", errorString);
     });
 
     $("#email").change(function () {

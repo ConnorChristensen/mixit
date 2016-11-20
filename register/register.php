@@ -11,10 +11,11 @@
 </head>
 
 <body>
-    <div class="linkContainer">
-        <a href="../index.php">Back</a>
-    </div>
     
+    <a href="../index.php" class="linkContainer">
+       <div>Back</div>
+    </a>
+
 	<?php
         //conects the database
         include('databaseConnect.php');
@@ -23,9 +24,7 @@
         //check that the data is valid and post it if it is
         include('postData.php');
     ?>
-
-    <h3>All white bars are required feilds</h3>
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">    
         <h1>Register</h1>
 
         <label for="userName">User Name</label>
