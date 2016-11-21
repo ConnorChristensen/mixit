@@ -22,7 +22,7 @@ session_start();
 
 	<?php
         //conects the database
-        include('databaseConnect.php');
+        include('../databaseConnect.php');
         
         //check that the data is valid and post it if it is
         include('postDataRegister.php');
