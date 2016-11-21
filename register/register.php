@@ -25,7 +25,7 @@ session_start();
         include('databaseConnect.php');
         
         //check that the data is valid and post it if it is
-        include('postData.php');
+        include('postDataRegister.php');
     ?>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">    
         <h1>Register</h1>
