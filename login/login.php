@@ -1,6 +1,10 @@
 <?php
 // Start the session
 session_start();
+
+//TODO: If already logged in, redirect
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
