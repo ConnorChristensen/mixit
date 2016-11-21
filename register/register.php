@@ -19,8 +19,7 @@
 	<?php
         //conects the database
         include('databaseConnect.php');
-        //if the table doesn't exist, then create it
-        include('createTable.php');
+        
         //check that the data is valid and post it if it is
         include('postData.php');
     ?>
