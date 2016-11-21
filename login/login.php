@@ -23,7 +23,7 @@ session_start();
         //conects the database
         include('../databaseConnect.php');
         //check that the data is valid and post it if it is
-        include('postData.php');
+        include('postDataLogin.php');
     ?>
     
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
