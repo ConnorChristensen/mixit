@@ -17,12 +17,44 @@
         );
         $confirmPasswordError = "";
 
-        //quick function to check if the name is a valid name with just english letters
+        //check if the name is a valid name containing letters and numbers only
         function validName($name) {
-            if(!preg_match("/^[A-Za-z]*$/", $name)) {
+            if(!preg_match("/^[A-z\-_0-9]*$/", $name)) {
                 return false;
             }
             return true;
+        }
+        
+        //checks to see if the requested username is already taken
+        function usernameInDB($name){
+            $sql = "SELECT COUNT(`username`) FROM `Users` WHERE `username` = '$name'";
+            $retval = mysqli_query($conn, $sql);
+            if($retval > 0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        //checks to see if the email is in use
+        function emailInDB($email){
+            $sql = "SELECT COUNT(`email`) FROM `Users` WHERE `email` = '$email'";
+            $retval = mysqli_query($conn, $sql);
+            if($retval > 0){
+                return true;
+            }
+            else{
+                return false;
+            }
+            
+        }
+
+
+        //adds a user to the DB, parameters MUST BE GOOD
+        function putUserIntoDB($username, $password, $email){
+            $sql = "INSERT INTO `Users` (`username`, `password`, `email`) VALUES ('$username', '$password', '$email')";
+            mysqli_query($conn, $sql);
         }
 
         function UserFeedbackError($info) {
@@ -32,16 +64,24 @@
             echo '<p class="success">'.$info.'</p>';
         }
 
+        //checks if username is good
         if($_POST["userName"]) {
             $user["name"] = $_POST["userName"];
             if(strlen($user["name"]) < 5) {
                 $user["error"] = "Username must be longer than 5 characters";
+            }
+            else if(!validName($user["name"])){
+                $user["error"] = "Username must consist of only letters and numbers";
+            }
+            else if(usernameInDB(htmlspecialchars($user["name"]))){
+                $user["error"] = "Desired username is aleady taken";
             }
             else {
                 $user["pass"] = true;
             }
         }
 
+        //checks if password is good
         if($_POST["password"]) {
             $password["name"] = $_POST["password"];
             if(strlen($password["name"]) < 5) {
@@ -52,7 +92,7 @@
             }
         }
 
-
+        //checks if confirmed password matches password
         if(empty($_POST["confirmPassword"])){
             $password["pass"] = false;
         }
@@ -68,49 +108,39 @@
             }
         }
 
-
+        //checks if email is valid
         if($_POST["email"]) {
             $email["address"] = $_POST["email"];
             if(!preg_match("/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/", $email["address"])) {
                 $email["error"] = "That is not a proper email formatting";
             }
+            else if(emailInDB(htmlspecialchars($email["address"]))){
+                $email["error"] = "That email is already in use";
+            }
             else {
                 $email["pass"] = true;
             }
         }
-
+        
+        //adds values to database
         if($password["pass"] == true and $email["pass"] == true and $user["pass"] == true) {
-            $firstName = htmlspecialchars($first["name"]);
-            $lastName = htmlspecialchars($last["name"]);
-            $passwordNew = $password["name"];
-            $emailAddress = htmlspecialchars($email["address"]);
-            $userName = htmlspecialchars($user["name"]);
-            $ageNumber = $age["number"];
-
-            $sql = "SELECT 1 FROM `Users` WHERE `Email` = '$emailAddress'";
-            $retval = mysqli_query($conn, $sql);
-            if ($retval && mysqli_num_rows($retval) > 0) {
-                UserFeedbackError("That email address is already taken");
+            $goodName = htmlspecialchars($user["name"]);
+            $goodPassword = htmlspecialchars($password["name"]);
+            $goodEmail = htmlspecialchars($email["address"]);
+            putUserIntoDB($goodName, $goodPassword, $goodEmail);
+            if(usernameInDB($goodName)){
+                UserFeedbackSuccess("Account Successfully made!");
             }
-            else {
-                //Check user name
-                $retval = mysqli_query($conn, $sql);
-                if ($retval && mysqli_num_rows($retval) > 0) {
-                    UserFeedbackError("That username is already taken");
-                }
-                else {
-                    //sql query
-                    $retval = mysqli_query($conn, $sql);
-
-
-                    if($retval) {
-                        UserFeedbackSuccess("The data has been posted");
-                    }
-                    else {
-                        UserFeedbackError("There was an error pushing the changes to the database");
-                    }
-                }
+            else{
+                UserFeedbackError("Oops! Something went wrong!");
             }
-
         }
     ?>
+    
+   
+  
+ 
+
+
+
+
