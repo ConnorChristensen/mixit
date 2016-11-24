@@ -1,3 +1,11 @@
+<?php
+// Start the session
+session_start();
+
+//TODO: If already logged in, redirect
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,11 +25,9 @@
     
 	<?php
         //conects the database
-        include('databaseConnect.php');
-        //if the table doesn't exist, then create it
-        include('createTable.php');
+        include('../databaseConnect.php');
         //check that the data is valid and post it if it is
-        include('postData.php');
+        include('postDataLogin.php');
     ?>
     
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">

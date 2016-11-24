@@ -9,4 +9,5 @@
     if($conn == false){
         die("Connection failed: " . mysqli_connection_error());
     }
+	$GLOBALS['conn'] = $conn;
 ?>
