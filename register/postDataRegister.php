@@ -27,9 +27,9 @@
         
         //checks to see if the requested username is already taken
         function usernameInDB($name){
-            $sql = "SELECT COUNT(`username`) FROM `Users` WHERE `username` = '$name'";
-            $retval = mysqli_query($conn, $sql);
-            if($retval > 0){
+            $sql = "SELECT * FROM `Users` WHERE `username` = '$name'";
+            $retval = mysqli_query($GLOBALS['conn'], $sql);
+            if($retval && mysqli_num_rows($retval)){
                 return true;
             }
             else{
@@ -39,9 +39,9 @@
 
         //checks to see if the email is in use
         function emailInDB($email){
-            $sql = "SELECT COUNT(`email`) FROM `Users` WHERE `email` = '$email'";
-            $retval = mysqli_query($conn, $sql);
-            if($retval > 0){
+            $sql = "SELECT * FROM `Users` WHERE `email` = '$email'";
+            $retval = mysqli_query($GLOBALS['conn'], $sql);
+            if($retval && mysqli_num_rows($retval)){
                 return true;
             }
             else{
@@ -54,7 +54,7 @@
         //adds a user to the DB, parameters MUST BE GOOD
         function putUserIntoDB($username, $password, $email){
             $sql = "INSERT INTO `Users` (`username`, `password`, `email`) VALUES ('$username', '$password', '$email')";
-            mysqli_query($conn, $sql);
+            mysqli_query($GLOBALS['conn'], $sql);
         }
 
         function UserFeedbackError($info) {
