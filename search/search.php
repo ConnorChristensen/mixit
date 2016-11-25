@@ -66,7 +66,7 @@ session_start();
                 //get top 10 bevs
                 $topAll = top10();
                 //output info for top 10
-                for($x=0; $x<10; $x++){
+                for($x=0; $x<count($topAll); $x++){
                     $item = '<div class="item"><div class="imgContainer"><img src="';
                     if($topAll[$x]["photo"] == null){
                         $item = $item.'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
@@ -86,7 +86,7 @@ session_start();
                 //get top 10 bevs
                 $topAll = top10();
                 //output info for top 10
-                for($x=0; $x<10; $x++){
+                for($x=0; $x<count($topAll); $x++){
                     $item = '<div class="item"><div class="imgContainer"><img src="';
                     if($topAll[$x]["photo"] == null){
                         $item = $item.'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
@@ -99,21 +99,21 @@ session_start();
                 }
                 ?>
             </div>
-            <h2>Top 10 with Gin</h2>
+            <h2>Top 10 with Banana</h2>
             <div class="list">
                 <?php
                 //get top 10 bevs
-                $topAll = top10();
+                $topIngred = top10Ingred();
                 //output info for top 10
-                for($x=0; $x<10; $x++){
+                for($x=0; $x<count($topIngred); $x++){
                     $item = '<div class="item"><div class="imgContainer"><img src="';
-                    if($topAll[$x]["photo"] == null){
+                    if($topIngred[$x]["photo"] == null){
                         $item = $item.'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
                     }
                     else{
-                        $item = $item . $topAll[$x]['photo'];
+                        $item = $item . $topIngred[$x]['photo'];
                     }
-                    $item = $item. '" alt=""></div><h4>'.$topAll[$x]['name'].'</h4></div>';
+                    $item = $item. '" alt=""></div><h4>'.$topIngred[$x]['name'].'</h4></div>';
                     echo $item;
                 }
                 ?>
