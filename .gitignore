@@ -1,2 +1,4 @@
 .*
+login/.sass-cache
+**/.sass-cache/**
 *.html
