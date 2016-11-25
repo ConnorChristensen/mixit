@@ -63,16 +63,28 @@ h1, h2, h3, h4, h5, h6 {
     @include fonts;
 }
 .error {
-    color: #841f1f;
+    color: #690000;
 }
 .success {
     color: #2f841f;
 }
-
+#submissionResult {
+    text-align: center;
+    font-size: 15pt;
+    padding: 10px 0;
+    @include fonts;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 0;
+    background: $semiClearBlack;
+    color: white;
+}
 form {
     margin: auto;
     width: 30vw;
-    background: rgba(49, 49, 49, 0.95);
+    background: $semiClearBlack;
     padding: 30px;
     border: 2px solid white;
     p {

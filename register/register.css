@@ -45,15 +45,30 @@ h1, h2, h3, h4, h5, h6 {
   color: white; }
 
 .error {
-  color: #841f1f; }
+  color: #690000; }
 
 .success {
   color: #2f841f; }
 
+#submissionResult {
+  text-align: center;
+  font-size: 15pt;
+  padding: 10px 0;
+  font-weight: 100;
+  font-family: 'Lato', sans-serif;
+  color: white;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: white; }
+
 form {
   margin: auto;
   width: 30vw;
-  background: rgba(49, 49, 49, 0.95);
+  background: rgba(0, 0, 0, 0.6);
   padding: 30px;
   border: 2px solid white; }
   form p {
