@@ -130,6 +130,8 @@
             putUserIntoDB($goodName, $goodPassword, $goodEmail);
             if(usernameInDB($goodName)){
                 UserFeedbackSuccess("Account Successfully made!");
+                $_SESSION['login'] = 1;
+                echo '<script>window.location=" '.$_SERVER['PHP_SELF'].' "; </script>';
             }
             else{
                 UserFeedbackError("Oops! Something went wrong!");

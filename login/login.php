@@ -2,8 +2,12 @@
 // Start the session
 session_start();
 
-//TODO: If already logged in, redirect
-
+//If already logged in, redirect
+if(array_key_exists('login', $_SESSION)){
+    if($_SESSION['login'] == 1){
+        header("location: ../search/search.php");
+    }
+}
 
 ?>
 <!DOCTYPE html>

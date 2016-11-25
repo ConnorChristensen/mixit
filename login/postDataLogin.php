@@ -27,9 +27,9 @@ function validName($name) {
 
 //check to see if credentials are good
 function tryToLogin($username, $password){
-    $sql = "SELECT COUNT(`username`) FROM `Users` WHERE `username` = '$username' AND `password` = '$password'";
-    $retval = mysqli_query($conn, $sql);
-    if($retval > 0){
+    $sql = "SELECT * FROM `Users` WHERE `username` = '$username' AND `password` = '$password'";
+    $retval = mysqli_query($GLOBALS['conn'], $sql);
+    if($retval && mysqli_num_rows($retval)){
         return true;
     }
     else{
@@ -65,8 +65,8 @@ if($user["pass"] == true && $password["pass"] == true){
     $goodPassword = htmlspecialchars($password["name"]);
     if(tryToLogin($goodUsername, $goodPassword)){
         $_SESSION["login"] = 1;
-        UserFeedbackSuccess("Logged in");
-        //TODO: INSERT REDIRECT  <-----
+        UserFeedbackSuccess("Logging in...");
+        echo '<script>window.location=" '.$_SERVER['PHP_SELF'].' "; </script>';
     }
     else{
         UserFeedbackError("Username or Password not correct");

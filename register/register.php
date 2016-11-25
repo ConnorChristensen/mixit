@@ -1,8 +1,16 @@
-<!DOCTYPE html>
 <?php
 // Start the session
 session_start();
+
+//If already logged in, redirect
+if(array_key_exists('login', $_SESSION)){
+    if($_SESSION['login'] == 1){
+        header("location: ../search/search.php");
+    }
+}
+
 ?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
