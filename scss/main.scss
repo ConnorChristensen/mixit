@@ -120,6 +120,7 @@ body {
 
 #about {
     background: #e5eec1;
+    min-height: 100vh;
     .whatWhy {
         @include fonts;
         display: flex;

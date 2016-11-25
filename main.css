@@ -110,7 +110,8 @@ body {
         background: #48aaff; }
 
 #about {
-  background: #e5eec1; }
+  background: #e5eec1;
+  min-height: 100vh; }
   #about .whatWhy {
     font-weight: 100;
     font-family: 'Lato', sans-serif;
