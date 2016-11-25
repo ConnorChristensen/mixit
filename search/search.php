@@ -82,21 +82,41 @@ session_start();
             </div>
             <h2>Top 10 coctails</h2>
             <div class="list">
-                    <div class="item">
-                    <div class="imgContainer">
-                        <img src="https://s3.amazonaws.com/liquor/wp-content/uploads/2011/04/15150034/dirty-martini-720x720-recipe.jpg" alt="">
-                    </div>
-                    <h4>Vodka Martini</h4>
-                </div>
+                <?php
+                //get top 10 bevs
+                $topAll = top10();
+                //output info for top 10
+                for($x=0; $x<10; $x++){
+                    $item = '<div class="item"><div class="imgContainer"><img src="';
+                    if($topAll[$x]["photo"] == null){
+                        $item = $item.'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
+                    }
+                    else{
+                        $item = $item . $topAll[$x]['photo'];
+                    }
+                    $item = $item. '" alt=""></div><h4>'.$topAll[$x]['name'].'</h4></div>';
+                    echo $item;
+                }
+                ?>
             </div>
             <h2>Top 10 with Gin</h2>
             <div class="list">
-                    <div class="item">
-                    <div class="imgContainer">
-                        <img src="https://s3.amazonaws.com/liquor/wp-content/uploads/2011/04/15150034/dirty-martini-720x720-recipe.jpg" alt="">
-                    </div>
-                    <h4>Vodka Martini</h4>
-                </div>
+                <?php
+                //get top 10 bevs
+                $topAll = top10();
+                //output info for top 10
+                for($x=0; $x<10; $x++){
+                    $item = '<div class="item"><div class="imgContainer"><img src="';
+                    if($topAll[$x]["photo"] == null){
+                        $item = $item.'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
+                    }
+                    else{
+                        $item = $item . $topAll[$x]['photo'];
+                    }
+                    $item = $item. '" alt=""></div><h4>'.$topAll[$x]['name'].'</h4></div>';
+                    echo $item;
+                }
+                ?>
             </div>
     </div>
 </body>
