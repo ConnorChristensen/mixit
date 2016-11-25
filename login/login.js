@@ -106,11 +106,16 @@ $(document).ready(function () {
     });
     
     //when someone changes the input of the feild and then leaves the feild
-    $("#password").change(function() {
-        passwordPass = errorLog("#password", /^.{7,}$/, "#passwordError", "Password must be longer than 8 characters");
+    $("#password").keyup(function() {
+        if ($("#password").val() !== "") {
+            passwordPass = errorLog("#password", /^.+$/, "#passwordError", "");
+        }
+        else {
+            passwordPass = false;
+        }
     });
     
-    $("#userName, #password").change(function() {
+    $("#userName, #password").keyup(function() {
         if (userNamePass === true && passwordPass === true) {
             $("#submit").css("background", "rgba(25, 123, 255, 0.53)");
             $("#submit").removeAttr("disabled");

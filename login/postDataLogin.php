@@ -12,10 +12,10 @@ $password = array(
 
 //TODO: Create separate PHP file with common functions <----
 function UserFeedbackError($info) {
-    echo '<p class="error">'.$info.'</p>';
+    echo '<p id="submissionResult">'.$info.'</p>';
 }
 function UserFeedbackSuccess($info) {
-    echo '<p class="success">'.$info.'</p>';
+    echo '<p id="submissionResult">'.$info.'</p>';
 }
 //check if name only contains letters and numbers
 function validName($name) {
