@@ -46,9 +46,11 @@ function top10Ingred(){
 
 //build top10 of a certain type
 function top10Type(){
-    $sql = "SELECT `name`, `photo` FROM `Bevs` WHERE `bevId` IN (
-	           SELECT `bevId` FROM `Bev_Rating`
-			     ORDER BY `likes` ASC) LIMIT 10";
+    $sql = "SELECT `name`, `photo` FROM `Bevs` WHERE Bevs.bevId IN (
+	           SELECT Bev_Rating.bevId FROM `Bev_Rating`, Type
+                     WHERE Bev_Rating.bevId = Type.bevId
+                     AND Type.name = 'cocktail'
+			         ORDER BY `likes` ASC) LIMIT 10";
     $retval = mysqli_query($GLOBALS['conn'], $sql);
     $topArr = array();
     $num = 0;

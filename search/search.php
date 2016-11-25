@@ -84,7 +84,7 @@ session_start();
             <div class="list">
                 <?php
                 //get top 10 bevs
-                $topAll = top10();
+                $topAll = top10Type();
                 //output info for top 10
                 for($x=0; $x<count($topAll); $x++){
                     $item = '<div class="item"><div class="imgContainer"><img src="';
