@@ -16,6 +16,14 @@ session_start();
 </head>
 
 <body>
+   <?php
+        //conects the database
+        include('../databaseConnect.php');
+        
+        //check that the data is valid and query appropriately
+        include('postDataSearch.php');
+    ?>
+   
     <div class="wrapper">
         <div class="search">
             <div class="by">
@@ -54,6 +62,8 @@ session_start();
     <div class="topTens">
             <h2>Top 10</h2>
             <div class="list">
+               
+               
                 <div class="item">
                     <div class="imgContainer">
                         <img src="https://s3.amazonaws.com/liquor/wp-content/uploads/2011/04/15150034/dirty-martini-720x720-recipe.jpg" alt="">
