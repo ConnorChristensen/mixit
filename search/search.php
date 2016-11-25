@@ -16,6 +16,14 @@ session_start();
 </head>
 
 <body>
+   <?php
+        //conects the database
+        include('../databaseConnect.php');
+        
+        //check that the data is valid and query appropriately
+        include('postDataSearch.php');
+    ?>
+   
     <div class="wrapper">
         <div class="search">
             <div class="by">
@@ -54,92 +62,61 @@ session_start();
     <div class="topTens">
             <h2>Top 10</h2>
             <div class="list">
-                <div class="item">
-                    <div class="imgContainer">
-                        <img src="https://s3.amazonaws.com/liquor/wp-content/uploads/2011/04/15150034/dirty-martini-720x720-recipe.jpg" alt="">
-                    </div>
-                    <h4>Vodka Martini</h4>
-                </div>
-                
-                
-                
-                
-                
-                
-                <div class="item">
-                    <div class="imgContainer">
-                        <img src="https://s3.amazonaws.com/liquor/wp-content/uploads/2011/04/15150034/dirty-martini-720x720-recipe.jpg" alt="">
-                    </div>
-                    <h4>Vodka Martini</h4>
-                </div><div class="item">
-                    <div class="imgContainer">
-                        <img src="https://s3.amazonaws.com/liquor/wp-content/uploads/2011/04/15150034/dirty-martini-720x720-recipe.jpg" alt="">
-                    </div>
-                    <h4>Vodka Martini</h4>
-                </div><div class="item">
-                    <div class="imgContainer">
-                        <img src="https://s3.amazonaws.com/liquor/wp-content/uploads/2011/04/15150034/dirty-martini-720x720-recipe.jpg" alt="">
-                    </div>
-                    <h4>Vodka Martini</h4>
-                </div><div class="item">
-                    <div class="imgContainer">
-                        <img src="https://s3.amazonaws.com/liquor/wp-content/uploads/2011/04/15150034/dirty-martini-720x720-recipe.jpg" alt="">
-                    </div>
-                    <h4>Vodka Martini</h4>
-                </div><div class="item">
-                    <div class="imgContainer">
-                        <img src="https://s3.amazonaws.com/liquor/wp-content/uploads/2011/04/15150034/dirty-martini-720x720-recipe.jpg" alt="">
-                    </div>
-                    <h4>Vodka Martini</h4>
-                </div>
-                 <div class="item">
-                    <div class="imgContainer">
-                        <img src="https://s3.amazonaws.com/liquor/wp-content/uploads/2011/04/15150034/dirty-martini-720x720-recipe.jpg" alt="">
-                    </div>
-                    <h4>Vodka Martini</h4>
-                </div><div class="item">
-                    <div class="imgContainer">
-                        <img src="https://s3.amazonaws.com/liquor/wp-content/uploads/2011/04/15150034/dirty-martini-720x720-recipe.jpg" alt="">
-                    </div>
-                    <h4>Vodka Martini</h4>
-                </div><div class="item">
-                    <div class="imgContainer">
-                        <img src="https://s3.amazonaws.com/liquor/wp-content/uploads/2011/04/15150034/dirty-martini-720x720-recipe.jpg" alt="">
-                    </div>
-                    <h4>Vodka Martini</h4>
-                </div><div class="item">
-                    <div class="imgContainer">
-                        <img src="https://s3.amazonaws.com/liquor/wp-content/uploads/2011/04/15150034/dirty-martini-720x720-recipe.jpg" alt="">
-                    </div>
-                    <h4>Vodka Martini</h4>
-                </div>
-                
-                
-                
-                
-                
-                
-                
-                
-                
+               <?php
+                //get top 10 bevs
+                $topAll = top10();
+                //output info for top 10
+                for($x=0; $x<count($topAll); $x++){
+                    $item = '<div class="item"><div class="imgContainer"><img src="';
+                    if($topAll[$x]["photo"] == null){
+                        $item = $item.'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
+                    }
+                    else{
+                        $item = $item . $topAll[$x]['photo'];
+                    }
+                    $item = $item. '" alt=""></div><h4>'.$topAll[$x]['name'].'</h4></div>';
+                    echo $item;
+                }
+                ?>
+ 
             </div>
             <h2>Top 10 coctails</h2>
             <div class="list">
-                    <div class="item">
-                    <div class="imgContainer">
-                        <img src="https://s3.amazonaws.com/liquor/wp-content/uploads/2011/04/15150034/dirty-martini-720x720-recipe.jpg" alt="">
-                    </div>
-                    <h4>Vodka Martini</h4>
-                </div>
+                <?php
+                //get top 10 bevs
+                $topAll = top10Type();
+                //output info for top 10
+                for($x=0; $x<count($topAll); $x++){
+                    $item = '<div class="item"><div class="imgContainer"><img src="';
+                    if($topAll[$x]["photo"] == null){
+                        $item = $item.'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
+                    }
+                    else{
+                        $item = $item . $topAll[$x]['photo'];
+                    }
+                    $item = $item. '" alt=""></div><h4>'.$topAll[$x]['name'].'</h4></div>';
+                    echo $item;
+                }
+                ?>
             </div>
-            <h2>Top 10 with Gin</h2>
+            <h2>Top 10 with Banana</h2>
             <div class="list">
-                    <div class="item">
-                    <div class="imgContainer">
-                        <img src="https://s3.amazonaws.com/liquor/wp-content/uploads/2011/04/15150034/dirty-martini-720x720-recipe.jpg" alt="">
-                    </div>
-                    <h4>Vodka Martini</h4>
-                </div>
+                <?php
+                //get top 10 bevs
+                $topIngred = top10Ingred();
+                //output info for top 10
+                for($x=0; $x<count($topIngred); $x++){
+                    $item = '<div class="item"><div class="imgContainer"><img src="';
+                    if($topIngred[$x]["photo"] == null){
+                        $item = $item.'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
+                    }
+                    else{
+                        $item = $item . $topIngred[$x]['photo'];
+                    }
+                    $item = $item. '" alt=""></div><h4>'.$topIngred[$x]['name'].'</h4></div>';
+                    echo $item;
+                }
+                ?>
             </div>
     </div>
 </body>
