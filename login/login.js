@@ -1,5 +1,9 @@
 //when the HTML is loaded, load/run everything in the function
 $(document).ready(function () {
+    
+    //global defined color to change the text to when the input is wrong
+    var invalidColor = "#c4182c";
+    
     /*
     - For each form element on the page, reset it to make sure there is no left over text
     - This is to fix an issue where when the user refreshes the page, previous input information
@@ -34,19 +38,7 @@ $(document).ready(function () {
         //remove the is active class
         $("label[for='" + $(this).attr("id") + "']").removeClass("is-active");
     });
-
-    //global defined color to change the text to when the input is wrong
-    var invalidColor = "#ca616d";
-
-    /*
-    Function Name: changeColor
-    Input: 
-        tag: The id or class of the content being selected
-        re:  The regular expression to match it against
     
-    Output: A true or false statement that the contents passed or failed the regex
-    Effect: The content that doesn't pass the regex is colored, otherwise, the text is reset to white
-    */
     function changeColor(tag, re) {
         //get the contents of the 
         var contents = $(tag).val();
@@ -58,13 +50,12 @@ $(document).ready(function () {
             //reset the color to white
             $(tag).css("color", "white");
         }
-        return re.test(contents);
     }
     
     //global definition of a variable for each form feild
     var userNamePass, emailPass, passwordPass;
     //set this all to false
-    userNamePass = passwordPass = emailPass = false;
+    userNamePass = passwordPass = false;
     
     /*
     Function Name: errorLog
@@ -79,77 +70,58 @@ $(document).ready(function () {
             content passes the regex or if the content is empty
     */
     function errorLog(tag, re, locationId, failString) {
-        //if the element passes the regex or if the content is empty
-        if (changeColor(tag, re) === true || $(tag).val() === "") {
+        //get the contents of the input
+        var contents = $(tag).val();
+        
+        //if it doesn't pass the regular expression, then change the color
+        changeColor(tag, re);
+        
+        //if the input is empty
+        if (contents === "") {
             //clear the error string
             $(locationId).empty();
-        } else {
+            //return false to indicate that it does not pass
+            return false;
+        } 
+        //if the element passes the regex
+        else if (re.test(contents) === true) {
+            //clear the error string
+            $(locationId).empty();
+            //return a true value to indicate it passed
+            return true;
+        }
+        else {
             //add in the error log if the content does not pass the regex
             $(locationId).html(failString);
+            //return false to indicate that it does not pass
+            return false;
         }
-        return changeColor(tag, re);
     }
 
     //when someone presses a key while focused on the username feild
     $("#userName").keyup(function () {
         var errorString = "Username can only contain letters, numbers and special characters . - _";
+        //make sure the username has any letters, numbers, - or _
         userNamePass = errorLog("#userName", /^[A-z\-_0-9]*$/, "#userNameError", errorString);
     });
-
-    $("#email").change(function () {
-        var re = /^[A-z\.\-_]+@[A-z\.\-_]+\b(\.com|\.edu|\.gov)\b$/;
-        var contents = $("#email").val();
-        if (re.test(contents) === true) {
-            $("#emailError").empty();
-            emailPass = true;
-        }
-        else if (contents === "") {
-            emailPass = false;
+    
+    //when someone changes the input of the feild and then leaves the feild
+    $("#password").keyup(function() {
+        if ($("#password").val() !== "") {
+            passwordPass = errorLog("#password", /^.+$/, "#passwordError", "");
         }
         else {
-            
-        }
-        emailPass = errorLog("#email", re, "#emailError", "Only .com .edu .gov accounts ok");
-    });
-    
-    $("#password").change(function() {
-        var re = /^.{7,}$/
-        var contents = $("#password").val();
-        if (re.test(contents) === true) {
-            $("#passwordError").empty();
-        }
-        else if (contents === "") {
-            passwordPass = false;
-        } 
-        else {
-            $("#passwordError").html("Password must be longer than 8 characters");
             passwordPass = false;
         }
     });
     
-    $("#confirmPassword").change(function () {
-        var pass1 = $("#password").val();
-        var pass2 = $("#confirmPassword").val();
-        if (pass1 !== pass2) {
-            $("#confirmPassword").css("color", invalidColor);
-            $("#confirmPasswordError").html("Passwords do not match");
-            passwordPass = false;
-        } else {
-            $("#confirmPassword").css("color", "white");
-            $("#confirmPasswordError").empty();
-            if (pass1 !== "" && pass2 !== "") {
-                passwordPass = true;
-            }
-        }
-    });
-    
-    $("#userName, #confirmPassword, #password, #email").change(function() {
-        if (userNamePass === true && passwordPass === true && emailPass === true) {
+    $("#userName, #password").keyup(function() {
+        if (userNamePass === true && passwordPass === true) {
             $("#submit").css("background", "rgba(25, 123, 255, 0.53)");
             $("#submit").removeAttr("disabled");
         } else {
             $("#submit").css("background", "grey");
-            $("#submit").attr("disabled", "disabled");  
+            $("#submit").attr("disabled", "disabled");
         }
     });
 });

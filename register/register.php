@@ -29,13 +29,14 @@ session_start();
     ?>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">    
         <h1>Register</h1>
+        <p>When all forms are filled, the submit button will activate</p>
 
         <label for="userName">User Name</label>
         <input id="userName" type="text" name="userName" class="textBox required">
         <span class="error" id="userNameError">
             <?php echo $user["error"]; ?>
         </span>
-
+        
         <label for="password">Password</label>
         <input id="password" type="password" name="password" class="textBox required">
         <span class="error" id="passwordError">
@@ -48,12 +49,12 @@ session_start();
             <?php echo $confirmPasswordError; ?>
         </span>
 
-        <label for="email">Email</label>
+       <label for="email">Email</label>
         <input id="email" type="text" name="email" class="textBox required">
         <span class="error" id="emailError">
             <?php echo $email["error"]; ?>
         </span>
-
+       
         <div style="text-align: center">
             <input type="submit" value="submit" id="submit">
         </div>

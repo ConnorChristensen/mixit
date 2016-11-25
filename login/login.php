@@ -14,7 +14,7 @@ session_start();
 	<meta name='viewport' content='width=device-width'>
 	<title>Enter Info</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script type="text/javascript" src="../register/register.js"></script>
+	<script type="text/javascript" src="login.js"></script>
 	<link rel="stylesheet" href="login.css">
 </head>
 

@@ -1,2 +1,4 @@
-.DS_Store
+.*
+login/.sass-cache
+**/.sass-cache/**
 *.html

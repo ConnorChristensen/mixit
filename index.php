@@ -35,7 +35,7 @@ session_start();
 <body>
      <div class="wrapper">
         <a class="search" href="search/search.php">
-            <div>Search</div>
+            <div>Click Here To Search</div>
         </a>
         <div id="middle">
             <div class="headline">
