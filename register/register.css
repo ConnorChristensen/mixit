@@ -56,6 +56,11 @@ form {
   background: rgba(49, 49, 49, 0.95);
   padding: 30px;
   border: 2px solid white; }
+  form p {
+    text-align: center;
+    font-weight: 100;
+    font-family: 'Lato', sans-serif;
+    color: white; }
   form .textBox {
     line-height: 25px;
     font-size: 12pt;

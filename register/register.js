@@ -64,8 +64,7 @@ $(document).ready(function () {
     //global definition of a variable for each form feild
     var userNamePass, emailPass, passwordPass;
     //set this all to false
-    userNamePass = passwordPass = false;
-    emailPass = true;
+    userNamePass = passwordPass = emailPass = false;
     
     /*
     Function Name: errorLog
@@ -99,6 +98,17 @@ $(document).ready(function () {
 
     $("#email").change(function () {
         var re = /^[A-z\.\-_]+@[A-z\.\-_]+\b(\.com|\.edu|\.gov)\b$/;
+        var contents = $("#email").val();
+        if (re.test(contents) === true) {
+            $("#emailError").empty();
+            emailPass = true;
+        }
+        else if (contents === "") {
+            emailPass = false;
+        }
+        else {
+            
+        }
         emailPass = errorLog("#email", re, "#emailError", "Only .com .edu .gov accounts ok");
     });
     
@@ -133,8 +143,8 @@ $(document).ready(function () {
         }
     });
     
-    $("#userName, #confirmPassword, #password").change(function() {
-        if (userNamePass && passwordPass) {
+    $("#userName, #confirmPassword, #password, #email").change(function() {
+        if (userNamePass === true && passwordPass === true && emailPass === true) {
             $("#submit").css("background", "rgba(25, 123, 255, 0.53)");
             $("#submit").removeAttr("disabled");
         } else {

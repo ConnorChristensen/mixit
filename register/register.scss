@@ -75,6 +75,10 @@ form {
     background: rgba(49, 49, 49, 0.95);
     padding: 30px;
     border: 2px solid white;
+    p {
+        text-align: center;
+        @include fonts;
+    }
     .textBox {
         line-height: 25px;
         font-size: 12pt;
