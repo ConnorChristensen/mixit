@@ -1,0 +1,32 @@
+/*
+  File:     CustomUIElements
+  Type:     scss
+  Creator:  Connor Christensen
+  Purpose:  A SCSS file that includes some custom UI elements that are
+            shared across multiple pages, such as the back button.
+
+  Date Created:     11/16/2016
+  Most Recent Edit: 11/16/2016
+*/
+
+@import "variables.scss";
+
+.back {
+    @include fonts;
+    font-size: 18pt;
+    text-decoration: none;
+    div {
+        text-align: center;
+        width: 100vw;
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 20px 10px 10px 10px;
+        background: $semiClearBlack;
+        @include transitionBackground(1s);
+        &:hover {
+            @include transitionBackground(1s);
+            background: $selectionBlue;
+        }
+    }
+}
