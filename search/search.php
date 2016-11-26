@@ -23,6 +23,9 @@ session_start();
         //check that the data is valid and query appropriately
         include('postDataSearch.php');
     ?>
+    <a href="../index.php" class="back">
+        <div>Back</div>
+    </a>
    
     <div class="wrapper">
         <div class="search">
