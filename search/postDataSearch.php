@@ -1,5 +1,23 @@
 <?php
 
+//prints the arrays for the search page
+//array must be in form array[rowNumber]['name' OR 'photo']
+//  > Intended to be used by output of top10 functions
+function printArr($arr){
+    for($x=0; $x<count($arr); $x++){
+        $item = '<div class="item"><div class="imgContainer"><img src="';
+        //if there is no photo path, use this image
+        if($arr[$x]["photo"] == null){
+            $item = $item.'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
+        }
+        else{
+            $item = $item . $arr[$x]['photo'];
+        }
+        $item = $item. '" alt=""></div><h4>'.$arr[$x]['name'].'</h4></div>';
+        echo $item;
+    }
+}
+
 //build top 10 list
 //returns an array of each row of the result query arr[row][column]
 function top10(){
