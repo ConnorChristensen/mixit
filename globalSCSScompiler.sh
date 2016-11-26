@@ -14,3 +14,6 @@ scss login/login.scss login/login.css
 
 #compile search
 scss search/search.scss search/search.css
+
+#compile display
+scss results/results.scss results/results.css

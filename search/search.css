@@ -1,4 +1,33 @@
+/*
+  File:     CustomUIElements
+  Type:     scss
+  Creator:  Connor Christensen
+  Purpose:  A SCSS file that includes some custom UI elements that are
+            shared across multiple pages, such as the back button.
+
+  Date Created:     11/16/2016
+  Most Recent Edit: 11/16/2016
+*/
 /*Colors*/
+.back {
+  font-weight: 100;
+  font-family: 'Lato', sans-serif;
+  color: white;
+  font-size: 18pt;
+  text-decoration: none; }
+  .back div {
+    text-align: center;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 20px 10px 10px 10px;
+    background: rgba(0, 0, 0, 0.6);
+    transition: background 1s ease; }
+    .back div:hover {
+      transition: background 1s ease;
+      background: rgba(0, 206, 255, 0.6); }
+
 * {
   font-weight: 100;
   font-family: 'Lato', sans-serif;
@@ -12,6 +41,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 50vh;
+  padding-top: 60px;
   width: 100vw;
   background: linear-gradient(#e5eec1, #a2d4ab, #3eaca8, #457a82, #5a5050); }
   .wrapper .search {
