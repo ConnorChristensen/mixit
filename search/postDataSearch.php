@@ -2,12 +2,14 @@
 
 //build top 10 list
 function top10(){
+    //get top 10 of all drinks
     $sql = "SELECT `name`, `photo` FROM `Bevs` WHERE `bevId` IN (
 	           SELECT `bevId` FROM `Bev_Rating`
 			     ORDER BY `likes` ASC) LIMIT 10";
     $retval = mysqli_query($GLOBALS['conn'], $sql);
     $topArr = array();
     $num = 0;
+    //put it in an array for use
     foreach($retval as $row){
         //name in $row['name']
         //photo path from main directory in row['photo']
@@ -23,6 +25,8 @@ function top10(){
 
 //build top 10 using a certain ingrediant
 function top10Ingred(){
+    //get top 10 using a banana
+    //TODO: generalize to use a variable
     $sql = "SELECT `name`, `photo` FROM `Bevs` WHERE Bevs.bevId IN (
 	           SELECT Bev_Rating.bevId FROM `Bev_Rating`, Ingredients
                      WHERE Bev_Rating.bevId = Ingredients.bevId
@@ -31,6 +35,7 @@ function top10Ingred(){
     $retval = mysqli_query($GLOBALS['conn'], $sql);
     $topArr = array();
     $num = 0;
+    //put it in an array for use
     foreach($retval as $row){
         //name in $row['name']
         //photo path from main directory in row['photo']
@@ -46,6 +51,8 @@ function top10Ingred(){
 
 //build top10 of a certain type
 function top10Type(){
+    //get top 10 of cocktails
+    //TODO: generalize to use a variable
     $sql = "SELECT `name`, `photo` FROM `Bevs` WHERE Bevs.bevId IN (
 	           SELECT Bev_Rating.bevId FROM `Bev_Rating`, Type
                      WHERE Bev_Rating.bevId = Type.bevId
@@ -54,6 +61,7 @@ function top10Type(){
     $retval = mysqli_query($GLOBALS['conn'], $sql);
     $topArr = array();
     $num = 0;
+    //put it in an array for use
     foreach($retval as $row){
         //name in $row['name']
         //photo path from main directory in row['photo']
