@@ -1,6 +1,8 @@
 <?php
 
 //prints the arrays for the search page
+//array must be in form array[rowNumber]['name' OR 'photo']
+//  > Intended to be used by output of top10 functions
 function printArr($arr){
     for($x=0; $x<count($arr); $x++){
         $item = '<div class="item"><div class="imgContainer"><img src="';
