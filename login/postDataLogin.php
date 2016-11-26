@@ -65,6 +65,7 @@ if($user["pass"] == true && $password["pass"] == true){
     $goodPassword = htmlspecialchars($password["name"]);
     if(tryToLogin($goodUsername, $goodPassword)){
         $_SESSION["login"] = 1;
+        $_SESSION['username'] = $goodUsername;
         UserFeedbackSuccess("Logging in...");
         echo '<script>window.location=" '.$_SERVER['PHP_SELF'].' "; </script>';
     }

@@ -131,6 +131,7 @@
             if(usernameInDB($goodName)){
                 UserFeedbackSuccess("Account Successfully made!");
                 $_SESSION['login'] = 1;
+                $_SESSION['username'] = $goodName;
                 echo '<script>window.location=" '.$_SERVER['PHP_SELF'].' "; </script>';
             }
             else{
