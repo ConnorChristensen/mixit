@@ -1,0 +1,21 @@
+/*Colors*/
+.back {
+  font-weight: 100;
+  font-family: 'Lato', sans-serif;
+  color: white;
+  font-size: 18pt;
+  text-decoration: none; }
+  .back div {
+    text-align: center;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 20px 10px 10px 10px;
+    background: rgba(0, 0, 0, 0.6);
+    transition: background 1s ease; }
+    .back div:hover {
+      transition: background 1s ease;
+      background: rgba(0, 206, 255, 0.6); }
+
+/*# sourceMappingURL=results.css.map */
