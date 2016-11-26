@@ -75,18 +75,7 @@ session_start();
                         echo '<div class="list">';
                         
                         //output info for favorites using template
-                        for($x=0; $x<count($liked); $x++){
-                            $item = '<div class="item"><div class="imgContainer"><img src="';
-                            //if there is no photo path, use this image
-                            if($liked[$x]["photo"] == null){
-                                $item = $item.'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
-                            }
-                            else{
-                                $item = $item . $liked[$x]['photo'];
-                            }
-                            $item = $item. '" alt=""></div><h4>'.$liked[$x]['name'].'</h4></div>';
-                            echo $item;
-                        }
+                        printArr($liked);
                         echo '</div>';
                     }
                     else{
@@ -102,18 +91,7 @@ session_start();
                 //get top 10 bevs
                 $topAll = top10();
                 //output info for top 10 using template
-                for($x=0; $x<count($topAll); $x++){
-                    $item = '<div class="item"><div class="imgContainer"><img src="';
-                    //if there is no photo path, use this image
-                    if($topAll[$x]["photo"] == null){
-                        $item = $item.'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
-                    }
-                    else{
-                        $item = $item . $topAll[$x]['photo'];
-                    }
-                    $item = $item. '" alt=""></div><h4>'.$topAll[$x]['name'].'</h4></div>';
-                    echo $item;
-                }
+                printArr($topAll);
                 ?>
  
             </div>
@@ -123,20 +101,9 @@ session_start();
                 
                 //get top 10 bevs of a type, cocktail hardcoded right now
                 //TODO: make type not hard-coded <--
-                $topAll = top10Type();
+                $topType = top10Type();
                 //output info for top 10
-                for($x=0; $x<count($topAll); $x++){
-                    $item = '<div class="item"><div class="imgContainer"><img src="';
-                    //if there is no photo path, use this image
-                    if($topAll[$x]["photo"] == null){
-                        $item = $item.'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
-                    }
-                    else{
-                        $item = $item . $topAll[$x]['photo'];
-                    }
-                    $item = $item. '" alt=""></div><h4>'.$topAll[$x]['name'].'</h4></div>';
-                    echo $item;
-                }
+                printArr($topType);
                 
                 ?>
             </div>
@@ -147,18 +114,7 @@ session_start();
                 //TODO: make ingredient not hard-coded <--
                 $topIngred = top10Ingred();
                 //output info for top 10
-                for($x=0; $x<count($topIngred); $x++){
-                    $item = '<div class="item"><div class="imgContainer"><img src="';
-                    //if there is no photo path, use this image
-                    if($topIngred[$x]["photo"] == null){
-                        $item = $item.'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
-                    }
-                    else{
-                        $item = $item . $topIngred[$x]['photo'];
-                    }
-                    $item = $item. '" alt=""></div><h4>'.$topIngred[$x]['name'].'</h4></div>';
-                    echo $item;
-                }
+                printArr($topIngred);
                 ?>
             </div>
     </div>
