@@ -33,6 +33,16 @@
     max-width: $max;
 }
 
+@mixin gradient {
+    background: 
+        linear-gradient(
+            $sand, 
+            $mintGreen, 
+            $lightBlue, 
+            $deepBlue, 
+            $grey
+    );
+}
 
 
 /*Colors*/
