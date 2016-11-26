@@ -60,6 +60,37 @@ session_start();
         </div>
     </div>
     <div class="topTens">
+           <?php
+           //if logged in, print favorites
+           if(array_key_exists('login', $_SESSION)){
+                if($_SESSION['login'] == 1 && array_key_exists('username', $_SESSION)){
+                    echo '<h2>Liked Drinks</h2>';
+                    $liked = getUserLiked($_SESSION['username']);
+                    //if they've liked something, print liked
+                    if(count($liked) > 0){
+                        echo '<div class="list">';
+                        
+                        //output info for favorites using template
+                        for($x=0; $x<count($liked); $x++){
+                            $item = '<div class="item"><div class="imgContainer"><img src="';
+                            //if there is no photo path, use this image
+                            if($liked[$x]["photo"] == null){
+                                $item = $item.'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
+                            }
+                            else{
+                                $item = $item . $liked[$x]['photo'];
+                            }
+                            $item = $item. '" alt=""></div><h4>'.$liked[$x]['name'].'</h4></div>';
+                            echo $item;
+                        }
+                        echo '</div>';
+                    }
+                    else{
+                        echo "<h3>You haven't liked anything yet!</h3>";
+                    }
+                }
+           }
+           ?>
             <h2>Top 10</h2>
             <div class="list">
                <?php

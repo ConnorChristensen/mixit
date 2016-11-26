@@ -78,4 +78,54 @@ function top10Type(){
     return $topArr;
 }
 
+//build arr of user's liked drinks
+//returns an array of each row of the result query arr[row][column]
+function getUserLiked($username){
+    //get user's liked
+    
+    $sql = "SELECT `name`, `photo` FROM `Bevs` WHERE Bevs.bevId IN (
+	           SELECT User_Ratings.bevId FROM User_Ratings
+                    WHERE User_Ratings.username = '$username'
+                    AND User_Ratings.rating = 1)";
+    $retval = mysqli_query($GLOBALS['conn'], $sql);
+    $liked = array();
+    $rowNum = 0;
+    //put it in an array for use
+    foreach($retval as $row){
+        //name in $row['name']
+        //photo path from main directory in row['photo']
+        //add to array
+        $liked[$rowNum] = array(
+            "name" => $row['name'],
+            "photo" => $row['photo']
+        );
+        $rowNum++;
+    }
+    return $liked;
+}
+
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
