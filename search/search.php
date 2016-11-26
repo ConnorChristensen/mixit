@@ -63,6 +63,7 @@ session_start();
             <h2>Top 10</h2>
             <div class="list">
                <?php
+                
                 //get top 10 bevs
                 $topAll = top10();
                 //output info for top 10 using template
@@ -84,8 +85,9 @@ session_start();
             <h2>Top 10 coctails</h2>
             <div class="list">
                 <?php
+                
                 //get top 10 bevs of a type, cocktail hardcoded right now
-                //TODO: make type not hard-coded
+                //TODO: make type not hard-coded <--
                 $topAll = top10Type();
                 //output info for top 10
                 for($x=0; $x<count($topAll); $x++){
@@ -100,13 +102,14 @@ session_start();
                     $item = $item. '" alt=""></div><h4>'.$topAll[$x]['name'].'</h4></div>';
                     echo $item;
                 }
+                
                 ?>
             </div>
             <h2>Top 10 with Banana</h2>
             <div class="list">
                 <?php
                 //get top 10 bevs using a particular ingredient, banana at the moment
-                //TODO: make ingredient not hard-coded
+                //TODO: make ingredient not hard-coded <--
                 $topIngred = top10Ingred();
                 //output info for top 10
                 for($x=0; $x<count($topIngred); $x++){
