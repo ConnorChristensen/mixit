@@ -82,7 +82,6 @@ function top10Type(){
 //returns an array of each row of the result query arr[row][column]
 function getUserLiked($username){
     //get user's liked
-    
     $sql = "SELECT `name`, `photo` FROM `Bevs` WHERE Bevs.bevId IN (
 	           SELECT User_Ratings.bevId FROM User_Ratings
                     WHERE User_Ratings.username = '$username'

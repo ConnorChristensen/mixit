@@ -61,12 +61,13 @@ session_start();
     </div>
     <div class="topTens">
            <?php
-           //if logged in, print favorites
+           //if user logged in, print their liked bevs
            if(array_key_exists('login', $_SESSION)){
                 if($_SESSION['login'] == 1 && array_key_exists('username', $_SESSION)){
                     echo '<h2>Liked Drinks</h2>';
                     $liked = getUserLiked($_SESSION['username']);
                     //if they've liked something, print liked
+                    //otherwise tell them they haven't liked things yet!
                     if(count($liked) > 0){
                         echo '<div class="list">';
                         
