@@ -29,10 +29,12 @@ session_start();
    
     <div class="wrapper">
         <div class="search">
+<!--
             <div class="by">
                 <h2 class="name">Name</h2>
                 <h2 class="ingrediants">Ingrediants</h2>
             </div>
+-->
             <div class="feilds">
                 <div class="have">
                     <h2>I have</h2>
@@ -86,17 +88,19 @@ session_start();
            ?>
             <h2>Top 10</h2>
             <div class="list">
-               <?php
-                
-                //get top 10 bevs
-                $topAll = top10();
-                //output info for top 10 using template
-                printArr($topAll);
-                ?>
- 
+                <div class="scrollContainer">
+                    <?php
+
+                    //get top 10 bevs
+                    $topAll = top10();
+                    //output info for top 10 using template
+                    printArr($topAll);
+                    ?>
+                 </div>
             </div>
             <h2>Top 10 coctails</h2>
             <div class="list">
+               <div class="scrollContainer">
                 <?php
                 
                 //get top 10 bevs of a type, cocktail hardcoded right now
@@ -106,9 +110,11 @@ session_start();
                 printArr($topType);
                 
                 ?>
+                </div>
             </div>
             <h2>Top 10 with Banana</h2>
             <div class="list">
+               <div class="scrollContainer">
                 <?php
                 //get top 10 bevs using a particular ingredient, banana at the moment
                 //TODO: make ingredient not hard-coded <--
@@ -116,8 +122,10 @@ session_start();
                 //output info for top 10
                 printArr($topIngred);
                 ?>
+                </div>
             </div>
     </div>
+    
 </body>
 
 </html>
