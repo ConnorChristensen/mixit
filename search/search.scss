@@ -14,7 +14,7 @@ body {
 
 .wrapper {
     @include totalCenter;
-    height: 50vh;
+    min-height: 60vh;
     padding-top: 60px;
     width: 100vw;
     background: 
@@ -26,6 +26,7 @@ body {
             #5a5050
     );
     .search {
+        text-align: center;
         @include widthRange($middle-min-width, $middle-width, $middle-max-width);
         background: rgba(0, 0, 0, 0.6);
         .by {
@@ -35,6 +36,19 @@ body {
                 padding: 20px 0;
                 width: 50%;
                 text-align: center;
+            }
+        }
+        button {
+            background: none;
+            border: 1px solid white;
+            margin: 20px auto 30px auto;
+            padding: 10px 20px;
+            font-size: 16pt;
+            @include transitionBackground(.5s);
+            cursor: pointer;
+            &:hover {
+                @include transitionBackground(.5s);
+                background: $selectionBlue;
             }
         }
     }
@@ -70,70 +84,61 @@ body {
                 padding: 0;
             }
         }
-        button {
-            background: none;
-            border: 1px solid white;
-            margin: auto;
-        }
     }
 }
 
 $item-width: 15vmin;
 $item-height: 15vmin;
-$item-min-width: 100px;
-$item-min-height: 100px;
+$item-min-width: 120px;
+$item-min-height: 120px;
 .topTens {
     margin: 0;
     background: #1d4e60;
-    padding: 20px 5vw 0px 5vw;
+    padding: 20px 5vw 10vh 5vw;
     .list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
+        position: relative;
+        overflow: hidden;
         background: rgba(0, 0, 0, 0.6);
-        .item {
-            background: #ffffff;
-            width: $item-width;
-            height: $item-height;
-            min-width: $item-min-width;
-            min-height: $item-min-height;
-            .imgContainer {
-                min-height: $item-min-height*.8;
-                height: $item-height*.8;
-                min-width: $item-min-width;
+        .scrollContainer {
+//            position: absolute;
+            width: 2000px;
+            .item {
+                float: left;
+                margin: 10px;
+                background: #ffffff;
                 width: $item-width;
-                margin: 0;
-                padding: 0;
-                border: none;
-                overflow: hidden;
-                img {
+                height: $item-height;
+                min-width: $item-min-width;
+                min-height: $item-min-height;
+                .imgContainer {
+                    min-height: $item-min-height*.8;
+                    height: $item-height*.8;
                     min-width: $item-min-width;
                     width: $item-width;
+                    margin: 0;
+                    padding: 0;
+                    border: none;
+                    overflow: hidden;
+                    img {
+                        min-width: $item-min-width;
+                        width: $item-width;
+                    }
                 }
-            }
-            h4 {
-                margin: 0;
-                padding: 0;
-                color: black;
-                font-weight: 300;
-                text-align: center;
-                line-height: $item-height*.2;
+                h4 {
+                    margin: 0;
+                    padding: 0;
+                    color: black;
+                    font-weight: 300;
+                    text-align: center;
+                    line-height: $item-height*.2;
+                }
             }
         }
     }
 }
 
 @media screen and (min-width: 800px) {
-    .item {
-        margin: 10px;
-    }
 }
 
 @media screen and (max-width: 700px) {
-    .list {
-        
-        .item {
-            margin: 5px 80vw;
-        }
-    }
 }

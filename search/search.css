@@ -40,11 +40,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50vh;
+  min-height: 60vh;
   padding-top: 60px;
   width: 100vw;
   background: linear-gradient(#e5eec1, #a2d4ab, #3eaca8, #457a82, #5a5050); }
   .wrapper .search {
+    text-align: center;
     min-width: 300px;
     width: 80vw;
     max-width: 1000px;
@@ -56,6 +57,17 @@ body {
         padding: 20px 0;
         width: 50%;
         text-align: center; }
+    .wrapper .search button {
+      background: none;
+      border: 1px solid white;
+      margin: 20px auto 30px auto;
+      padding: 10px 20px;
+      font-size: 16pt;
+      transition: background 0.5s ease;
+      cursor: pointer; }
+      .wrapper .search button:hover {
+        transition: background 0.5s ease;
+        background: rgba(0, 206, 255, 0.6); }
   .wrapper .feilds {
     display: flex;
     align-items: stretch;
@@ -83,51 +95,43 @@ body {
         font-size: 20pt;
         margin: 0;
         padding: 0; }
-    .wrapper .feilds button {
-      background: none;
-      border: 1px solid white;
-      margin: auto; }
 
 .topTens {
   margin: 0;
   background: #1d4e60;
-  padding: 20px 5vw 0px 5vw; }
+  padding: 20px 5vw 10vh 5vw; }
   .topTens .list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    position: relative;
+    overflow: hidden;
     background: rgba(0, 0, 0, 0.6); }
-    .topTens .list .item {
-      background: #ffffff;
-      width: 15vmin;
-      height: 15vmin;
-      min-width: 100px;
-      min-height: 100px; }
-      .topTens .list .item .imgContainer {
-        min-height: 80px;
-        height: 12vmin;
-        min-width: 100px;
+    .topTens .list .scrollContainer {
+      width: 2000px; }
+      .topTens .list .scrollContainer .item {
+        float: left;
+        margin: 10px;
+        background: #ffffff;
         width: 15vmin;
-        margin: 0;
-        padding: 0;
-        border: none;
-        overflow: hidden; }
-        .topTens .list .item .imgContainer img {
-          min-width: 100px;
-          width: 15vmin; }
-      .topTens .list .item h4 {
-        margin: 0;
-        padding: 0;
-        color: black;
-        font-weight: 300;
-        text-align: center;
-        line-height: 3vmin; }
-
-@media screen and (min-width: 800px) {
-  .item {
-    margin: 10px; } }
-@media screen and (max-width: 700px) {
-  .list .item {
-    margin: 5px 80vw; } }
+        height: 15vmin;
+        min-width: 120px;
+        min-height: 120px; }
+        .topTens .list .scrollContainer .item .imgContainer {
+          min-height: 96px;
+          height: 12vmin;
+          min-width: 120px;
+          width: 15vmin;
+          margin: 0;
+          padding: 0;
+          border: none;
+          overflow: hidden; }
+          .topTens .list .scrollContainer .item .imgContainer img {
+            min-width: 120px;
+            width: 15vmin; }
+        .topTens .list .scrollContainer .item h4 {
+          margin: 0;
+          padding: 0;
+          color: black;
+          font-weight: 300;
+          text-align: center;
+          line-height: 3vmin; }
 
 /*# sourceMappingURL=search.css.map */

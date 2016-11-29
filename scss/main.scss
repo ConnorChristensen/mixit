@@ -8,9 +8,10 @@ $middle-max-width: 600px;
 
 $colorTime: 1s;
 
-* {
-    @include fonts;
-}
+//* {
+//    font-weight: 100;
+//    font-family: 'Lato', sans-serif;
+//}
 
 body {
     min-height: 200vh;
@@ -121,8 +122,8 @@ body {
 #about {
     background: #e5eec1;
     min-height: 100vh;
+    padding-bottom: 10vh;
     .whatWhy {
-        @include fonts;
         display: flex;
         align-items: stretch;
         justify-content: space-around;
@@ -133,11 +134,15 @@ body {
             min-height: 200px;
             min-width: 200px;
             p {
+                font-weight: 300;
+                font-family: 'Lato', sans-serif;
                 text-indent: 20px;
             }
         }
     }
     h2 {
+        font-weight: 300;
+        font-family: 'Lato', sans-serif;
         text-align: center;
     }
     .policiesHeader {
@@ -152,6 +157,8 @@ body {
             margin: 1vw;
             background: #88ba88;
             p {
+                font-weight: 300;
+                font-family: 'Lato', sans-serif;
                 padding: 0 10px;
             }
         }
