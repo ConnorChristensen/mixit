@@ -102,7 +102,7 @@ $(document).ready(function () {
     $("#userName").keyup(function () {
         var errorString = "Username can only contain letters, numbers and special characters . - _";
         //make sure the username has any letters, numbers, - or _
-        userNamePass = errorLog("#userName", /^[A-z\-_0-9]*$/, "#userNameError", errorString);
+        userNamePass = errorLog("#userName", /^[A-z0-9-_]*$/, "#userNameError", errorString);
     });
     
     //when someone changes the input of the feild and then leaves the feild
