@@ -74,7 +74,18 @@ function readInstructions($drinkName){
 
 //read the descriptions from the file
 function readDescriptions($drinkName){
-    
+    $bevName = spacesToUnderscores($drinkName);
+    $filepath = "../database_info/descriptions/" + $bevName + ".txt";
+    $myfile = fopen($filepath, "r");
+    $description = "";
+    if($myfile == false){
+        return "Description not available";
+    }
+    else{
+        $instructions = fread($myfile, filesize($filepath));
+    }
+    fclose($myfile);
+    return $description;
 }
 
 //function to output the results of the query formatted correctly
