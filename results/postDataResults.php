@@ -41,6 +41,16 @@ function queryDB(){
     
 }
 
+//replaces spaces with underscores
+function spacesToUnderscores($string){
+    for($x=0; $x<strlen($string); $x++){
+        if($string[x] == " "){
+            $string[x] = "_";
+        }
+    }
+    return $string;
+}
+
 //read the ingredients from the file
 function readIngredients($drinkName){
     
@@ -48,7 +58,18 @@ function readIngredients($drinkName){
 
 //read the instructions from the file
 function readInstructions($drinkName){
-    
+    $bevName = spacesToUnderscores($drinkName);
+    $filepath = "../database_info/instructions/" + $bevName + ".txt";
+    $myfile = fopen($filepath, "r");
+    $instructions = "";
+    if($myfile == false){
+        return "Instructions not available";
+    }
+    else{
+        $instructions = fread($myfile, filesize($filepath));
+    }
+    fclose($myfile);
+    return $instructions;
 }
 
 //read the descriptions from the file
