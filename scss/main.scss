@@ -23,14 +23,7 @@ body {
     margin-top: 60px;
     height: calc(100vh - 60px);
     width: 100vw;
-    background: 
-        linear-gradient(
-            $sand, 
-            $mintGreen, 
-            $lightBlue, 
-            $deepBlue, 
-            $grey
-    );
+    @include gradient;
     .search {
         position: absolute;
         @include aStripStyle(white);
