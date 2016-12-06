@@ -32,6 +32,7 @@ if(array_key_exists('login', $_SESSION)){
         //conects the database
         include('../databaseConnect.php');
         
+    
         //check that the data is valid and post it if it is
         include('postDataRegister.php');
     ?>

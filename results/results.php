@@ -13,6 +13,10 @@
 </head>
 
 <body>
+   <?php
+        //logout functionality
+        include('../logout.php');
+    ?>
     <a href="../search/search.php" class="back">
         <div>Back</div>
     </a>
