@@ -13,7 +13,7 @@ function queryDB(){
     $sql = generateSearchQuery();
     $retval = mysqli_query($GLOBALS['conn'], $sql);
     
-    $topArr = array();
+    $query = array();
     $rowNum = 0;
     
     //put the info in an array for use
@@ -25,19 +25,19 @@ function queryDB(){
         //description link in $row['description']
         //instructions link in $row['instructions']
         //ingredients link in $row['ingredientList']
-        $topArr[$rowNum] array(
+        $query[$rowNum] array(
             "name" => $row['name'],
             "type" => $row['type'],
             "glass" => $row['glass'],
             "photo" => $row['photo'],
             "description" => $row['description'],
             "instructions" => $row['instructions'],
-            "ingredients" => $ow['ingredientList']
+            "ingredients" => $row['ingredientList']
         );
         $rowNum++;
     }
     
-    return $topArr;
+    return $query;
     
 }
 
@@ -52,9 +52,7 @@ function spacesToUnderscores($string){
 }
 
 //read the ingredients from the file
-function readIngredients($drinkName){
-    $bevName = spacesToUnderscores($drinkName);
-    $filepath = "../database_info/ingredients/" + $bevName + ".txt";
+function readIngredients($filepath){
     $myfile = fopen($filepath, "r");
     $ingredients = array();
     if($myfile == false){
@@ -70,9 +68,7 @@ function readIngredients($drinkName){
 }
 
 //read the instructions from the file
-function readInstructions($drinkName){
-    $bevName = spacesToUnderscores($drinkName);
-    $filepath = "../database_info/instructions/" + $bevName + ".txt";
+function readInstructions($filepath){
     $myfile = fopen($filepath, "r");
     $instructions = "";
     if($myfile == false){
@@ -86,9 +82,7 @@ function readInstructions($drinkName){
 }
 
 //read the descriptions from the file
-function readDescriptions($drinkName){
-    $bevName = spacesToUnderscores($drinkName);
-    $filepath = "../database_info/descriptions/" + $bevName + ".txt";
+function readDescriptions($filepath){
     $myfile = fopen($filepath, "r");
     $description = "";
     if($myfile == false){
@@ -103,9 +97,44 @@ function readDescriptions($drinkName){
 
 //function to output the results of the query formatted correctly
 function generateHTMLOfQuery(){
-    
+    $query = queryDB();
+    for($itr=0; $itr < count($query); $x++){
+        $ingredients = readIngredients($query[$x]['ingredients']);
+        $description = readDescriptions($query[$x]['description']);
+        $instructions = readInstructions($query[$x]['instructions']);
+        $backUpPhoto = 'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
+        
+        
+        //var containing the drink card
+        $card = '<div class="drinkCard">
+                    <div class="imgContainer">
+                        <img src="';
+        $card = $card.$query[$x]['photo'].'" alt = "';
+        $card = $card.$backUpPhoto;
+        $card = $card.'">
+                </div>
+                    <h2>'.$query[$x]['name'].'</h2>
+                    <h4>Ingredients</h4>'
+                    
+        //get all the ingredients
+        $card = $card.'<ul>';
+        for($x=0; $x<count($ingredients); $x++){
+            $card = $card.'<li>'.$ingredients[$x].'</li>';
+        }
+        $card = $card.'</ul>';
+        
+        //add the description
+        $card = $card.'<h4>Description</h4>
+                        <p>'.$description.'</p>';
+        
+        //add the instructions
+        $card = $card.'<h4>Instructions</h4>
+                        <p>'.$instructions.'</p>';
+        
+        //close card and echo it
+        $card = $card.'</div>';
+        echo $card;
+    }
 }
-
-
 
 ?>
