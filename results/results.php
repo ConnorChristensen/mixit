@@ -14,8 +14,14 @@
 
 <body>
    <?php
+        //conects the database
+        include('../databaseConnect.php');
+    
         //logout functionality
         include('../logout.php');
+    
+        //check that the data is valid and query appropriately
+        include('postDataResults.php');
     ?>
     <a href="../search/search.php" class="back">
         <div>Back</div>
