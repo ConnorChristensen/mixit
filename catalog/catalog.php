@@ -13,6 +13,10 @@ session_start();
 </head>
 
 <body>
+   <?php
+        //logout functionality
+        include('../logout.php');
+    ?>
     <div class="nav">
         <div class="imgContainer">
             <img src="../images/mixitIcon1.png" alt="icon">

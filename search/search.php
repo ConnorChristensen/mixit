@@ -17,6 +17,10 @@ session_start();
 
 <body>
    <?php
+    
+        //logout functionality
+        include('../logout.php');
+    
         //conects the database
         include('../databaseConnect.php');
         
