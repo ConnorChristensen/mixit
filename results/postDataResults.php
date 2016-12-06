@@ -53,7 +53,20 @@ function spacesToUnderscores($string){
 
 //read the ingredients from the file
 function readIngredients($drinkName){
-    
+    $bevName = spacesToUnderscores($drinkName);
+    $filepath = "../database_info/ingredients/" + $bevName + ".txt";
+    $myfile = fopen($filepath, "r");
+    $ingredients = array();
+    if($myfile == false){
+        ingredients[0] = "Ingredients not available";
+    }
+    else{
+        $itr = 0;
+        while(!feof($myfile)){
+            ingredients[$itr] = fgets($myfile);
+        }
+    }
+    return ingredients;
 }
 
 //read the instructions from the file
