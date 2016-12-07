@@ -18,6 +18,7 @@ if(array_key_exists('searched', $_SESSION)){
 	<meta name='viewport' content='width=device-width'>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,400" rel="stylesheet">
+    <script src="search.js"></script>
 	<title>Search</title>
 	<link rel="stylesheet" href="search.css">
 </head>
@@ -63,11 +64,6 @@ if(array_key_exists('searched', $_SESSION)){
                     <input type="submit" name="submit" value="submit" id="submit">
                 </div>
             </div>
-<!--
-            <button class="query">
-                search
-            </button>
--->
         </div>
     </div>
     <div class="topTens">
