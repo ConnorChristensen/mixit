@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS Users (
         ON DELETE CASCADE
 );
 
+
 CREATE TABLE IF NOT EXISTS Bevs (
     `bevId` INT(6) UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(30) NOT NULL,
@@ -23,10 +24,9 @@ CREATE TABLE IF NOT EXISTS Bevs (
 );
 
 
-CREATE TABLE IF NOT EXISTS User_Ratings (
+CREATE TABLE IF NOT EXISTS User_Liked (
     `username` VARCHAR(30) NOT NULL,
-    `bevId` INT(6) NOT NULL,
-    `rating` INT(1) NOT NULL,                    
+    `bevId` INT(6) NOT NULL,                  
     PRIMARY KEY (`username`, `bevId`),
     FOREIGN KEY (`bevId`) references Bevs(`bevId`)
 );
@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS Ingredients (
         ON DELETE CASCADE
 );
 
+
 CREATE TABLE IF NOT EXISTS Type (
     `name` VARCHAR(30) NOT NULL,
     `bevId` INT(6) NOT NULL,
@@ -48,11 +49,13 @@ CREATE TABLE IF NOT EXISTS Type (
         ON DELETE CASCADE
 );
 
+
 CREATE TABLE IF NOT EXISTS Bev_Rating (
     `bevId` INT(6) UNIQUE NOT NULL,
     `likes` INT(10) DEFAULT 0,
     PRIMARY KEY (`bevId`)
 );
+
 
 CREATE TRIGGER `addBevsToTables` 
     AFTER INSERT ON `Bevs`
@@ -66,16 +69,17 @@ CREATE TRIGGER `addBevsToTables`
 
 
 CREATE TRIGGER `userLiked`
-    AFTER INSERT ON `User_Ratings`
+    AFTER INSERT ON `User_Liked`
     FOR EACH ROW
     BEGIN
         UPDATE Bev_Rating
             SET likes = likes + 1
             WHERE bevId = New.bevId;
     END;
-    
+ 
+ 
 CREATE TRIGGER `userUnliked`
-    AFTER DELETE ON `User_Ratings`
+    AFTER DELETE ON `User_Liked`
     FOR EACH ROW
     BEGIN
         UPDATE Bev_Rating
