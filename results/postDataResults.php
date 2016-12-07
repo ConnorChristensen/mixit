@@ -7,25 +7,26 @@ function generateSearchQuery(){
                 Bevs.bevId = Ingredients.bevId";
     
     //grab the haves
-    $have = $_POST['have'];
-    foreach($have as $ingredient){
-        $ingredient = htmlspecialchars($ingredient);
-        $sql = $sql." AND Bevs.bevId IN 
-                (SELECT Bevs.bevId FROM Bevs, Ingredients WHERE Bevs.bevId = Ingredients.bevId AND Ingredients.name = '$ingredient')";
+    $want = $_POST['want'];
+    foreach($want as $ingredient){
+        if($ingredient != ""){
+            $ingredient = htmlspecialchars($ingredient);
+            $sql = $sql." AND Bevs.bevId IN 
+            (SELECT Bevs.bevId FROM Bevs, Ingredients WHERE Bevs.bevId = Ingredients.bevId AND Ingredients.name = '$ingredient')";
+        }
     }
     
     //grab the dontWants
     $dontWant = $_POST['dontWant'];
     foreach($dontWant as $ingredient){
-        $ingredient = htmlspecialchars($ingredient);
-        $sql = $sql." AND Bevs.bevId NOT IN 
-                (SELECT Bevs.bevId FROM Bevs, Ingredients WHERE Bevs.bevId = Ingredients.bevId AND Ingredients.name = '$ingredient')";
+        if($ingredient != ""){
+            $ingredient = htmlspecialchars($ingredient);
+            $sql = $sql." AND Bevs.bevId NOT IN 
+                    (SELECT Bevs.bevId FROM Bevs, Ingredients WHERE Bevs.bevId = Ingredients.bevId AND Ingredients.name = '$ingredient')";
+        }
     }
-    //return the query
-    
-    
-    $sql = "SELECT DISTINCT(Bevs.name), `type`, `glass`, `photo`, `description`, `instructions`, `ingredientList` FROM Ingredients, Bevs WHERE
-                Bevs.bevId = Ingredients.bevId AND Bevs.name = 'stinger'";
+    //return the sql query
+
     
     return $sql;
 }
@@ -36,7 +37,6 @@ function queryDB(){
     //get the query of the information
     $sql = generateSearchQuery();
     $retval = mysqli_query($GLOBALS['conn'], $sql);
-    
     $query = array();
     $rowNum = 0;
     
@@ -60,7 +60,6 @@ function queryDB(){
         );
         $rowNum++;
     }
-    
     return $query;
     
 }
@@ -126,13 +125,13 @@ function readDescriptions($filepath){
 //function to output the results of the query formatted correctly
 function generateHTMLOfQuery(){
     $query = queryDB();
-
+    
     for($x=0; $x < count($query); $x++){
 
         $ingredients = readIngredients($query[$x]['ingredients']);
         $description = readDescriptions($query[$x]['description']);
         $instructions = readInstructions($query[$x]['instructions']);
-        $backUpPhoto = 'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
+        $backUpPhoto = 'https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg';
         
         
         //var containing the drink card
@@ -156,8 +155,8 @@ function generateHTMLOfQuery(){
                  
         //get all the ingredients
         $card = $card.'<ul>';
-        for($x=0; $x<count($ingredients); $x++){
-            $card = $card.'<li>'.$ingredients[$x].'</li>';
+        for($y=0; $y<count($ingredients); $y++){
+            $card = $card.'<li>'.$ingredients[$y].'</li>';
         }
         $card = $card.'</ul>';
         
@@ -172,7 +171,6 @@ function generateHTMLOfQuery(){
         //close card and echo it
         $card = $card.'</div>';
         echo $card;
-        
     }
     
 }
