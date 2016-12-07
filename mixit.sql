@@ -51,7 +51,6 @@ CREATE TABLE IF NOT EXISTS Type (
 CREATE TABLE IF NOT EXISTS Bev_Rating (
     `bevId` INT(6) UNIQUE NOT NULL,
     `likes` INT(10) DEFAULT 0,
-    `dislikes` INT(10) DEFAULT 0,
     PRIMARY KEY (`bevId`)
 );
 
@@ -66,20 +65,22 @@ CREATE TRIGGER `addBevsToTables`
     END;
 
 
-CREATE TRIGGER `updateAddRating`
+CREATE TRIGGER `userLiked`
     AFTER INSERT ON `User_Ratings`
     FOR EACH ROW
     BEGIN
-        IF New.rating = 1 THEN
-            UPDATE Bev_Rating
-                SET likes = likes + 1
-                WHERE bevId = New.bevId;
-        END IF;
-        IF New.rating = 0 Then
-            UPDATE Bev_Rating
-                SET dislikes = dislikes + 1
-                WHERE bevId = New.bevId;
-        END IF;
+        UPDATE Bev_Rating
+            SET likes = likes + 1
+            WHERE bevId = New.bevId;
+    END;
+    
+CREATE TRIGGER `userUnliked`
+    AFTER DELETE ON `User_Ratings`
+    FOR EACH ROW
+    BEGIN
+        UPDATE Bev_Rating
+            SET likes = likes - 1
+            WHERE bevId = New.bevId;
     END;
 
 
