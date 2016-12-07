@@ -7,23 +7,23 @@ function generateSearchQuery(){
                 Bevs.bevId = Ingredients.bevId";
     
     //grab the haves
-    $have = $_POST['have'];
-    echo print_r($_POST['have']);
-    foreach($have as $ingredient){
-        echo "HERE";
-        $ingredient = htmlspecialchars($ingredient);
-        $sql = $sql." AND Bevs.bevId IN 
-                (SELECT Bevs.bevId FROM Bevs, Ingredients WHERE Bevs.bevId = Ingredients.bevId AND Ingredients.name = '$ingredient')";
+    $want = $_POST['want'];
+    foreach($want as $ingredient){
+        if($ingredient != ""){
+            $ingredient = htmlspecialchars($ingredient);
+            $sql = $sql." AND Bevs.bevId IN 
+            (SELECT Bevs.bevId FROM Bevs, Ingredients WHERE Bevs.bevId = Ingredients.bevId AND Ingredients.name = '$ingredient')";
+        }
     }
     
     //grab the dontWants
     $dontWant = $_POST['dontWant'];
-    echo print_r($_POST['dontWant']);
     foreach($dontWant as $ingredient){
-        echo "HERE";
-        $ingredient = htmlspecialchars($ingredient);
-        $sql = $sql." AND Bevs.bevId NOT IN 
-                (SELECT Bevs.bevId FROM Bevs, Ingredients WHERE Bevs.bevId = Ingredients.bevId AND Ingredients.name = '$ingredient')";
+        if($ingredient != ""){
+            $ingredient = htmlspecialchars($ingredient);
+            $sql = $sql." AND Bevs.bevId NOT IN 
+                    (SELECT Bevs.bevId FROM Bevs, Ingredients WHERE Bevs.bevId = Ingredients.bevId AND Ingredients.name = '$ingredient')";
+        }
     }
     //return the sql query
 
@@ -172,6 +172,7 @@ function generateHTMLOfQuery(){
         $card = $card.'</div>';
         echo $card;
     }
+    
 }
 
 ?>
