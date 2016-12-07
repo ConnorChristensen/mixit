@@ -1,6 +1,8 @@
 <?php
     // Start the session
     session_start();
+
+    $_SESSION['searched'] = 0;
 ?>
 <!DOCTYPE html>
 

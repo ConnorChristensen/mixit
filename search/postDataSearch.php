@@ -1,4 +1,13 @@
 <?php
+//tells session user searched so it redirects
+function searched(){
+    $_SESSION['searched'] = 1;
+}
+
+//checks to see if the user submitted
+if(isset($_POST['submit'])){
+    searched();
+}
 
 //prints the arrays for the search page
 //array must be in form array[rowNumber]['name' OR 'photo']

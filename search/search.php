@@ -1,6 +1,12 @@
 <?php
 // Start the session
 session_start();
+
+if(array_key_exists('searched', $_SESSION)){
+    if($_SESSION['searched'] == 1){
+        header("location: ../results/results.php");
+    }
+}
 ?>
 <!DOCTYPE html>
 
