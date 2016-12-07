@@ -22,6 +22,11 @@ function generateSearchQuery(){
                 (SELECT Bevs.bevId FROM Bevs, Ingredients WHERE Bevs.bevId = Ingredients.bevId AND Ingredients.name = '$ingredient')";
     }
     //return the query
+    
+    
+    $sql = "SELECT DISTINCT(Bevs.name), `type`, `glass`, `photo`, `description`, `instructions`, `ingredientList` FROM Ingredients, Bevs WHERE
+                Bevs.bevId = Ingredients.bevId AND Bevs.name = 'stinger'";
+    
     return $sql;
 }
 
@@ -72,6 +77,7 @@ function spacesToUnderscores($string){
 
 //read the ingredients from the file
 function readIngredients($filepath){
+    $filepath = '../database_info/'.$filepath;
     $myfile = fopen($filepath, "r");
     $ingredients = array();
     if($myfile == false){
@@ -81,6 +87,7 @@ function readIngredients($filepath){
         $itr = 0;
         while(!feof($myfile)){
             $ingredients[$itr] = fgets($myfile);
+            $itr++;
         }
     }
     return $ingredients;
@@ -88,6 +95,7 @@ function readIngredients($filepath){
 
 //read the instructions from the file
 function readInstructions($filepath){
+    $filepath = '../database_info/'.$filepath;
     $myfile = fopen($filepath, "r");
     $instructions = "";
     if($myfile == false){
@@ -102,6 +110,7 @@ function readInstructions($filepath){
 
 //read the descriptions from the file
 function readDescriptions($filepath){
+    $filepath = '../database_info/'.$filepath;
     $myfile = fopen($filepath, "r");
     $description = "";
     if($myfile == false){
@@ -117,7 +126,9 @@ function readDescriptions($filepath){
 //function to output the results of the query formatted correctly
 function generateHTMLOfQuery(){
     $query = queryDB();
-    for($itr=0; $itr < count($query); $x++){
+
+    for($x=0; $x < count($query); $x++){
+
         $ingredients = readIngredients($query[$x]['ingredients']);
         $description = readDescriptions($query[$x]['description']);
         $instructions = readInstructions($query[$x]['instructions']);
@@ -128,13 +139,21 @@ function generateHTMLOfQuery(){
         $card = '<div class="drinkCard">
                     <div class="imgContainer">
                         <img src="';
-        $card = $card.$query[$x]['photo'].'" alt = "';
-        $card = $card.$backUpPhoto;
+        
+        //if an image exists, use it
+        //otherwise use the back-up
+        if($query[$x]['photo'] == null){
+            $card = $card.$backUpPhoto;
+        }
+        else{
+            $card = $card.'../images/'.$query[$x]['photo'];
+        }
+               
         $card = $card.'">
                 </div>
                     <h2>'.$query[$x]['name'].'</h2>
                     <h4>Ingredients</h4>';
-                    
+                 
         //get all the ingredients
         $card = $card.'<ul>';
         for($x=0; $x<count($ingredients); $x++){
@@ -153,7 +172,9 @@ function generateHTMLOfQuery(){
         //close card and echo it
         $card = $card.'</div>';
         echo $card;
+        
     }
+    
 }
 
 ?>
