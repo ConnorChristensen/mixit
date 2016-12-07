@@ -44,7 +44,7 @@ function queryDB(){
         //description link in $row['description']
         //instructions link in $row['instructions']
         //ingredients link in $row['ingredientList']
-        $query[$rowNum] array(
+        $query[$rowNum] = array(
             "name" => $row['name'],
             "type" => $row['type'],
             "glass" => $row['glass'],
@@ -75,15 +75,15 @@ function readIngredients($filepath){
     $myfile = fopen($filepath, "r");
     $ingredients = array();
     if($myfile == false){
-        ingredients[0] = "Ingredients not available";
+        $ingredients[0] = "Ingredients not available";
     }
     else{
         $itr = 0;
         while(!feof($myfile)){
-            ingredients[$itr] = fgets($myfile);
+            $ingredients[$itr] = fgets($myfile);
         }
     }
-    return ingredients;
+    return $ingredients;
 }
 
 //read the instructions from the file
@@ -133,7 +133,7 @@ function generateHTMLOfQuery(){
         $card = $card.'">
                 </div>
                     <h2>'.$query[$x]['name'].'</h2>
-                    <h4>Ingredients</h4>'
+                    <h4>Ingredients</h4>';
                     
         //get all the ingredients
         $card = $card.'<ul>';
