@@ -7,7 +7,6 @@ if(array_key_exists('searched', $_SESSION)){
         header("location: ../results/results.php");
     }
 }
-
 ?>
 <!DOCTYPE html>
 
@@ -31,7 +30,7 @@ if(array_key_exists('searched', $_SESSION)){
     
         //conects the database
         include('../databaseConnect.php');
-        
+    
         //check that the data is valid and query appropriately
         include('postDataSearch.php');
     ?>

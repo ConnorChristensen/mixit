@@ -1,12 +1,10 @@
 <?php
-//tells session user searched so it redirects
-function searched(){
-    $_SESSION['searched'] = 1;
-}
 
+//tells session user searched so it redirects
 //checks to see if the user submitted
 if(isset($_POST['submit'])){
-    searched();
+    $_SESSION['searched'] = 1;
+    echo '<script>window.location=" '.$_SERVER['PHP_SELF'].' "; </script>';
 }
 
 //prints the arrays for the search page
