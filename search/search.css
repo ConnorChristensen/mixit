@@ -57,25 +57,16 @@ body {
         padding: 20px 0;
         width: 50%;
         text-align: center; }
-    .wrapper .search button {
-      background: none;
-      border: 1px solid white;
-      margin: 20px auto 30px auto;
-      padding: 10px 20px;
-      font-size: 16pt;
-      transition: background 0.5s ease;
-      cursor: pointer; }
-      .wrapper .search button:hover {
-        transition: background 0.5s ease;
-        background: rgba(0, 206, 255, 0.6); }
   .wrapper .feilds {
     display: flex;
     align-items: stretch;
     justify-content: space-around; }
-    .wrapper .feilds h2 {
-      text-align: center; }
     .wrapper .feilds form {
       text-align: center; }
+      .wrapper .feilds form .inputFeilds {
+        display: flex; }
+      .wrapper .feilds form h2 {
+        text-align: center; }
       .wrapper .feilds form input {
         color: black;
         text-align: center;
@@ -85,16 +76,19 @@ body {
         margin: 8px 0;
         line-height: 20px;
         border: none; }
-    .wrapper .feilds .plusMinus {
-      width: 100px;
-      display: inline-flex;
-      justify-content: space-around;
-      margin: 30px 0;
-      background: #242323; }
-      .wrapper .feilds .plusMinus p {
-        font-size: 20pt;
-        margin: 0;
-        padding: 0; }
+      .wrapper .feilds form input[type="submit"] {
+        width: 30%;
+        color: white;
+        background: none;
+        border: 1px solid white;
+        margin: 20px auto 30px auto;
+        padding: 10px 20px;
+        font-size: 16pt;
+        transition: background 0.5s ease;
+        cursor: pointer; }
+        .wrapper .feilds form input[type="submit"]:hover {
+          transition: background 0.5s ease;
+          background: rgba(0, 206, 255, 0.6); }
 
 .topTens {
   margin: 0;
