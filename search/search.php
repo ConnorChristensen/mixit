@@ -45,7 +45,7 @@ if(array_key_exists('searched', $_SESSION)){
                 <h2 class="ingrediants">Ingrediants</h2>
             </div>
             <div class="feilds">
-                <form method="POST" action="search.php">
+                <form method="POST" action="../results/results.php">
                     <div class="inputFeilds">
                         <div class="have">
                             <h2>I have</h2>
@@ -61,6 +61,7 @@ if(array_key_exists('searched', $_SESSION)){
                         </div>
                     </div>
                     <input type="submit" name="submit" value="submit" id="submit">
+                </form>
                 </div>
             </div>
         </div>
