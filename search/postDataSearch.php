@@ -15,7 +15,7 @@ function printArr($arr){
         $item = '<div class="item"><div class="imgContainer"><img src="';
         //if there is no photo path, use this image
         if($arr[$x]["photo"] == null){
-            $item = $item.'https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg';
+            $item = $item.'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
         }
         else{
             $item = $item . $arr[$x]['photo'];
