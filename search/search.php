@@ -7,6 +7,7 @@ if(array_key_exists('searched', $_SESSION)){
         header("location: ../results/results.php");
     }
 }
+
 ?>
 <!DOCTYPE html>
 
