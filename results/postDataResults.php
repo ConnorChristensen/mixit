@@ -6,6 +6,7 @@
 function likeBev($like){
     $username = "";
     $bevName = "";
+    //if there was an actual bev name passed
     if(array_key_exists('bevName', $_POST) && $_POST['bevName'] != ""){
         $bevName = $_POST['bevName'];
         $_POST['bevName'] = '';
@@ -13,6 +14,7 @@ function likeBev($like){
     else{
         return;
     }
+    //if the user is properly logged in
     if(array_key_exists('username', $_SESSION) && $_SESSION['username'] != ""){
         $username = $_SESSION['username'];
     }
