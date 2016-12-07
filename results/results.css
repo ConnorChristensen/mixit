@@ -54,5 +54,9 @@ body {
   .drinkCard h2, .drinkCard h4, .drinkCard li, .drinkCard p {
     font-family: 'Lato', sans-serif;
     font-weight: 300; }
+  .drinkCard .imgContainer {
+    width: 100%; }
+    .drinkCard .imgContainer img {
+      width: 100%; }
 
 /*# sourceMappingURL=results.css.map */
