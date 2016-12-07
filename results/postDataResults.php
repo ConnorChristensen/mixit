@@ -148,7 +148,7 @@ function readDescriptions($filepath){
         return "Description not available";
     }
     else{
-        $instructions = fread($myfile, filesize($filepath));
+        $description = fread($myfile, filesize($filepath));
     }
     fclose($myfile);
     return $description;
