@@ -12,14 +12,14 @@ CREATE TABLE IF NOT EXISTS Users (
 
 CREATE TABLE IF NOT EXISTS Bevs (
     `bevId` INT(6) UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(30) NOT NULL,
+    `name` VARCHAR(30) UNIQUE NOT NULL,
     `type` VARCHAR(30),
     `glass` VARCHAR(20),
     `photo` VARCHAR(30),
     `description` VARCHAR(50),
     `instructions` VARCHAR(50),
     `ingredientList` VARCHAR(50),
-    PRIMARY KEY (`bevId`),
+    PRIMARY KEY (`bevId`, `name`),
     FOREIGN KEY (`bevId`) references Bev_Likes(`bevId`)   
 );
 
