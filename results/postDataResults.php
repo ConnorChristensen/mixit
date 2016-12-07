@@ -131,7 +131,7 @@ function generateHTMLOfQuery(){
         $ingredients = readIngredients($query[$x]['ingredients']);
         $description = readDescriptions($query[$x]['description']);
         $instructions = readInstructions($query[$x]['instructions']);
-        $backUpPhoto = 'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
+        $backUpPhoto = 'https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg';
         
         
         //var containing the drink card
