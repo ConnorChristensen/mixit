@@ -1,5 +1,34 @@
 <?php
 
+//passes in bool value
+//if true: adds the users like to the database
+//else: removes the users like from the database
+function likeBev($like){
+    $username = "";
+    $bevName = "";
+    if(array_key_exists('bevName', $_POST)){
+        if($_POST['bevName'] != ""){
+            $bevName = $_POST['bevName'];
+            $_POST['bevName'] = '';
+        }
+    }
+    if(array_key_exists('username', $_SESSION)){
+        if($_SESSION['username'] != ""){
+            $username = $_SESSION['username'];
+        }
+    }
+    if($like){
+        //like the beverage
+        //TODO: Implement SQL
+    }
+    else{
+        //unlike the beverage
+        //TODO: Implement SQL
+    } 
+}
+
+
+
 //function to generate the query based on the posted information
 //returns the sql query needed to generate the search results
 function generateSearchQuery(){
@@ -119,7 +148,7 @@ function readDescriptions($filepath){
         return "Description not available";
     }
     else{
-        $instructions = fread($myfile, filesize($filepath));
+        $description = fread($myfile, filesize($filepath));
     }
     fclose($myfile);
     return $description;
