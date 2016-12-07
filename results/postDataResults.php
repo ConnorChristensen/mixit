@@ -6,16 +6,18 @@
 function likeBev($like){
     $username = "";
     $bevName = "";
-    if(array_key_exists('bevName', $_POST)){
-        if($_POST['bevName'] != ""){
-            $bevName = $_POST['bevName'];
-            $_POST['bevName'] = '';
-        }
+    if(array_key_exists('bevName', $_POST) && $_POST['bevName'] != ""){
+        $bevName = $_POST['bevName'];
+        $_POST['bevName'] = '';
     }
-    if(array_key_exists('username', $_SESSION)){
-        if($_SESSION['username'] != ""){
-            $username = $_SESSION['username'];
-        }
+    else{
+        return;
+    }
+    if(array_key_exists('username', $_SESSION) && $_SESSION['username'] != ""){
+        $username = $_SESSION['username'];
+    }
+    else{
+        return;
     }
     if($like){
         //like the beverage
