@@ -85,7 +85,10 @@ function readIngredients($filepath){
     else{
         $itr = 0;
         while(!feof($myfile)){
-            $ingredients[$itr] = fgets($myfile);
+            $ingred = fgets($myfile);
+            if($ingred != ""){
+                $ingredients[$itr] = $ingred;
+            }
             $itr++;
         }
     }
