@@ -44,25 +44,23 @@ if(array_key_exists('searched', $_SESSION)){
                 <h2 class="name">Name</h2>
                 <h2 class="ingrediants">Ingrediants</h2>
             </div>
-            <div class="feilds">
-                <form method="POST" action="search.php">
-                    <div class="inputFeilds">
-                        <div class="have">
-                            <h2>I have</h2>
-                            <input type="text" name="want[]" placeholder="Drink">
-                            <input type="text" name="want[]" placeholder="Drink">
-                            <input type="text" name="want[]" placeholder="Drink">
-                        </div>
-                        <div class="dontWant">
-                            <h2>I don't want</h2>
-                            <input type="text" name="dontWant[]" placeholder="Drink">
-                            <input type="text" name="dontWant[]" placeholder="Drink">
-                            <input type="text" name="dontWant[]" placeholder="Drink">
-                        </div>
+            <form method="POST" action="search.php">
+                <div class="inputFeilds">
+                    <div class="have">
+                        <h2>I have</h2>
+                        <input type="text" name="want[]" placeholder="Drink">
+                        <input type="text" name="want[]" placeholder="Drink">
+                        <input type="text" name="want[]" placeholder="Drink">
                     </div>
-                    <input type="submit" name="submit" value="submit" id="submit">
+                    <div class="dontWant">
+                        <h2>I don't want</h2>
+                        <input type="text" name="dontWant[]" placeholder="Drink">
+                        <input type="text" name="dontWant[]" placeholder="Drink">
+                        <input type="text" name="dontWant[]" placeholder="Drink">
+                    </div>
                 </div>
-            </div>
+                <input type="submit" name="submit" value="submit" id="submit">
+            </form>
         </div>
     </div>
     <div class="topTens">

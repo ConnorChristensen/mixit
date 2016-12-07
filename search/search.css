@@ -57,38 +57,32 @@ body {
         padding: 20px 0;
         width: 50%;
         text-align: center; }
-  .wrapper .feilds {
-    display: flex;
-    align-items: stretch;
-    justify-content: space-around; }
-    .wrapper .feilds form {
-      text-align: center; }
-      .wrapper .feilds form .inputFeilds {
-        display: flex; }
-      .wrapper .feilds form h2 {
-        text-align: center; }
-      .wrapper .feilds form input {
-        color: black;
-        text-align: center;
-        font-weight: 300;
-        font-size: 16pt;
-        width: 70%;
-        margin: 8px 0;
-        line-height: 20px;
-        border: none; }
-      .wrapper .feilds form input[type="submit"] {
-        width: 30%;
-        color: white;
-        background: none;
-        border: 1px solid white;
-        margin: 20px auto 30px auto;
-        padding: 10px 20px;
-        font-size: 16pt;
-        transition: background 0.5s ease;
-        cursor: pointer; }
-        .wrapper .feilds form input[type="submit"]:hover {
-          transition: background 0.5s ease;
-          background: rgba(0, 206, 255, 0.6); }
+  .wrapper .inputFeilds .have .dontWant {
+    width: 10px; }
+  .wrapper h2 {
+    text-align: center; }
+  .wrapper input {
+    color: black;
+    text-align: center;
+    font-weight: 300;
+    font-size: 16pt;
+    width: 70%;
+    margin: 8px 0;
+    line-height: 20px;
+    border: none; }
+  .wrapper input[type="submit"] {
+    width: 30%;
+    color: white;
+    background: none;
+    border: 1px solid white;
+    margin: 20px auto 30px auto;
+    padding: 10px 20px;
+    font-size: 16pt;
+    transition: background 0.5s ease;
+    cursor: pointer; }
+    .wrapper input[type="submit"]:hover {
+      transition: background 0.5s ease;
+      background: rgba(0, 206, 255, 0.6); }
 
 .topTens {
   margin: 0;
