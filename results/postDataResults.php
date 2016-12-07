@@ -3,7 +3,26 @@
 //function to generate the query based on the posted information
 //returns the sql query needed to generate the search results
 function generateSearchQuery(){
+    $sql = "SELECT DISTINCT(Bevs.name), `type`, `glass`, `photo`, `description`, `instructions`, `ingredientList` FROM Ingredients, Bevs WHERE
+                Bevs.bevId = Ingredients.bevId";
     
+    //grab the haves
+    $have = $_POST['have'];
+    foreach($have as $ingredient){
+        $ingredient = htmlspecialchars($ingredient);
+        $sql = $sql." AND Bevs.bevId IN 
+                (SELECT Bevs.bevId FROM Bevs, Ingredients WHERE Bevs.bevId = Ingredients.bevId AND Ingredients.name = '$ingredient')";
+    }
+    
+    //grab the dontWants
+    $dontWant = $_POST['dontWant'];
+    foreach($dontWant as $ingredient){
+        $ingredient = htmlspecialchars($ingredient);
+        $sql = $sql." AND Bevs.bevId NOT IN 
+                (SELECT Bevs.bevId FROM Bevs, Ingredients WHERE Bevs.bevId = Ingredients.bevId AND Ingredients.name = '$ingredient')";
+    }
+    //return the query
+    return $sql;
 }
 
 //function to query the database based upon the user's choices on the search page
