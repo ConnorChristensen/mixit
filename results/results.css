@@ -40,11 +40,13 @@ body {
   justify-content: center; }
 
 .drinkCard {
+  position: relative;
   min-width: 200px;
   width: 300px;
   padding: 15px;
   background: white;
-  margin: 1vmax; }
+  margin: 1vmax;
+  padding-bottom: 50px; }
   .drinkCard h2 {
     text-align: center; }
   .drinkCard h4 {
@@ -58,5 +60,29 @@ body {
     width: 100%; }
     .drinkCard .imgContainer img {
       width: 100%; }
+  .drinkCard .like {
+    width: 100%;
+    border-top: 3px solid #bababa;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    padding: 10px 0 5px 0;
+    transition: background 0.5s ease;
+    cursor: pointer;
+    height: 40px; }
+    .drinkCard .like:hover {
+      transition: background 0.5s ease;
+      background: #1f8450; }
+    .drinkCard .like .likeContainer {
+      position: flex;
+      justify-content: center;
+      align-items: center; }
+      .drinkCard .like .likeContainer img {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        height: 40px; }
 
 /*# sourceMappingURL=results.css.map */

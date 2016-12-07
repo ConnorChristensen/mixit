@@ -168,6 +168,14 @@ function generateHTMLOfQuery(){
         $card = $card.'<h4>Instructions</h4>
                         <p>'.$instructions.'</p>';
         
+        //add in the like button
+        $card = $card.'<div class="unselected like">
+                            <div class="likeContainer">
+                            <img src="../images/icons/likeWhite.png">
+                            <img src="../images/icons/likeGreen.png">
+                            </div>
+                        </div>';
+        
         //close card and echo it
         $card = $card.'</div>';
         echo $card;
