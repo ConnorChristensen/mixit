@@ -1,5 +1,30 @@
 <?php
 
+//adds the users like to the database
+function likeBev(){
+    $username = "";
+    $bevName = "";
+    if(array_key_exists('bevName', $_POST)){
+        if($_POST['bevName'] != ""){
+            $bevName = $_POST['bevName'];
+            $_POST['bevName'] = '';
+        }
+    }
+    if(array_key_exists('username', $_SESSION)){
+        if($_SESSION['username'] != ""){
+            $username = $_SESSION['username'];
+        }
+    }
+    
+    //TODO: Implement SQL
+    
+}
+
+//removes a users like from the database
+function unlikeBev(){
+    
+}
+
 //function to generate the query based on the posted information
 //returns the sql query needed to generate the search results
 function generateSearchQuery(){
