@@ -1,6 +1,6 @@
 import random
 
-print "INSERT INTO `Bev_Rating` (`bevId`, `likes`, `dislikes`) VALUES"
+print "INSERT INTO `Bev_Likes` (`bevId`, `likes`, `dislikes`) VALUES"
 
 for x in range(11):
     print "("+str(x+1)+", "

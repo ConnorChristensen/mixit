@@ -30,7 +30,7 @@ function printArr($arr){
 function top10(){
     //get top 10 of all drinks
     $sql = "SELECT `name`, `photo` FROM `Bevs` WHERE `bevId` IN (
-	           SELECT `bevId` FROM `Bev_Rating`
+	           SELECT `bevId` FROM `Bev_Likes`
 			     ORDER BY `likes` ASC) LIMIT 10";
     $retval = mysqli_query($GLOBALS['conn'], $sql);
     $topArr = array();
@@ -55,8 +55,8 @@ function top10Ingred(){
     //get top 10 using a banana
     //TODO: generalize to use a variable <--
     $sql = "SELECT `name`, `photo` FROM `Bevs` WHERE Bevs.bevId IN (
-	           SELECT Bev_Rating.bevId FROM `Bev_Rating`, Ingredients
-                     WHERE Bev_Rating.bevId = Ingredients.bevId
+	           SELECT Bev_Likes.bevId FROM `Bev_Likes`, Ingredients
+                     WHERE Bev_Likes.bevId = Ingredients.bevId
                      AND Ingredients.name = 'banana'
 			         ORDER BY `likes` ASC) LIMIT 10";
     $retval = mysqli_query($GLOBALS['conn'], $sql);
@@ -82,8 +82,8 @@ function top10Type(){
     //get top 10 of cocktails
     //TODO: generalize to use a variable <--
     $sql = "SELECT `name`, `photo` FROM `Bevs` WHERE Bevs.bevId IN (
-	           SELECT Bev_Rating.bevId FROM `Bev_Rating`, Type
-                     WHERE Bev_Rating.bevId = Type.bevId
+	           SELECT Bev_Likes.bevId FROM `Bev_Likes`, Type
+                     WHERE Bev_Likes.bevId = Type.bevId
                      AND Type.name = 'cocktail'
 			         ORDER BY `likes` ASC) LIMIT 10";
     $retval = mysqli_query($GLOBALS['conn'], $sql);

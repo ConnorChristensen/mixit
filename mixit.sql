@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS Bevs (
     `instructions` VARCHAR(50),
     `ingredientList` VARCHAR(50),
     PRIMARY KEY (`bevId`),
-    FOREIGN KEY (`bevId`) references Bev_Rating(`bevId`)   
+    FOREIGN KEY (`bevId`) references Bev_Likes(`bevId`)   
 );
 
 
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS Type (
 );
 
 
-CREATE TABLE IF NOT EXISTS Bev_Rating (
+CREATE TABLE IF NOT EXISTS Bev_Likes (
     `bevId` INT(6) UNIQUE NOT NULL,
     `likes` INT(10) DEFAULT 0,
     PRIMARY KEY (`bevId`)
@@ -61,7 +61,7 @@ CREATE TRIGGER `addBevsToTables`
     AFTER INSERT ON `Bevs`
     FOR EACH ROW 
     BEGIN
-        INSERT INTO Bev_Rating(`bevId`)
+        INSERT INTO Bev_Likes(`bevId`)
             VALUES (New.bevId);
         INSERT INTO Type
             VALUES (New.type, New.bevId);
@@ -72,7 +72,7 @@ CREATE TRIGGER `userLiked`
     AFTER INSERT ON `User_Liked`
     FOR EACH ROW
     BEGIN
-        UPDATE Bev_Rating
+        UPDATE Bev_Likes
             SET likes = likes + 1
             WHERE bevId = New.bevId;
     END;
@@ -82,7 +82,7 @@ CREATE TRIGGER `userUnliked`
     AFTER DELETE ON `User_Liked`
     FOR EACH ROW
     BEGIN
-        UPDATE Bev_Rating
+        UPDATE Bev_Likes
             SET likes = likes - 1
             WHERE bevId = New.bevId;
     END;
