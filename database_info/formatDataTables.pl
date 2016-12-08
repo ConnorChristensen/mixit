@@ -83,6 +83,9 @@ sub main() {
     if (! -e "ingredients"){
         mkdir("ingredients");
     }
+    if (! -e "description") {
+        mkdir("description");
+    }
     
     #create the array that will store the split info from the input line
     my @splitLine;
@@ -110,6 +113,16 @@ sub main() {
             #creates the SQL insert file
             insertStatements($x, (scalar @lines)-1, $graves, \@splitLine, $textFileName);
 
+            #create description file
+            open(descriptionOutput, ">", "description/$textFileName.txt") or die "Couldn't open: $!";
+            
+            if ($splitLine[4] =~ m/^\s*$/) {
+                print descriptionOutput "No description available";
+            }
+            else {
+                print descriptionOutput "$splitLine[4]";
+            }
+            
             #create ingredients file
             open(ingredientsOutput, ">", "ingredients/$textFileName.txt") or die "Couldn't open: $!";
             
