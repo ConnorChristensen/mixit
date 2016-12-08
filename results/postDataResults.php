@@ -196,6 +196,14 @@ function generateHTMLOfQuery(){
         }
         $card = $card.'</ul>';
         
+        //add the type of drink
+        $card = $card.'<h4>Type</h4>
+                        <p>'.$query[$x]['type'].'</p>';
+        
+        //add the recommended glass
+        $card = $card.'<h4>Glass</h4>
+                        <p>'.$query[$x]['glass'].'</p>';
+        
         //add the description
         $card = $card.'<h4>Description</h4>
                         <p>'.$description.'</p>';
