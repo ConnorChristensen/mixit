@@ -25,6 +25,7 @@ sub insertStatements {
         print outputFile "`$splitLine[0]`, ";
         print outputFile "`$splitLine[1]`, ";
         print outputFile "`$splitLine[2]`, ";
+        print outputFile "`./images/drinks/$textFileName.jpg`, ";
         print outputFile "`./description/$textFileName.txt`, ";
         print outputFile "`./instructions/$textFileName.txt`, ";
         print outputFile "`./ingredients/$textFileName.txt`";
@@ -39,6 +40,7 @@ sub insertStatements {
         print outputFile "'$splitLine[0]', ";
         print outputFile "'$splitLine[1]', ";
         print outputFile "'$splitLine[2]', ";
+        print outputFile "./images/drinks/$textFileName.jpg, ";
         print outputFile "'./description/$textFileName.txt', ";
         print outputFile "'./instructions/$textFileName.txt', ";
         print outputFile "'./ingredients/$textFileName.txt'";
@@ -72,7 +74,7 @@ sub main() {
     
     
     #print the header for the SQL statement
-    print outputFile "INSERT INTO $databaseName (`name`, `type`, `glass`, `description`, `instructions`, `ingredientList`)\nVALUES ";
+    print outputFile "INSERT INTO $databaseName (`bevName`, `type`, `glass`, `photo`, `description`, `instructions`, `ingredientList`)\nVALUES ";
     
     #if the instructions folder doesn't already exits create it
     if (! -e "instructions") {
@@ -98,7 +100,7 @@ sub main() {
         if ($line !~ m/^\s*$/) {
             
             #split the line by pipes
-            @splitLine = split /\|/, $line;
+            @splitLine = split /,/, $line;
             
             #create ingredients file name with replaced spaces for underscores
             my $textFileName = $splitLine[0];
@@ -142,7 +144,7 @@ sub main() {
             my $textFileName = $splitLine[0];
             $textFileName =~ s/\s/_/g;
             
-            print outputFile "INSERT INTO Ingredients (`name`, `bevId`) \nVALUES ";
+            print outputFile "INSERT INTO Ingredients (`ingredName`, `bevName`) \nVALUES ";
             
             for (my $y = 0; $y < $splitLine[4]*2; $y+=2) {
                 if ($y == ($splitLine[4]*2)-2) {
