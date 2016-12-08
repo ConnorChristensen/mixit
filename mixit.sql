@@ -62,7 +62,7 @@ CREATE TRIGGER `addBevsToTables`
         INSERT INTO Bev_Likes(`bevName`)
             VALUES (New.bevName);
         INSERT INTO Type
-            VALUES (New.typeName, New.bevName);
+            VALUES (New.type, New.bevName);
     END;
 
 
