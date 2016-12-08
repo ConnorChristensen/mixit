@@ -39,7 +39,6 @@ function likeBev($like){
 //returns the sql query needed to generate the search results
 function generateSearchQuery(){
     $sql = "SELECT DISTINCT(Bevs.bevName), type, glass, photo, description, instructions, ingredientList FROM Bevs, Ingredients WHERE Bevs.bevName = Ingredients.bevName";
-    $wants = null;
 
         
     //get the wants
@@ -90,22 +89,28 @@ function generateSearchQuery(){
     }
     
     if(!array_key_exists('unrestrict', $_POST) || $_POST['unrestrict'] == ''){
+        echo "HERE<br>";
         $_POST['unrestrict'] = '';
         $startedSubquery = false;
         //restrict query to only the ingredients mentioned
-        foreach($want as $ingred){
+        foreach($wants as $ingred){
             if($ingred != ""){
                 if(!$startedSubquery){
                     $startedSubquery = true;
-                    $sql = $sql." AND Bevs.bevName IN 
-                            (SELECT Ingredients.bevName FROM Ingredients WHERE NOT (ingredName = '$ingred')";
+                    $sql = $sql." AND Bevs.bevName NOT IN 
+                            (SELECT Ingredients.bevName FROM Ingredients WHERE ingredName != '$ingred'";
+                    $needParen = true;
                 }
                 else{
-                    $sql = $sql." OR ingredName = '$ingred'";
+                    $sql = $sql." AND ingredName != '$ingred'";
                 }
             }
         }
-        $sql = $sql.")";
+        if($needParen){
+            $sql = $sql.")";
+            $needParen = false;
+        }
+        print_r($sql);
     }
     return $sql;
 }
