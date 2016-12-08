@@ -115,7 +115,7 @@ function top10Type(){
 function getUserLiked($username){
     //get user's liked
     $sql = "SELECT `bevName`, `photo` FROM `Bevs` WHERE Bevs.bevName IN (
-	           SELECT User_Liked.bevId FROM User_Liked
+	           SELECT User_Liked.bevName FROM User_Liked
                     WHERE User_Liked.username = '$username')";
     $retval = mysqli_query($GLOBALS['conn'], $sql);
     $liked = array();
@@ -126,7 +126,7 @@ function getUserLiked($username){
         //photo path from main directory in row['photo']
         //add to array
         $liked[$rowNum] = array(
-            "name" => $row['name'],
+            "name" => $row['bevName'],
             "photo" => $row['photo']
         );
         $rowNum++;
