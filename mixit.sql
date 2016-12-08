@@ -60,9 +60,9 @@ CREATE TRIGGER `addBevsToTables`
     FOR EACH ROW 
     BEGIN
         INSERT INTO Bev_Likes(`bevName`)
-            VALUES (New.name);
+            VALUES (New.bevName);
         INSERT INTO Type
-            VALUES (New.type, New.bevName);
+            VALUES (New.typeName, New.bevName);
     END;
 
 
