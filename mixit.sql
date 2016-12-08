@@ -76,5 +76,5 @@ FOR EACH ROW
 BEGIN
     UPDATE Bev_Likes
         SET likes = likes - 1
-        WHERE bevName = deleted.bevName;
+        WHERE bevName = old.bevName;
 END||
