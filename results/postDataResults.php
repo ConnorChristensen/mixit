@@ -3,16 +3,16 @@
 //function to generate the query based on the posted information
 //returns the sql query needed to generate the search results
 function generateSearchQuery(){
-    $sql = "SELECT DISTINCT(Bevs.name), `type`, `glass`, `photo`, `description`, `instructions`, `ingredientList` FROM Ingredients, Bevs WHERE
-                Bevs.bevId = Ingredients.bevId";
+    $sql = "SELECT DISTINCT(Bevs.bevName), `type`, `glass`, `photo`, `description`, `instructions`, `ingredientList` FROM Ingredients, Bevs WHERE
+                Bevs.bevName = Ingredients.bevName";
     
     //grab the haves
     $want = $_POST['want'];
     foreach($want as $ingredient){
         if($ingredient != ""){
             $ingredient = htmlspecialchars($ingredient);
-            $sql = $sql." AND Bevs.bevId IN 
-            (SELECT Bevs.bevId FROM Bevs, Ingredients WHERE Bevs.bevId = Ingredients.bevId AND Ingredients.name = '$ingredient')";
+            $sql = $sql." AND Bevs.bevName IN 
+            (SELECT Bevs.bevName FROM Bevs, Ingredients WHERE Bevs.bevName = Ingredients.bevName AND Ingredients.ingredName = '$ingredient')";
         }
     }
     
@@ -21,8 +21,8 @@ function generateSearchQuery(){
     foreach($dontWant as $ingredient){
         if($ingredient != ""){
             $ingredient = htmlspecialchars($ingredient);
-            $sql = $sql." AND Bevs.bevId NOT IN 
-                    (SELECT Bevs.bevId FROM Bevs, Ingredients WHERE Bevs.bevId = Ingredients.bevId AND Ingredients.name = '$ingredient')";
+            $sql = $sql." AND Bevs.bevName NOT IN 
+                    (SELECT Bevs.bevName FROM Bevs, Ingredients WHERE Bevs.bevName = Ingredients.bevName AND Ingredients.ingredName = '$ingredient')";
         }
     }
     //return the sql query
