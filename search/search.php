@@ -64,6 +64,7 @@ if(array_key_exists('searched', $_SESSION)){
         </div>
     </div>
     <div class="topTens">
+
        <?php
        //if user logged in, print their liked bevs
        if(array_key_exists('login', $_SESSION)){
@@ -73,11 +74,16 @@ if(array_key_exists('searched', $_SESSION)){
                 //if they've liked something, print liked
                 //otherwise tell them they haven't liked things yet!
                 if(count($liked) > 0){
+                    
+                    
                     echo '<div class="list">';
-
+                    echo '<div class="scrollContainer">';
                     //output info for favorites using template
                     printArr($liked);
                     echo '</div>';
+                    echo '</div>';
+                    
+                    
                 }
                 else{
                     echo "<h3>You haven't liked anything yet!</h3>";
@@ -85,6 +91,7 @@ if(array_key_exists('searched', $_SESSION)){
             }
        }
        ?>
+
         <h2>Top 10</h2>
         <div class="list">
             <div class="scrollContainer">
