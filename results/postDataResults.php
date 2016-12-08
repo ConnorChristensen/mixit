@@ -221,7 +221,14 @@ function generateHTMLOfQuery(){
             $card = $card.$backUpPhoto;
         }
         else{
-            $card = $card.'../images/'.$query[$x]['photo'];
+            $path = "../".$query[$x]['photo'];
+            if(fopen($path,'r') == false){
+                $card = $card.$backUpPhoto;
+            }
+            else{
+                fclose($path);
+                $card = $card.$path;
+            }
         }
                
         $card = $card.'">
