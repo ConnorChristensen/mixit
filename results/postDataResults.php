@@ -86,8 +86,8 @@ function generateSearchQuery(){
             if($ingred != ""){
                 if(!$startedSubquery){
                     $startedSubquery = true;
-                    $sql = $sql." AND Bevs.bevName NOT IN 
-                            (SELECT Ingredients.bevName FROM Ingredients WHERE ingredName = '$ingred'";
+                    $sql = $sql." AND Bevs.bevName IN 
+                            (SELECT Ingredients.bevName FROM Ingredients WHERE NOT (ingredName = '$ingred')";
                 }
                 else{
                     $sql = $sql." OR ingredName = '$ingred'";
