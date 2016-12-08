@@ -38,69 +38,74 @@ function likeBev($like){
 //function to generate the query based on the posted information
 //returns the sql query needed to generate the search results
 function generateSearchQuery(){
-//    $sql = "SELECT DISTINCT(Bevs.bevName), type, glass, photo, description, instructions, ingredientList FROM Bevs, Ingredients WHERE Bevs.bevName = Ingredients.bevName";
-//    $wants = null;
-//
-//        
-//    //get the wants
-//    $wants = $_POST['want'];
-//
-//    //checks to see if the beginning of the subquery has been appended
-//    $startedSubquery = false;
-//
-//    foreach($wants as $ingred){
-//        if($ingred != ""){
-//            if(!$startedSubquery){
-//                $startedSubquery = true;
-//                $sql = $sql." AND Bevs.bevName IN 
-//                        (SELECT Ingredients.bevName FROM Ingredients WHERE ingredName = '$ingred'";
-//            }
-//            else{
-//                $sql = $sql." OR ingredName = '$ingred'";
-//            }
-//        }
-//    }
-//    $sql = $sql.")";
-//
-//    //reset the subquery flag
-//    $startedSubquery = false;
-//
-//    //get the don't wants
-//    $dontWant = $_POST['dontWant'];
-//    foreach($dontWant as $ingred){
-//        if($ingred != ""){
-//            if(!$startedSubquery){
-//                $startedSubquery = true;
-//                $sql = $sql." AND Bevs.bevName NOT IN 
-//                        (SELECT Ingredients.bevName FROM Ingredients WHERE ingredName = '$ingred'";
-//            }
-//            else{
-//                $sql = $sql." OR ingredName = '$ingred'";
-//            }
-//        }
-//    }
-//    $sql = $sql.")";
-//    
-//    if($_POST['restrict']){
-//        $startedSubquery = false;
-//        //restrict query to only the ingredients mentioned
-//        foreach($want as $ingred){
-//            if($ingred != ""){
-//                if(!$startedSubquery){
-//                    $startedSubquery = true;
-//                    $sql = $sql." AND Bevs.bevName IN 
-//                            (SELECT Ingredients.bevName FROM Ingredients WHERE NOT (ingredName = '$ingred')";
-//                }
-//                else{
-//                    $sql = $sql." OR ingredName = '$ingred'";
-//                }
-//            }
-//        }
-//        $sql = $sql.")";
-//    }
-        
+    $sql = "SELECT DISTINCT(Bevs.bevName), type, glass, photo, description, instructions, ingredientList FROM Bevs, Ingredients WHERE Bevs.bevName = Ingredients.bevName";
+    $wants = null;
 
-    $sql = "SELECT * FROM Bevs";
+        
+    //get the wants
+    $wants = $_POST['want'];
+
+    //checks to see if the beginning of the subquery has been appended
+    $startedSubquery = false;
+    $needParen = false;
+    foreach($wants as $ingred){
+        if($ingred != ""){
+            if(!$startedSubquery){
+                $needParen = true;
+                $startedSubquery = true;
+                $sql = $sql." AND Bevs.bevName IN 
+                        (SELECT Ingredients.bevName FROM Ingredients WHERE ingredName = '$ingred'";
+            }
+            else{
+                $sql = $sql." OR ingredName = '$ingred'";
+            }
+        }
+    }
+    if($needParen){
+        $sql = $sql.")";
+        $needParen = false;
+    }
+
+    //reset the subquery flag
+    $startedSubquery = false;
+
+    //get the don't wants
+    $dontWant = $_POST['dontWant'];
+    foreach($dontWant as $ingred){
+        if($ingred != ""){
+            if(!$startedSubquery){
+                $needParen = true;
+                $startedSubquery = true;
+                $sql = $sql." AND Bevs.bevName NOT IN 
+                        (SELECT Ingredients.bevName FROM Ingredients WHERE ingredName = '$ingred'";
+            }
+            else{
+                $sql = $sql." OR ingredName = '$ingred'";
+            }
+        }
+    }
+    if($needParen){
+        $sql = $sql.")";
+        $needParen = false;
+    }
+    
+    if($_POST['restrict']){
+        $startedSubquery = false;
+        //restrict query to only the ingredients mentioned
+        foreach($want as $ingred){
+            if($ingred != ""){
+                if(!$startedSubquery){
+                    $startedSubquery = true;
+                    $sql = $sql." AND Bevs.bevName IN 
+                            (SELECT Ingredients.bevName FROM Ingredients WHERE NOT (ingredName = '$ingred')";
+                }
+                else{
+                    $sql = $sql." OR ingredName = '$ingred'";
+                }
+            }
+        }
+        $sql = $sql.")";
+    }
     return $sql;
 }
 
