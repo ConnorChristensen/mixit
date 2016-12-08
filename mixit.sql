@@ -55,39 +55,26 @@ CREATE TABLE IF NOT EXISTS Bev_Likes (
 );
 
 
-CREATE TRIGGER `addBevsToTables` 
-    AFTER INSERT ON `Bevs`
-    FOR EACH ROW 
-    BEGIN
-        INSERT INTO Bev_Likes(`bevName`)
-            VALUES (New.bevName);
-        INSERT INTO Type
-            VALUES (New.type, New.bevName);
-    END;
+DELIMITER ||
+CREATE TRIGGER addBevsToTables AFTER INSERT ON Bevs
+FOR EACH ROW
+BEGIN
+    INSERT INTO Bev_Likes (bevName) VALUES (New.bevName);
+    INSERT INTO Type VALUES (New.type, New.bevName);
+END||
 
+CREATE TRIGGER userLiked AFTER INSERT ON User_Liked
+FOR EACH ROW
+BEGIN
+    UPDATE Bev_Likes
+        SET likes = likes + 1
+        WHERE bevName = New.bevName;
+END||
 
-CREATE TRIGGER `userLiked`
-    AFTER INSERT ON `User_Liked`
-    FOR EACH ROW
-    BEGIN
-        UPDATE Bev_Likes
-            SET likes = likes + 1
-            WHERE bevName = New.bevName;
-    END;
- 
- 
-CREATE TRIGGER `userUnliked`
-    AFTER DELETE ON `User_Liked`
-    FOR EACH ROW
-    BEGIN
-        UPDATE Bev_Likes
-            SET likes = likes - 1
-            WHERE bevName = deleted.bevName;
-    END;
-
-
-
-
-
-
-
+CREATE TRIGGER userUnliked AFTER DELETE ON User_Liked
+FOR EACH ROW
+BEGIN
+    UPDATE Bev_Likes
+        SET likes = likes - 1
+        WHERE bevName = deleted.bevName;
+END||
