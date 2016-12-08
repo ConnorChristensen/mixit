@@ -57,8 +57,6 @@ body {
         padding: 20px 0;
         width: 50%;
         text-align: center; }
-  .wrapper .inputFeilds .have .dontWant {
-    width: 10px; }
   .wrapper h2 {
     text-align: center; }
   .wrapper input {
@@ -83,6 +81,12 @@ body {
     .wrapper input[type="submit"]:hover {
       transition: background 0.5s ease;
       background: rgba(0, 206, 255, 0.6); }
+  .wrapper input[type="checkbox"] {
+    width: 20px;
+    display: block;
+    margin: 10px auto;
+    border-radius: 0;
+    -webkit-apperance: none; }
 
 .topTens {
   margin: 0;
