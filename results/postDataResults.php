@@ -21,14 +21,16 @@ function likeBev($like){
     else{
         return;
     }
+    $sql = "";
     if($like){
         //like the beverage
-        //TODO: Implement SQL
+        $sql = "INSERT INTO User_Liked VALUES ('$username', '$bevName')";
     }
     else{
         //unlike the beverage
-        //TODO: Implement SQL
-    } 
+        $sql = "DELETE FROM User_Liked WHERE username = '$username' AND bevName = '$bevName'";
+    }
+    mysqli_query($GLOBALS['conn'], $sql);
 }
 
 
