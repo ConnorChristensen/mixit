@@ -89,7 +89,8 @@ function generateSearchQuery(){
         $needParen = false;
     }
     
-    if($_POST['restrict']){
+    if(!array_key_exists('unrestrict', $_POST) || $_POST['unrestrict'] == ''){
+        $_POST['unrestrict'] = '';
         $startedSubquery = false;
         //restrict query to only the ingredients mentioned
         foreach($want as $ingred){
