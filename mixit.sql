@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS Type (
 
 
 CREATE TABLE IF NOT EXISTS Bev_Likes (
-    `bevName` INT(6) UNIQUE NOT NULL,
+    `bevName` VARCHAR(30) NOT NULL,
     `likes` INT(10) DEFAULT 0,
     PRIMARY KEY (`bevName`)
 );
