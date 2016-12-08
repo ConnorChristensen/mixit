@@ -82,7 +82,7 @@ CREATE TRIGGER `userUnliked`
     BEGIN
         UPDATE Bev_Likes
             SET likes = likes - 1
-            WHERE bevName = New.bevName;
+            WHERE bevName = deleted.bevName;
     END;
 
 
