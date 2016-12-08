@@ -155,7 +155,7 @@ sub main() {
             #create ingredients file name with replaced spaces for underscores
             my $textFileName = $splitLine[0];
             
-            print outputFile "INSERT INTO Ingredients (`ingredName`, `bevName`) \nVALUES ";
+            print outputFile "INSERT INTO Ingredients (`ingredName`, `bevName`)\nVALUES ";
             
             for (my $y = 6; $y < ($splitLine[5]*2)+6; $y+= 2) {
                 #convert to lowercase
