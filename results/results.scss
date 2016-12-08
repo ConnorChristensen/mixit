@@ -14,11 +14,13 @@ body {
 }
 
 .drinkCard {
+    position: relative;
     min-width: 200px;
     width: 300px;
     padding: 15px;
     background: white;
     margin: 1vmax;
+    padding-bottom: 50px;
     h2 {
         text-align: center;
     }
@@ -35,6 +37,34 @@ body {
         width: 100%;
         img {
             width: 100%;
+        }
+    }
+    .like {
+        width: 100%;
+        border-top: 3px solid #bababa;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+        padding: 10px 0 5px 0;
+        @include transitionBackground(.5s);
+        cursor: pointer;
+        height: 40px;
+        &:hover {
+            @include transitionBackground(.5s);
+            background: #1f8450;
+        }
+        .likeContainer {
+            position: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+                position: absolute;
+                left: 0;
+                right: 0;
+                margin: auto;
+                height: 40px;
+            }
         }
     }
 }
