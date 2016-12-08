@@ -67,6 +67,14 @@ body {
             background: $selectionBlue;
         }
     }
+    input[type="checkbox"] {
+//        display: none;
+        width: 20px;
+        display: block;
+        margin: 10px auto;
+        border-radius: 0;
+        -webkit-apperance: none;
+    }
 }
 
 $item-width: 15vmin;
