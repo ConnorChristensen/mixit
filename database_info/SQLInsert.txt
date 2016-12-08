@@ -1,51 +1,59 @@
-INSERT INTO Bevs (`name`, `type`, `glass`, `description`, `instructions`, `ingredientList`)
+INSERT INTO Bevs (`bevName`, `type`, `glass`, `photo`, `description`, `instructions`, `ingredientList`)
 VALUES 
-	('stinger', 'cocktail', '3oz cocktail glass', './description/stinger.txt', './instructions/stinger.txt', './ingredients/stinger.txt'),
-	('classic daiquiri', 'cocktail', '5oz champagne saucer', './description/classic_daiquiri.txt', './instructions/classic_daiquiri.txt', './ingredients/classic_daiquiri.txt'),
-	('death in the afternoon', 'cocktail', '8oz hi-ball glass', './description/death_in_the_afternoon.txt', './instructions/death_in_the_afternoon.txt', './ingredients/death_in_the_afternoon.txt'),
-	('double jeopardy', 'cocktail', '10oz hi-ball glass', './description/double_jeopardy.txt', './instructions/double_jeopardy.txt', './ingredients/double_jeopardy.txt'),
-	('jaffa', 'non-alcoholic', '6oz old fashioned glass', './description/jaffa.txt', './instructions/jaffa.txt', './ingredients/jaffa.txt'),
-	('iron man', 'non-alcoholic', '12oz hi-ball glass', './description/iron_man.txt', './instructions/iron_man.txt', './ingredients/iron_man.txt'),
-	('fizzy rush', 'shooter', 'tall dutch cordial', './description/fizzy_rush.txt', './instructions/fizzy_rush.txt', './ingredients/fizzy_rush.txt'),
-	('aqua thunder', 'cocktail', '10oz hi-ball glass', './description/aqua_thunder.txt', './instructions/aqua_thunder.txt', './ingredients/aqua_thunder.txt'),
-	('australian gold', 'cocktail', '3oz cocktail glass', './description/australian_gold.txt', './instructions/australian_gold.txt', './ingredients/australian_gold.txt'),
-	('B & B', 'cocktail', 'brandy balloon', './description/B_&_B.txt', './instructions/B_&_B.txt', './ingredients/B_&_B.txt'),
-	('banana colada', 'cocktail', '10oz fancy glass', './description/banana_colada.txt', './instructions/banana_colada.txt', './ingredients/banana_colada.txt'),
-	('blood bath', 'shooter', 'whisky shot', './description/blood_bath.txt', './instructions/blood_bath.txt', './ingredients/blood_bath.txt');
+	('B & B', 'cocktail', 'brandy balloon', 'images/drinks/B_&_B.jpg', 'description/B_&_B.txt', 'instructions/B_&_B.txt', 'ingredients/B_&_B.txt'),
+	('death in the afternoon', 'cocktail', '8oz hi-ball glass', 'images/drinks/death_in_the_afternoon.jpg', 'description/death_in_the_afternoon.txt', 'instructions/death_in_the_afternoon.txt', 'ingredients/death_in_the_afternoon.txt'),
+	('jaffa', 'non-alcoholic', '6oz old fashioned glass', 'images/drinks/jaffa.jpg', 'description/jaffa.txt', 'instructions/jaffa.txt', 'ingredients/jaffa.txt'),
+	('stinger', 'cocktail', '3oz cocktail glass', 'images/drinks/stinger.jpg', 'description/stinger.txt', 'instructions/stinger.txt', 'ingredients/stinger.txt'),
+	('australian gold', 'cocktail', '3oz cocktail glass', 'images/drinks/australian_gold.jpg', 'description/australian_gold.txt', 'instructions/australian_gold.txt', 'ingredients/australian_gold.txt'),
+	('fizzy rush', 'shooter', 'tall dutch cordial', 'images/drinks/fizzy_rush.jpg', 'description/fizzy_rush.txt', 'instructions/fizzy_rush.txt', 'ingredients/fizzy_rush.txt'),
+	('banana daiquiri', 'cocktail', '5oz champagne saucer', 'images/drinks/banana_daiquiri.jpg', 'description/banana_daiquiri.txt', 'instructions/banana_daiquiri.txt', 'ingredients/banana_daiquiri.txt'),
+	('between the sheets', 'cocktail', '5oz champagne saucer', 'images/drinks/between_the_sheets.jpg', 'description/between_the_sheets.txt', 'instructions/between_the_sheets.txt', 'ingredients/between_the_sheets.txt'),
+	('classic daiquiri', 'cocktail', '5oz champagne saucer', 'images/drinks/classic_daiquiri.jpg', 'description/classic_daiquiri.txt', 'instructions/classic_daiquiri.txt', 'ingredients/classic_daiquiri.txt'),
+	('double jeopardy', 'cocktail', '10oz hi-ball glass', 'images/drinks/double_jeopardy.jpg', 'description/double_jeopardy.txt', 'instructions/double_jeopardy.txt', 'ingredients/double_jeopardy.txt'),
+	('iron man', 'non-alcoholic', '12oz hi-ball glass', 'images/drinks/iron_man.jpg', 'description/iron_man.txt', 'instructions/iron_man.txt', 'ingredients/iron_man.txt'),
+	('aqua thunder', 'cocktail', '10oz hi-ball glass', 'images/drinks/aqua_thunder.jpg', 'description/aqua_thunder.txt', 'instructions/aqua_thunder.txt', 'ingredients/aqua_thunder.txt'),
+	('banana colada', 'cocktail', '10oz fancy glass', 'images/drinks/banana_colada.jpg', 'description/banana_colada.txt', 'instructions/banana_colada.txt', 'ingredients/banana_colada.txt'),
+	('bananarama', 'cocktail', '5oz coctail glass', 'images/drinks/bananarama.jpg', 'description/bananarama.txt', 'instructions/bananarama.txt', 'ingredients/bananarama.txt');
 
-INSERT INTO Ingredients (`name`, `bevId`) 
-VALUES ('brandy', 1), ('white creme de menthe', 1);
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('martell cognac', 'B & B'), ('benedictine', 'B & B');
 
-INSERT INTO Ingredients (`name`, `bevId`) 
-VALUES ('rum', 2), ('lemon juice', 2), ('sugar syrup', 2), ('egg white', 2);
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('pernod', 'death in the afternoon'), ('champagne', 'death in the afternoon');
 
-INSERT INTO Ingredients (`name`, `bevId`) 
-VALUES ('pernod', 3), ('champagne', 3);
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('chocolate ice cream', 'jaffa'), ('orange juice', 'jaffa');
 
-INSERT INTO Ingredients (`name`, `bevId`) 
-VALUES ('frangelico', 4), ('black sambuca', 4), ('vanilla ice cream', 4), ('milk', 4);
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('brandy', 'stinger'), ('white creme de menthe', 'stinger');
 
-INSERT INTO Ingredients (`name`, `bevId`) 
-VALUES ('chocolate ice cream', 5), ('orange juice', 5);
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('rum', 'australian gold'), ('mango liqueur', 'australian gold'), ('galliano', 'australian gold');
 
-INSERT INTO Ingredients (`name`, `bevId`) 
-VALUES ('egg', 6), ('honey', 6), ('banana', 6), ('orange juice', 6);
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('white creme de menthe', 'fizzy rush'), ('apricot brandy', 'fizzy rush'), ('champagne', 'fizzy rush');
 
-INSERT INTO Ingredients (`name`, `bevId`) 
-VALUES ('white creme de menthe', 7), ('apricot brandy', 7), ('champagne', 7);
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('banana', 'banana daiquiri'), ('sugar syrup', 'banana daiquiri'), ('bacardi', 'banana daiquiri'), ('lemon juice', 'banana daiquiri');
 
-INSERT INTO Ingredients (`name`, `bevId`) 
-VALUES ('blue curacao liqueur', 8), ('banana liqueur', 8), ('melon liqueur', 8), ('freshly squeezed lemon', 8), ('soda water', 8), ('swizzle stick', 8), ('slice of lemon', 8);
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('brandy', 'between the sheets'), ('bacardi', 'between the sheets'), ('cointreau', 'between the sheets'), ('lemon juice', 'between the sheets');
 
-INSERT INTO Ingredients (`name`, `bevId`) 
-VALUES ('rum', 9), ('mango liqueur', 9), ('galliano', 9), ('1 small pineapple wedge', 9);
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('rum', 'classic daiquiri'), ('lemon juice', 'classic daiquiri'), ('sugar syrup', 'classic daiquiri'), ('egg white', 'classic daiquiri');
 
-INSERT INTO Ingredients (`name`, `bevId`) 
-VALUES ('martell cognac', 10), ('benedictine', 10);
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('frangelico', 'double jeopardy'), ('black sambuca', 'double jeopardy'), ('vanilla ice cream', 'double jeopardy'), ('milk', 'double jeopardy');
 
-INSERT INTO Ingredients (`name`, `bevId`) 
-VALUES ('bacardi', 11), ('sugar syrup', 11), ('coconut cream', 11), ('cream', 11), ('pineapple juice', 11), ('banana', 11), ('pineapple', 11), ('mint leaves', 11), ('straws', 11);
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('egg', 'iron man'), ('honey', 'iron man'), ('banana', 'iron man'), ('orange juice', 'iron man');
 
-INSERT INTO Ingredients (`name`, `bevId`) 
-VALUES ('rosso vermouth', 12), ('strawberry liqueur', 12), ('tequila', 12);
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('blue curacao liqueur', 'aqua thunder'), ('banana liqueur', 'aqua thunder'), ('melon liqueur', 'aqua thunder'), ('freshly squeezed lemon', 'aqua thunder'), ('soda water', 'aqua thunder');
+
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('bacardi', 'banana colada'), ('sugar syrup', 'banana colada'), ('coconut cream', 'banana colada'), ('cream', 'banana colada'), ('pineapple juice', 'banana colada'), ('banana', 'banana colada');
+
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('vodka', 'bananarama'), ('kahlua', 'bananarama'), ('bailerys irish cream', 'bananarama'), ('banana', 'bananarama'), ('cream', 'bananarama');
 
