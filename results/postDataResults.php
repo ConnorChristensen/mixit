@@ -208,10 +208,6 @@ function generateHTMLOfQuery(){
         $card = $card.'<h4>Description</h4>
                         <p>'.$description.'</p>';
         
-        //add the type of drink
-        
-        //add the recommended glass
-        
         //add the instructions
         $card = $card.'<h4>Instructions</h4>
                         <p>'.$instructions.'</p>';
