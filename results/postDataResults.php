@@ -89,7 +89,6 @@ function generateSearchQuery(){
     }
     
     if(!array_key_exists('unrestrict', $_POST) || $_POST['unrestrict'] == ''){
-        echo "HERE<br>";
         $_POST['unrestrict'] = '';
         $startedSubquery = false;
         //restrict query to only the ingredients mentioned
@@ -110,7 +109,6 @@ function generateSearchQuery(){
             $sql = $sql.")";
             $needParen = false;
         }
-        print_r($sql);
     }
     return $sql;
 }
