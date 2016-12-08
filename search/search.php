@@ -59,6 +59,10 @@ if(array_key_exists('searched', $_SESSION)){
                         <input type="text" name="dontWant[]" placeholder="Drink">
                     </div>
                 </div>
+                <label class="control">
+                    <input type="checkbox" name="unrestrict"/>
+                    Click here to allow any drink that contains items in the "I have" category
+                </label>
                 <input type="submit" name="submit" value="submit" id="submit">
             </form>
         </div>
