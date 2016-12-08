@@ -44,6 +44,25 @@ $(document).ready(function() {
         }
     });
     
+//         numBoxes = 0;
+//        $(".scrollContainer .item").each(function() {
+//             numBoxes++;
+//        });
     
-    
+    var numBoxes = 10;
+    var foreverWidth = parseInt($(".list").css("width"));
+     $(".rightClick").click(function() {
+        var containerWidth = parseInt($(".scrollContainer").css("width"));
+        console.log(foreverWidth, containerWidth, numBoxes, -(foreverWidth+containerWidth),
+                    parseInt($(".scrollContainer").css("left")),
+                   parseInt($(".scrollContainer").css("left")) > -(foreverWidth+containerWidth));
+        if (parseInt($(".scrollContainer").css("left")) > -(foreverWidth+containerWidth)) {
+            $(".scrollContainer").css("left", "-="+foreverWidth/(numBoxes/4)+"px");
+        }
+     });
+    $(".leftClick").click(function() {
+        if (parseInt($(".scrollContainer").css("left")) < 0) {
+            $(".scrollContainer").css("left", "+="+foreverWidth/(numBoxes/4)+"px");
+        }
+     });
 });
