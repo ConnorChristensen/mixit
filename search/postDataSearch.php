@@ -29,8 +29,8 @@ function printArr($arr){
 //returns an array of each row of the result query arr[row][column]
 function top10(){
     //get top 10 of all drinks
-    $sql = "SELECT `name`, `photo` FROM `Bevs` WHERE `bevId` IN (
-	           SELECT `bevId` FROM `Bev_Likes`
+    $sql = "SELECT `bevName`, `photo` FROM `Bevs` WHERE `bevName` IN (
+	           SELECT `bevName` FROM `Bev_Likes`
 			     ORDER BY `likes` ASC) LIMIT 10";
     $retval = mysqli_query($GLOBALS['conn'], $sql);
     $topArr = array();
@@ -54,10 +54,10 @@ function top10(){
 function top10Ingred(){
     //get top 10 using a banana
     //TODO: generalize to use a variable <--
-    $sql = "SELECT `name`, `photo` FROM `Bevs` WHERE Bevs.bevId IN (
-	           SELECT Bev_Likes.bevId FROM `Bev_Likes`, Ingredients
-                     WHERE Bev_Likes.bevId = Ingredients.bevId
-                     AND Ingredients.name = 'banana'
+    $sql = "SELECT `bevName`, `photo` FROM `Bevs` WHERE Bevs.bevName IN (
+	           SELECT Bev_Likes.bevName FROM `Bev_Likes`, Ingredients
+                     WHERE Bev_Likes.bevName = Ingredients.bevName
+                     AND Ingredients.ingredName = 'banana'
 			         ORDER BY `likes` ASC) LIMIT 10";
     $retval = mysqli_query($GLOBALS['conn'], $sql);
     $topArr = array();
@@ -81,10 +81,10 @@ function top10Ingred(){
 function top10Type(){
     //get top 10 of cocktails
     //TODO: generalize to use a variable <--
-    $sql = "SELECT `name`, `photo` FROM `Bevs` WHERE Bevs.bevId IN (
-	           SELECT Bev_Likes.bevId FROM `Bev_Likes`, Type
-                     WHERE Bev_Likes.bevId = Type.bevId
-                     AND Type.name = 'cocktail'
+    $sql = "SELECT `bevName`, `photo` FROM `Bevs` WHERE Bevs.bevName IN (
+	           SELECT Bev_Likes.bevName FROM `Bev_Likes`, Type
+                     WHERE Bev_Likes.bevName = Type.bevName
+                     AND Type.typeName = 'cocktail'
 			         ORDER BY `likes` ASC) LIMIT 10";
     $retval = mysqli_query($GLOBALS['conn'], $sql);
     $topArr = array();
@@ -107,10 +107,9 @@ function top10Type(){
 //returns an array of each row of the result query arr[row][column]
 function getUserLiked($username){
     //get user's liked
-    $sql = "SELECT `name`, `photo` FROM `Bevs` WHERE Bevs.bevId IN (
-	           SELECT User_Ratings.bevId FROM User_Ratings
-                    WHERE User_Ratings.username = '$username'
-                    AND User_Ratings.rating = 1)";
+    $sql = "SELECT `bevName`, `photo` FROM `Bevs` WHERE Bevs.bevName IN (
+	           SELECT User_Liked.bevId FROM User_Liked
+                    WHERE User_Liked.username = '$username')";
     $retval = mysqli_query($GLOBALS['conn'], $sql);
     $liked = array();
     $rowNum = 0;
