@@ -34,6 +34,7 @@ if(array_key_exists('searched', $_SESSION)){
         //check that the data is valid and query appropriately
         include('postDataSearch.php');
     ?>
+    
     <a href="../index.php" class="back">
         <div>Back</div>
     </a>
@@ -135,7 +136,31 @@ if(array_key_exists('searched', $_SESSION)){
             </div>
         </div>
     </div>
-    
+    <script>
+    function requestLogOut(){
+        jQuery.ajax({
+            type: "GET",
+            url: "search.php",
+            data: "call=logOut",
+            success: function(){
+                window.location.reload();
+            }
+        });
+    }
+    </script>
+    <button onclick="requestLogOut()">LogOut</button>
+        <?php
+        //Inteded to work with logOut only
+        //if there was a get request and the key call is inside get
+        if($_SERVER['REQUEST_METHOD']=="GET" && array_key_exists('call', $_GET)){
+            //get the function requesting to be called
+            $function = $_GET['call'];
+            //if it exists, call it
+            if(function_exists($function)){
+                call_user_func($function);
+            }
+        }
+    ?>
 </body>
 
 </html>
