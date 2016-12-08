@@ -11,49 +11,47 @@ CREATE TABLE IF NOT EXISTS Users (
 
 
 CREATE TABLE IF NOT EXISTS Bevs (
-    `bevId` INT(6) UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(30) UNIQUE NOT NULL,
+    `bevName` VARCHAR(30) UNIQUE NOT NULL,
     `type` VARCHAR(30),
     `glass` VARCHAR(20),
     `photo` VARCHAR(30),
     `description` VARCHAR(50),
     `instructions` VARCHAR(50),
     `ingredientList` VARCHAR(50),
-    PRIMARY KEY (`bevId`, `name`),
-    FOREIGN KEY (`bevId`) references Bev_Likes(`bevId`)   
+    PRIMARY KEY (`bevName`),
+    FOREIGN KEY (`bevName`) references Bev_Likes(`bevName`) 
 );
 
 
 CREATE TABLE IF NOT EXISTS User_Liked (
     `username` VARCHAR(30) NOT NULL,
-    `bevId` INT(6) NOT NULL,                  
-    PRIMARY KEY (`username`, `bevId`),
-    FOREIGN KEY (`bevId`) references Bevs(`bevId`)
+    `bevName` VARCHAR(30) NOT NULL,                  
+    PRIMARY KEY (`username`, `bevName`),
+    FOREIGN KEY (`bevName`) references Bevs(`bevName`)
 );
 
 
 CREATE TABLE IF NOT EXISTS Ingredients (
-    `name` VARCHAR(30) NOT NULL,
-    `bevId` INT(6) NOT NULL,
-    PRIMARY KEY (`name`, `bevId`),
-    FOREIGN KEY (`bevId`) references Bevs(`bevId`)
+    `ingredName` VARCHAR(30) NOT NULL,
+    `bevName` VARCHAR(30) NOT NULL,
+    PRIMARY KEY (`ingredName`, `bevName`),
+    FOREIGN KEY (`bevName`) references Bevs(`bevName`)
         ON DELETE CASCADE
 );
 
 
 CREATE TABLE IF NOT EXISTS Type (
-    `name` VARCHAR(30) NOT NULL,
-    `bevId` INT(6) NOT NULL,
-    PRIMARY KEY (`name`, `bevId`),
-    FOREIGN KEY (`bevId`) references Bevs(`bevId`)
-        ON DELETE CASCADE
+    `typeName` VARCHAR(30) NOT NULL,
+    `bevName` VARCHAR(30) NOT NULL,
+    PRIMARY KEY (`typeName`, `bevName`),
+    FOREIGN KEY (`bevName`) references Bevs(`bevName`)
 );
 
 
 CREATE TABLE IF NOT EXISTS Bev_Likes (
-    `bevId` INT(6) UNIQUE NOT NULL,
+    `bevName` INT(6) UNIQUE NOT NULL,
     `likes` INT(10) DEFAULT 0,
-    PRIMARY KEY (`bevId`)
+    PRIMARY KEY (`bevName`)
 );
 
 
@@ -61,10 +59,10 @@ CREATE TRIGGER `addBevsToTables`
     AFTER INSERT ON `Bevs`
     FOR EACH ROW 
     BEGIN
-        INSERT INTO Bev_Likes(`bevId`)
-            VALUES (New.bevId);
+        INSERT INTO Bev_Likes(`bevName`)
+            VALUES (New.name);
         INSERT INTO Type
-            VALUES (New.type, New.bevId);
+            VALUES (New.type, New.bevName);
     END;
 
 
@@ -74,7 +72,7 @@ CREATE TRIGGER `userLiked`
     BEGIN
         UPDATE Bev_Likes
             SET likes = likes + 1
-            WHERE bevId = New.bevId;
+            WHERE bevName = New.bevName;
     END;
  
  
@@ -84,7 +82,7 @@ CREATE TRIGGER `userUnliked`
     BEGIN
         UPDATE Bev_Likes
             SET likes = likes - 1
-            WHERE bevId = New.bevId;
+            WHERE bevName = New.bevName;
     END;
 
 
