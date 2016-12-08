@@ -24,7 +24,7 @@ function printArr($arr){
             }
             else{
                 fclose($path);
-                $item = $item . $arr[$x]['photo'];
+                $item = $item .$path;
             }
         }
         $item = $item. '" alt=""></div><h4>'.$arr[$x]['name'].'</h4></div>';
