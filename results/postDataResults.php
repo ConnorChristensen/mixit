@@ -47,10 +47,11 @@ function generateSearchQuery(){
 
     //checks to see if the beginning of the subquery has been appended
     $startedSubquery = false;
-
+    $needParen = false;
     foreach($wants as $ingred){
         if($ingred != ""){
             if(!$startedSubquery){
+                $needParen = true;
                 $startedSubquery = true;
                 $sql = $sql." AND Bevs.bevName IN 
                         (SELECT Ingredients.bevName FROM Ingredients WHERE ingredName = '$ingred'";
@@ -60,7 +61,10 @@ function generateSearchQuery(){
             }
         }
     }
-    $sql = $sql.")";
+    if($needParen){
+        $sql = $sql.")";
+        $needParen = false;
+    }
 
     //reset the subquery flag
     $startedSubquery = false;
@@ -70,6 +74,7 @@ function generateSearchQuery(){
     foreach($dontWant as $ingred){
         if($ingred != ""){
             if(!$startedSubquery){
+                $needParen = true;
                 $startedSubquery = true;
                 $sql = $sql." AND Bevs.bevName NOT IN 
                         (SELECT Ingredients.bevName FROM Ingredients WHERE ingredName = '$ingred'";
@@ -79,7 +84,10 @@ function generateSearchQuery(){
             }
         }
     }
-    $sql = $sql.")";
+    if($needParen){
+        $sql = $sql.")";
+        $needParen = false;
+    }
     
     if($_POST['restrict']){
         $startedSubquery = false;
@@ -98,9 +106,6 @@ function generateSearchQuery(){
         }
         $sql = $sql.")";
     }
-        
-
-    
     return $sql;
 }
 
@@ -123,7 +128,7 @@ function queryDB(){
         //instructions link in $row['instructions']
         //ingredients link in $row['ingredientList']
         $query[$rowNum] = array(
-            "name" => $row['name'],
+            "name" => $row['bevName'],
             "type" => $row['type'],
             "glass" => $row['glass'],
             "photo" => $row['photo'],
@@ -221,7 +226,14 @@ function generateHTMLOfQuery(){
             $card = $card.$backUpPhoto;
         }
         else{
-            $card = $card.'../images/'.$query[$x]['photo'];
+            $path = "../".$query[$x]['photo'];
+            if(fopen($path,'r') == false){
+                $card = $card.$backUpPhoto;
+            }
+            else{
+                fclose($path);
+                $card = $card.$path;
+            }
         }
                
         $card = $card.'">
