@@ -48,7 +48,7 @@ function top10(){
         //photo path from main directory in row['photo']
         //add to array
         $topArr[$rowNum] = array(
-            "name" => $row['name'],
+            "name" => $row['bevName'],
             "photo" => $row['photo']
         );
         $rowNum++;
@@ -75,7 +75,7 @@ function top10Ingred(){
         //photo path from main directory in row['photo']
         //add to array
         $topArr[$rowNum] = array(
-            "name" => $row['name'],
+            "name" => $row['bevName'],
             "photo" => $row['photo']
         );
         $rowNum++;
@@ -102,7 +102,7 @@ function top10Type(){
         //photo path from main directory in row['photo']
         //add to array
         $topArr[$rowNum] = array(
-            "name" => $row['name'],
+            "name" => $row['bevName'],
             "photo" => $row['photo']
         );
         $rowNum++;
