@@ -62,7 +62,7 @@ CREATE TRIGGER `addBevsToTables`
         INSERT INTO Bev_Likes(`bevName`)
             VALUES (New.bevName);
         INSERT INTO Type
-            VALUES (New.typeName, New.bevName);
+            VALUES (New.type, New.bevName);
     END;
 
 
@@ -82,7 +82,7 @@ CREATE TRIGGER `userUnliked`
     BEGIN
         UPDATE Bev_Likes
             SET likes = likes - 1
-            WHERE bevName = New.bevName;
+            WHERE bevName = deleted.bevName;
     END;
 
 
