@@ -10,6 +10,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <title>Results</title>
     <link rel="stylesheet" href="results.css">
 </head>
