@@ -38,6 +38,19 @@
         
         
     </div>
+    <button onclick="requestLogOut()" id="logOut">Log Out</button>
+        <?php
+        //Inteded to work with logOut only
+        //if there was a get request and the key call is inside get
+        if($_SERVER['REQUEST_METHOD']=="GET" && array_key_exists('call', $_GET)){
+            //get the function requesting to be called
+            $function = $_GET['call'];
+            //if it exists, call it
+            if(function_exists($function)){
+                call_user_func($function);
+            }
+        }
+    ?>
 </body>
 
 </html>
