@@ -67,6 +67,18 @@ body {
             background: $selectionBlue;
         }
     }
+
+    .control {
+        width: 100vw;
+    }
+    input[type="checkbox"] {
+//        display: none;
+        width: 20px;
+        display: block;
+        margin: 10px auto;
+        border-radius: 0;
+        -webkit-apperance: none;
+    }
 }
 
 $item-width: 15vmin;
@@ -81,16 +93,37 @@ $item-min-height: 120px;
         position: relative;
         overflow: hidden;
         background: rgba(0, 0, 0, 0.6);
+
+        height: 20vmin;
+        .leftClick, .rightClick {
+            position: absolute;
+            height: 20vmin;
+            width: 50px;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 10;
+            cursor: pointer;
+            transition: .5s;
+            &:hover {
+                background: rgba(0, 255, 186, 0.58);
+                transition: .5s;
+            }
+        }
+        .leftClick {
+            left: 0;
+        }
+        .rightClick {
+            right: 0;
+        }
         .scrollContainer {
 //            position: absolute;
             width: 2000px;
             .item {
-                float: left;
+//                display: inline-block;
                 margin: 10px;
                 background: #ffffff;
-                width: $item-width;
-                height: $item-height;
-                min-width: $item-min-width;
+//                width: $item-width;
+//                height: $item-height;
+//                min-width: $item-min-width;
                 min-height: $item-min-height;
                 .imgContainer {
                     min-height: $item-min-height*.8;
