@@ -30,3 +30,22 @@
         }
     }
 }
+
+#logOut {
+    position: fixed;
+    bottom: 0;
+    background: $semiClearBlack;
+    border: none;
+    width: 100vw;
+    margin: 0;
+    font-size: 16pt;
+    padding: 10px 0;
+    cursor: pointer;
+    color: white;
+    font-weight: 100;
+    @include transitionBackground(.5s);
+    &:hover {
+        @include transitionBackground(.5s);
+        background: $selectionBlue;
+    }
+}
