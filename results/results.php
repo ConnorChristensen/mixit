@@ -56,7 +56,7 @@
     //If already logged in, include log out button
     if(array_key_exists('login', $_SESSION)){
         if($_SESSION['login'] == 1){
-            echo "<button onclick="requestLogOut()" id="logOut">Log Out</button>";
+            echo '<button onclick="requestLogOut()" id="logOut">Log Out</button>';
         }
     }
     ?>
