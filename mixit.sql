@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS Bevs (
     `bevName` VARCHAR(30) UNIQUE NOT NULL,
     `type` VARCHAR(30),
     `glass` VARCHAR(20),
-    `photo` VARCHAR(30),
+    `photo` VARCHAR(80),
     `description` VARCHAR(50),
     `instructions` VARCHAR(50),
     `ingredientList` VARCHAR(50),

@@ -1,6 +1,6 @@
 INSERT INTO Bevs (`bevName`, `type`, `glass`, `photo`, `description`, `instructions`, `ingredientList`)
 VALUES 
-	('B & B', 'cocktail', 'brandy balloon', 'images/drinks/B_&_B.jpg', 'description/B_&_B.txt', 'instructions/B_&_B.txt', 'ingredients/B_&_B.txt'),
+	('b & b', 'cocktail', 'brandy balloon', 'images/drinks/b_&_b.jpg', 'description/b_&_b.txt', 'instructions/b_&_b.txt', 'ingredients/b_&_b.txt'),
 	('death in the afternoon', 'cocktail', '8oz hi-ball glass', 'images/drinks/death_in_the_afternoon.jpg', 'description/death_in_the_afternoon.txt', 'instructions/death_in_the_afternoon.txt', 'ingredients/death_in_the_afternoon.txt'),
 	('jaffa', 'non-alcoholic', '6oz old fashioned glass', 'images/drinks/jaffa.jpg', 'description/jaffa.txt', 'instructions/jaffa.txt', 'ingredients/jaffa.txt'),
 	('stinger', 'cocktail', '3oz cocktail glass', 'images/drinks/stinger.jpg', 'description/stinger.txt', 'instructions/stinger.txt', 'ingredients/stinger.txt'),
@@ -13,10 +13,18 @@ VALUES
 	('iron man', 'non-alcoholic', '12oz hi-ball glass', 'images/drinks/iron_man.jpg', 'description/iron_man.txt', 'instructions/iron_man.txt', 'ingredients/iron_man.txt'),
 	('aqua thunder', 'cocktail', '10oz hi-ball glass', 'images/drinks/aqua_thunder.jpg', 'description/aqua_thunder.txt', 'instructions/aqua_thunder.txt', 'ingredients/aqua_thunder.txt'),
 	('banana colada', 'cocktail', '10oz fancy glass', 'images/drinks/banana_colada.jpg', 'description/banana_colada.txt', 'instructions/banana_colada.txt', 'ingredients/banana_colada.txt'),
-	('bananarama', 'cocktail', '5oz coctail glass', 'images/drinks/bananarama.jpg', 'description/bananarama.txt', 'instructions/bananarama.txt', 'ingredients/bananarama.txt');
+	('bananarama', 'cocktail', '5oz coctail glass', 'images/drinks/bananarama.jpg', 'description/bananarama.txt', 'instructions/bananarama.txt', 'ingredients/bananarama.txt'),
+	('black russian', 'cocktail', '7oz old fashioned glass', 'images/drinks/black_russian.jpg', 'description/black_russian.txt', 'instructions/black_russian.txt', 'ingredients/black_russian.txt'),
+	('bloody mary', 'cocktail', '10oz hi-ball glass', 'images/drinks/bloody_mary.jpg', 'description/bloody_mary.txt', 'instructions/bloody_mary.txt', 'ingredients/bloody_mary.txt'),
+	('blue bayou', 'cocktail', '10oz hi-ball glass', 'images/drinks/blue_bayou.jpg', 'description/blue_bayou.txt', 'instructions/blue_bayou.txt', 'ingredients/blue_bayou.txt'),
+	('bosom caresser', 'cockatil', '5oz champagne saucer', 'images/drinks/bosom_caresser.jpg', 'description/bosom_caresser.txt', 'instructions/bosom_caresser.txt', 'ingredients/bosom_caresser.txt'),
+	('grasshopper', 'cocktail', '5oz champagne saucer', 'images/drinks/grasshopper.jpg', 'description/grasshopper.txt', 'instructions/grasshopper.txt', 'ingredients/grasshopper.txt'),
+	('violet slumber', 'shooter', 'cordial', 'images/drinks/violet_slumber.jpg', 'description/violet_slumber.txt', 'instructions/violet_slumber.txt', 'ingredients/violet_slumber.txt'),
+	('vodka-tini', 'shooter', 'codial', 'images/drinks/vodka-tini.jpg', 'description/vodka-tini.txt', 'instructions/vodka-tini.txt', 'ingredients/vodka-tini.txt'),
+	('after eight', 'shooter', 'cordial', 'images/drinks/after_eight.jpg', 'description/after_eight.txt', 'instructions/after_eight.txt', 'ingredients/after_eight.txt');
 
 INSERT INTO Ingredients (`ingredName`, `bevName`)
-VALUES ('martell cognac', 'B & B'), ('benedictine', 'B & B');
+VALUES ('martell cognac', 'b & b'), ('benedictine', 'b & b');
 
 INSERT INTO Ingredients (`ingredName`, `bevName`)
 VALUES ('pernod', 'death in the afternoon'), ('champagne', 'death in the afternoon');
@@ -55,5 +63,29 @@ INSERT INTO Ingredients (`ingredName`, `bevName`)
 VALUES ('bacardi', 'banana colada'), ('sugar syrup', 'banana colada'), ('coconut cream', 'banana colada'), ('cream', 'banana colada'), ('pineapple juice', 'banana colada'), ('banana', 'banana colada');
 
 INSERT INTO Ingredients (`ingredName`, `bevName`)
-VALUES ('vodka', 'bananarama'), ('kaluah', 'bananarama'), ('baileys irish cream', 'bananarama'), ('banana', 'bananarama'), ('cream', 'bananarama');
+VALUES ('vodka', 'bananarama'), ('kahlua', 'bananarama'), ('baileys irish cream', 'bananarama'), ('banana', 'bananarama'), ('cream', 'bananarama');
+
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('vodka', 'black russian'), ('kahlua', 'black russian');
+
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('vodka', 'bloody mary'), ('worchestershire sauce', 'bloody mary'), ('tomato juice', 'bloody mary'), ('tobasco', 'bloody mary'), ('salt and pepper', 'bloody mary'), ('celery', 'bloody mary');
+
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('galliano', 'blue bayou'), ('dry vermouth', 'blue bayou'), ('gin', 'blue bayou'), ('blue curacao', 'blue bayou'), ('lemonade', 'blue bayou');
+
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('brandy', 'bosom caresser'), ('orange liquer', 'bosom caresser'), ('grenadine', 'bosom caresser'), ('egg yolk', 'bosom caresser');
+
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('creme de menthe', 'grasshopper'), ('white creme de cacao', 'grasshopper'), ('cream', 'grasshopper');
+
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('malibu', 'violet slumber'), ('parfait amour', 'violet slumber'), ('orange juice', 'violet slumber');
+
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('vodka', 'vodka-tini'), ('dry vermouth', 'vodka-tini');
+
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('kahlua', 'after eight'), ('creme de menthe', 'after eight'), ('baileys irish cream', 'after eight'), ('southern comfort', 'after eight');
 
