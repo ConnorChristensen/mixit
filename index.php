@@ -68,7 +68,7 @@ session_start();
                 <p>This site is where you can take ingredients that you already have and find out what kinds of mixed drinks you can make from them.</p>
             </div>
             <div class="what">
-                <2>Instructions</2>
+                <h2>Instructions</h2>
                 <p>
                     In the haves section, type in the ingredients that you have to make a drink. If there are any ingredients that you know you do not want to have in your drink, include them in the don't want section. If you would like to make your search not exclusive to the ingredients that you listed, check the box. This will make it so that all of the drinks that are returned contain the ingredients you have, but they will have others as well. Search by main ingredients, garnishes will show up in the ingredients lists but are not searchable.
                 </p>
