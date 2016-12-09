@@ -127,6 +127,23 @@ $item-min-height: 120px;
     }
 }
 
+#logOut {
+    position: fixed;
+    bottom: 0;
+    background: $semiClearBlack;
+    border: none;
+    width: 100vw;
+    margin: 0;
+    font-size: 16pt;
+    padding: 10px 0;
+    cursor: pointer;
+    @include transitionBackground(.5s);
+    &:hover {
+        @include transitionBackground(.5s);
+        background: $selectionBlue;
+    }
+}
+
 @media screen and (min-width: 800px) {
 }
 
