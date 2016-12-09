@@ -15,12 +15,12 @@ function printArr($arr){
         $item = '<div class="item"><div class="imgContainer"><img src="';
         //if there is no photo path, use this image
         if($arr[$x]["photo"] == null){
-            $item = $item.'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
+            $item = $item.'http://www.kalahandi.info/wp-content/uploads/2016/05/sorry-image-not-available.png';
         }
         else{
             $path = "../".$arr[$x]['photo'];
             if(fopen($path,'r') == false){
-                $item = $item.'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
+                $item = $item.'http://www.kalahandi.info/wp-content/uploads/2016/05/sorry-image-not-available.png';
             }
             else{
                 fclose($path);

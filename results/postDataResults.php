@@ -255,7 +255,7 @@ function generateHTMLOfQuery(){
         $ingredients = readIngredients($query[$x]['ingredients']);
         $description = readDescriptions($query[$x]['description']);
         $instructions = readInstructions($query[$x]['instructions']);
-        $backUpPhoto = 'https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg';
+        $backUpPhoto = 'http://www.kalahandi.info/wp-content/uploads/2016/05/sorry-image-not-available.png';
         
         
         //var containing the drink card
