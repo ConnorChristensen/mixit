@@ -31,27 +31,14 @@
         <div>Back</div>
     </a>
     <div class="resultsContainer">
-        
         <?php
-        
+        print_r($_POST);
         generateHTMLOfQuery();
         
         ?>
         
         
     </div>
-    <script>
-    function requestLogOut(){
-        jQuery.ajax({
-            type: "GET",
-            url: "results.php",
-            data: "call=logOut",
-            success: function(){
-                window.location.reload();
-            }
-        });
-    }
-    </script>
     <?php
     //If already logged in, include log out button
     if(array_key_exists('login', $_SESSION)){
