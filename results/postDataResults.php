@@ -1,5 +1,20 @@
 <?php
 
+//checks to see if the user has liked that drink
+//true: they have
+//false: they haven't
+function likedAlready($username, $bevName){
+    $sql = "SELECT * FROM User_Liked WHERE
+            username = '$username' AND bevName = '$bevName'";
+    $retval = mysqli_query($GLOBALS['conn'], $sql);
+    if($retval && mysqli_num_rows($retval)){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 //passes in bool value
 //if true: adds the users like to the database
 //else: removes the users like from the database
@@ -24,11 +39,17 @@ function likeBev($like){
     $sql = "";
     if($like){
         //like the beverage
-        $sql = "INSERT INTO User_Liked VALUES ('$username', '$bevName')";
+        //check to see the user hasn't already liked it
+        if(!likedAlready($username, $bevName)){
+            $sql = "INSERT INTO User_Liked VALUES ('$username', '$bevName')";
+        }
     }
     else{
         //unlike the beverage
-        $sql = "DELETE FROM User_Liked WHERE username = '$username' AND bevName = '$bevName'";
+        //check to see the user has actually liked it
+        if(likedAlready($username, $bevName)){
+            $sql = "DELETE FROM User_Liked WHERE username = '$username' AND bevName = '$bevName'";
+        }
     }
     mysqli_query($GLOBALS['conn'], $sql);
 }
