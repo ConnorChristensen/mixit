@@ -132,7 +132,7 @@ sub main() {
             }
             
             #count of garnishes is at 31 if it is a digit
-            if ($splitLine[31] =~ /\d/) {
+            if ((scalar @splitLine >= 31) and ($splitLine[31] =~ /\d/)) {
                 #for the ammount of that digit, loop through and print results
                 for (my $t = 32; $t < ($splitLine[31]*2)+32; $t+= 2) {
                     print ingredientsOutput "$splitLine[$t] $splitLine[$t+1]\n";
