@@ -44,10 +44,6 @@ $(document).ready(function() {
         }
     });
     
-<<<<<<< Updated upstream
-    
-    
-=======
     //set a var that will contain the number of boxes
     var numBoxes = 10;
     
@@ -86,5 +82,4 @@ $(document).ready(function() {
             $(this).siblings(".scrollContainer").css("left", "0px");
         }
     });
->>>>>>> Stashed changes
 });

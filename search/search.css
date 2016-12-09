@@ -132,7 +132,12 @@ body {
     .topTens .list .rightClick {
       right: 0; }
     .topTens .list .scrollContainer {
-      width: 2000px; }
+      position: absolute;
+      display: flex;
+      align-items: center;
+      left: 0;
+      transition: 1s;
+      width: 0px; }
       .topTens .list .scrollContainer .item {
         margin: 10px;
         background: #ffffff;
