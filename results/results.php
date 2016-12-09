@@ -42,7 +42,7 @@
     function requestLogOut(){
         jQuery.ajax({
             type: "GET",
-            url: "search.php",
+            url: "results.php",
             data: "call=logOut",
             success: function(){
                 window.location.reload();
