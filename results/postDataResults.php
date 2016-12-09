@@ -18,9 +18,10 @@ function likedAlready($username, $bevName){
 //passes in bool value
 //if true: adds the users like to the database
 //else: removes the users like from the database
-function likeBev($like){
+function likeBev(){
     $username = "";
     $bevName = "";
+    $like = null;
     //if there was an actual bev name passed
     if(array_key_exists('bevName', $_POST) && $_POST['bevName'] != ""){
         $bevName = $_POST['bevName'];
@@ -29,6 +30,23 @@ function likeBev($like){
     else{
         return;
     }
+    //if there was an actual choice make
+    if(array_key_exists('choice', $_POST) && $_POST['choice'] != ""){
+        if($_POST['choice'] == "like"){
+            //user is liking a drink
+            $like = true;
+        }
+        else{
+            //user is disliking a drink
+            $like = false;
+        }
+        //reset choice to be empty string
+        $_POST['choice'] = "";
+    }
+    else{
+        return;
+    }
+    
     //if the user is properly logged in
     if(array_key_exists('username', $_SESSION) && $_SESSION['username'] != ""){
         $username = $_SESSION['username'];
