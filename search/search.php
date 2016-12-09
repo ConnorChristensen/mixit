@@ -156,7 +156,14 @@ if(array_key_exists('searched', $_SESSION)){
         });
     }
     </script>
-    <button onclick="requestLogOut()" id="logOut">Log Out</button>
+    <?php
+    //If already logged in, include log out button
+    if(array_key_exists('login', $_SESSION)){
+        if($_SESSION['login'] == 1){
+            echo "<button onclick="requestLogOut()" id="logOut">Log Out</button>";
+        }
+    }
+    ?>
         <?php
         //Inteded to work with logOut only
         //if there was a get request and the key call is inside get
