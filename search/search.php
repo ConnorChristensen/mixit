@@ -74,29 +74,29 @@ if(array_key_exists('searched', $_SESSION)){
 
        <?php
        //if user logged in, print their liked bevs
-       if(array_key_exists('login', $_SESSION)){
-            if($_SESSION['login'] == 1 && array_key_exists('username', $_SESSION)){
-                echo '<h2>Liked Drinks</h2>';
-                $liked = getUserLiked($_SESSION['username']);
-                //if they've liked something, print liked
-                //otherwise tell them they haven't liked things yet!
-                if(count($liked) > 0){
-                    
-                    
-                    echo '<div class="list">';
-                    echo '<div class="scrollContainer">';
-                    //output info for favorites using template
-                    printArr($liked);
-                    echo '</div>';
-                    echo '</div>';
-                    
-                    
-                }
-                else{
-                    echo "<h3>You haven't liked anything yet!</h3>";
-                }
-            }
-       }
+//       if(array_key_exists('login', $_SESSION)){
+//            if($_SESSION['login'] == 1 && array_key_exists('username', $_SESSION)){
+//                echo '<h2>Liked Drinks</h2>';
+//                $liked = getUserLiked($_SESSION['username']);
+//                //if they've liked something, print liked
+//                //otherwise tell them they haven't liked things yet!
+//                if(count($liked) > 0){
+//                    
+//                    
+//                    echo '<div class="list">';
+//                    echo '<div class="scrollContainer">';
+//                    //output info for favorites using template
+//                    printArr($liked);
+//                    echo '</div>';
+//                    echo '</div>';
+//                    
+//                    
+//                }
+//                else{
+//                    echo "<h3>You haven't liked anything yet!</h3>";
+//                }
+//            }
+//       }
        ?>
 
         <h2>Top 10</h2>
