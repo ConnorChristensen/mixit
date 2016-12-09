@@ -1,5 +1,20 @@
 <?php
 
+//checks to see if the user has liked that drink
+//true: they have
+//false: they haven't
+function likedAlready($username, $bevName){
+    $sql = "SELECT * FROM User_Liked WHERE
+            username = '$username' AND bevName = '$bevName'";
+    $retval = mysqli_query($GLOBALS['conn'], $sql);
+    if($retval && mysqli_num_rows($retval)){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 //passes in bool value
 //if true: adds the users like to the database
 //else: removes the users like from the database
@@ -24,11 +39,17 @@ function likeBev($like){
     $sql = "";
     if($like){
         //like the beverage
-        $sql = "INSERT INTO User_Liked VALUES ('$username', '$bevName')";
+        //check to see the user hasn't already liked it
+        if(!likedAlready($username, $bevName)){
+            $sql = "INSERT INTO User_Liked VALUES ('$username', '$bevName')";
+        }
     }
     else{
         //unlike the beverage
-        $sql = "DELETE FROM User_Liked WHERE username = '$username' AND bevName = '$bevName'";
+        //check to see the user has actually liked it
+        if(likedAlready($username, $bevName)){
+            $sql = "DELETE FROM User_Liked WHERE username = '$username' AND bevName = '$bevName'";
+        }
     }
     mysqli_query($GLOBALS['conn'], $sql);
 }
@@ -39,7 +60,6 @@ function likeBev($like){
 //returns the sql query needed to generate the search results
 function generateSearchQuery(){
     $sql = "SELECT DISTINCT(Bevs.bevName), type, glass, photo, description, instructions, ingredientList FROM Bevs, Ingredients WHERE Bevs.bevName = Ingredients.bevName";
-    $wants = null;
 
         
     //get the wants
@@ -47,10 +67,11 @@ function generateSearchQuery(){
 
     //checks to see if the beginning of the subquery has been appended
     $startedSubquery = false;
-
+    $needParen = false;
     foreach($wants as $ingred){
         if($ingred != ""){
             if(!$startedSubquery){
+                $needParen = true;
                 $startedSubquery = true;
                 $sql = $sql." AND Bevs.bevName IN 
                         (SELECT Ingredients.bevName FROM Ingredients WHERE ingredName = '$ingred'";
@@ -60,7 +81,10 @@ function generateSearchQuery(){
             }
         }
     }
-    $sql = $sql.")";
+    if($needParen){
+        $sql = $sql.")";
+        $needParen = false;
+    }
 
     //reset the subquery flag
     $startedSubquery = false;
@@ -70,6 +94,7 @@ function generateSearchQuery(){
     foreach($dontWant as $ingred){
         if($ingred != ""){
             if(!$startedSubquery){
+                $needParen = true;
                 $startedSubquery = true;
                 $sql = $sql." AND Bevs.bevName NOT IN 
                         (SELECT Ingredients.bevName FROM Ingredients WHERE ingredName = '$ingred'";
@@ -79,28 +104,33 @@ function generateSearchQuery(){
             }
         }
     }
-    $sql = $sql.")";
+    if($needParen){
+        $sql = $sql.")";
+        $needParen = false;
+    }
     
-    if($_POST['restrict']){
+    if(!array_key_exists('unrestrict', $_POST) || $_POST['unrestrict'] == ''){
+        $_POST['unrestrict'] = '';
         $startedSubquery = false;
         //restrict query to only the ingredients mentioned
-        foreach($want as $ingred){
+        foreach($wants as $ingred){
             if($ingred != ""){
                 if(!$startedSubquery){
                     $startedSubquery = true;
-                    $sql = $sql." AND Bevs.bevName IN 
-                            (SELECT Ingredients.bevName FROM Ingredients WHERE NOT (ingredName = '$ingred')";
+                    $sql = $sql." AND Bevs.bevName NOT IN 
+                            (SELECT Ingredients.bevName FROM Ingredients WHERE ingredName != '$ingred'";
+                    $needParen = true;
                 }
                 else{
-                    $sql = $sql." OR ingredName = '$ingred'";
+                    $sql = $sql." AND ingredName != '$ingred'";
                 }
             }
         }
-        $sql = $sql.")";
+        if($needParen){
+            $sql = $sql.")";
+            $needParen = false;
+        }
     }
-        
-
-    
     return $sql;
 }
 
@@ -123,7 +153,7 @@ function queryDB(){
         //instructions link in $row['instructions']
         //ingredients link in $row['ingredientList']
         $query[$rowNum] = array(
-            "name" => $row['name'],
+            "name" => $row['bevName'],
             "type" => $row['type'],
             "glass" => $row['glass'],
             "photo" => $row['photo'],
@@ -221,7 +251,14 @@ function generateHTMLOfQuery(){
             $card = $card.$backUpPhoto;
         }
         else{
-            $card = $card.'../images/'.$query[$x]['photo'];
+            $path = "../".$query[$x]['photo'];
+            if(fopen($path,'r') == false){
+                $card = $card.$backUpPhoto;
+            }
+            else{
+                fclose($path);
+                $card = $card.$path;
+            }
         }
                
         $card = $card.'">

@@ -55,5 +55,5 @@ INSERT INTO Ingredients (`ingredName`, `bevName`)
 VALUES ('bacardi', 'banana colada'), ('sugar syrup', 'banana colada'), ('coconut cream', 'banana colada'), ('cream', 'banana colada'), ('pineapple juice', 'banana colada'), ('banana', 'banana colada');
 
 INSERT INTO Ingredients (`ingredName`, `bevName`)
-VALUES ('vodka', 'bananarama'), ('kahlua', 'bananarama'), ('bailerys irish cream', 'bananarama'), ('banana', 'bananarama'), ('cream', 'bananarama');
+VALUES ('vodka', 'bananarama'), ('kaluah', 'bananarama'), ('baileys irish cream', 'bananarama'), ('banana', 'bananarama'), ('cream', 'bananarama');
 

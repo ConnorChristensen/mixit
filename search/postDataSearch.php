@@ -18,7 +18,14 @@ function printArr($arr){
             $item = $item.'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
         }
         else{
-            $item = $item . $arr[$x]['photo'];
+            $path = "../".$arr[$x]['photo'];
+            if(fopen($path,'r') == false){
+                $item = $item.'http://s2.dmcdn.net/Ub1O8/1280x720-mCQ.jpg';
+            }
+            else{
+                fclose($path);
+                $item = $item .$path;
+            }
         }
         $item = $item. '" alt=""></div><h4>'.$arr[$x]['name'].'</h4></div>';
         echo $item;
@@ -41,7 +48,7 @@ function top10(){
         //photo path from main directory in row['photo']
         //add to array
         $topArr[$rowNum] = array(
-            "name" => $row['name'],
+            "name" => $row['bevName'],
             "photo" => $row['photo']
         );
         $rowNum++;
@@ -68,7 +75,7 @@ function top10Ingred(){
         //photo path from main directory in row['photo']
         //add to array
         $topArr[$rowNum] = array(
-            "name" => $row['name'],
+            "name" => $row['bevName'],
             "photo" => $row['photo']
         );
         $rowNum++;
@@ -95,7 +102,7 @@ function top10Type(){
         //photo path from main directory in row['photo']
         //add to array
         $topArr[$rowNum] = array(
-            "name" => $row['name'],
+            "name" => $row['bevName'],
             "photo" => $row['photo']
         );
         $rowNum++;
@@ -108,7 +115,7 @@ function top10Type(){
 function getUserLiked($username){
     //get user's liked
     $sql = "SELECT `bevName`, `photo` FROM `Bevs` WHERE Bevs.bevName IN (
-	           SELECT User_Liked.bevId FROM User_Liked
+	           SELECT User_Liked.bevName FROM User_Liked
                     WHERE User_Liked.username = '$username')";
     $retval = mysqli_query($GLOBALS['conn'], $sql);
     $liked = array();
@@ -119,7 +126,7 @@ function getUserLiked($username){
         //photo path from main directory in row['photo']
         //add to array
         $liked[$rowNum] = array(
-            "name" => $row['name'],
+            "name" => $row['bevName'],
             "photo" => $row['photo']
         );
         $rowNum++;

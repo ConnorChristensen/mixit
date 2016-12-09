@@ -34,16 +34,19 @@ if(array_key_exists('searched', $_SESSION)){
         //check that the data is valid and query appropriately
         include('postDataSearch.php');
     ?>
+    
     <a href="../index.php" class="back">
         <div>Back</div>
     </a>
    
     <div class="wrapper">
         <div class="search">
+<!--
             <div class="by">
                 <h2 class="name">Name</h2>
                 <h2 class="ingrediants">Ingrediants</h2>
             </div>
+-->
             <form method="POST" action="../results/results.php">
                 <div class="inputFeilds">
                     <div class="have">
@@ -59,11 +62,16 @@ if(array_key_exists('searched', $_SESSION)){
                         <input type="text" name="dontWant[]" placeholder="Drink">
                     </div>
                 </div>
+                <label class="control">
+                    <input type="checkbox" name="unrestrict"/>
+                    Click here to allow any drink that contains items in the "I have" category
+                </label>
                 <input type="submit" name="submit" value="submit" id="submit">
             </form>
         </div>
     </div>
     <div class="topTens">
+
        <?php
        //if user logged in, print their liked bevs
        if(array_key_exists('login', $_SESSION)){
@@ -73,11 +81,16 @@ if(array_key_exists('searched', $_SESSION)){
                 //if they've liked something, print liked
                 //otherwise tell them they haven't liked things yet!
                 if(count($liked) > 0){
+                    
+                    
                     echo '<div class="list">';
-
+                    echo '<div class="scrollContainer">';
                     //output info for favorites using template
                     printArr($liked);
                     echo '</div>';
+                    echo '</div>';
+                    
+                    
                 }
                 else{
                     echo "<h3>You haven't liked anything yet!</h3>";
@@ -85,6 +98,7 @@ if(array_key_exists('searched', $_SESSION)){
             }
        }
        ?>
+
         <h2>Top 10</h2>
         <div class="list">
             <div class="scrollContainer">
@@ -124,7 +138,31 @@ if(array_key_exists('searched', $_SESSION)){
             </div>
         </div>
     </div>
-    
+    <script>
+    function requestLogOut(){
+        jQuery.ajax({
+            type: "GET",
+            url: "search.php",
+            data: "call=logOut",
+            success: function(){
+                window.location.reload();
+            }
+        });
+    }
+    </script>
+    <button onclick="requestLogOut()" id="logOut">Log Out</button>
+        <?php
+        //Inteded to work with logOut only
+        //if there was a get request and the key call is inside get
+        if($_SERVER['REQUEST_METHOD']=="GET" && array_key_exists('call', $_GET)){
+            //get the function requesting to be called
+            $function = $_GET['call'];
+            //if it exists, call it
+            if(function_exists($function)){
+                call_user_func($function);
+            }
+        }
+    ?>
 </body>
 
 </html>

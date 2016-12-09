@@ -28,6 +28,23 @@
       transition: background 1s ease;
       background: rgba(0, 206, 255, 0.6); }
 
+#logOut {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  width: 100vw;
+  margin: 0;
+  font-size: 16pt;
+  padding: 10px 0;
+  cursor: pointer;
+  color: white;
+  font-weight: 100;
+  transition: background 0.5s ease; }
+  #logOut:hover {
+    transition: background 0.5s ease;
+    background: rgba(0, 206, 255, 0.6); }
+
 * {
   font-weight: 100;
   font-family: 'Lato', sans-serif;
@@ -57,8 +74,6 @@ body {
         padding: 20px 0;
         width: 50%;
         text-align: center; }
-  .wrapper .inputFeilds .have .dontWant {
-    width: 10px; }
   .wrapper h2 {
     text-align: center; }
   .wrapper input {
@@ -83,8 +98,6 @@ body {
     .wrapper input[type="submit"]:hover {
       transition: background 0.5s ease;
       background: rgba(0, 206, 255, 0.6); }
-<<<<<<< Updated upstream
-=======
   .wrapper .control {
     width: 100vw; }
   .wrapper input[type="checkbox"] {
@@ -93,7 +106,6 @@ body {
     margin: 10px auto;
     border-radius: 0;
     -webkit-apperance: none; }
->>>>>>> Stashed changes
 
 .topTens {
   margin: 0;
@@ -102,9 +114,6 @@ body {
   .topTens .list {
     position: relative;
     overflow: hidden;
-<<<<<<< Updated upstream
-    background: rgba(0, 0, 0, 0.6); }
-=======
     background: rgba(0, 0, 0, 0.6);
     height: 20vmin; }
     .topTens .list .leftClick, .topTens .list .rightClick {
@@ -122,14 +131,9 @@ body {
       left: 0; }
     .topTens .list .rightClick {
       right: 0; }
->>>>>>> Stashed changes
     .topTens .list .scrollContainer {
       width: 2000px; }
       .topTens .list .scrollContainer .item {
-<<<<<<< Updated upstream
-        float: left;
-=======
->>>>>>> Stashed changes
         margin: 10px;
         background: #ffffff;
         min-height: 120px; }

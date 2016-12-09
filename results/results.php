@@ -10,6 +10,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <title>Results</title>
     <link rel="stylesheet" href="results.css">
 </head>
@@ -38,6 +39,18 @@
         
         
     </div>
+    <script>
+    function requestLogOut(){
+        jQuery.ajax({
+            type: "GET",
+            url: "results.php",
+            data: "call=logOut",
+            success: function(){
+                window.location.reload();
+            }
+        });
+    }
+    </script>
     <button onclick="requestLogOut()" id="logOut">Log Out</button>
         <?php
         //Inteded to work with logOut only

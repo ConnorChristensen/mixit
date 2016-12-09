@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS Users (
     `email` VARCHAR(60) NOT NULL,
     `status` VARCHAR(60) DEFAULT "user",
     PRIMARY KEY (`username`),
-    FOREIGN KEY (`username`) references Fav_Bevs(`username`)
+    FOREIGN KEY (`username`) references User_Liked(`username`)
         ON UPDATE CASCADE
         ON DELETE CASCADE
 );
@@ -49,45 +49,38 @@ CREATE TABLE IF NOT EXISTS Type (
 
 
 CREATE TABLE IF NOT EXISTS Bev_Likes (
-    `bevName` INT(6) UNIQUE NOT NULL,
+    `bevName` VARCHAR(30) NOT NULL,
     `likes` INT(10) DEFAULT 0,
     PRIMARY KEY (`bevName`)
 );
 
 
-CREATE TRIGGER `addBevsToTables` 
-    AFTER INSERT ON `Bevs`
-    FOR EACH ROW 
-    BEGIN
-        INSERT INTO Bev_Likes(`bevName`)
-            VALUES (New.bevName);
-        INSERT INTO Type
-            VALUES (New.typeName, New.bevName);
-    END;
+CREATE VIEW BevsUsersLike AS
+    SELECT username, User_Liked.bevName, photo
+    FROM User_Liked, Bevs
+    WHERE User_Liked.bevName = Bevs.bevName;
 
 
-CREATE TRIGGER `userLiked`
-    AFTER INSERT ON `User_Liked`
-    FOR EACH ROW
-    BEGIN
-        UPDATE Bev_Likes
-            SET likes = likes + 1
-            WHERE bevName = New.bevName;
-    END;
- 
- 
-CREATE TRIGGER `userUnliked`
-    AFTER DELETE ON `User_Liked`
-    FOR EACH ROW
-    BEGIN
-        UPDATE Bev_Likes
-            SET likes = likes - 1
-            WHERE bevName = New.bevName;
-    END;
+DELIMITER ||
+CREATE TRIGGER addBevsToTables AFTER INSERT ON Bevs
+FOR EACH ROW
+BEGIN
+    INSERT INTO Bev_Likes (bevName) VALUES (New.bevName);
+    INSERT INTO Type VALUES (New.type, New.bevName);
+END||
 
+CREATE TRIGGER userLiked AFTER INSERT ON User_Liked
+FOR EACH ROW
+BEGIN
+    UPDATE Bev_Likes
+        SET likes = likes + 1
+        WHERE bevName = New.bevName;
+END||
 
-
-
-
-
-
+CREATE TRIGGER userUnliked AFTER DELETE ON User_Liked
+FOR EACH ROW
+BEGIN
+    UPDATE Bev_Likes
+        SET likes = likes - 1
+        WHERE bevName = old.bevName;
+END||
