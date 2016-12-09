@@ -55,6 +55,12 @@ CREATE TABLE IF NOT EXISTS Bev_Likes (
 );
 
 
+CREATE VIEW BevsUsersLike AS
+    SELECT username, User_Liked.bevName, photo
+    FROM User_Liked, Bevs
+    WHERE User_Liked.bevName = Bevs.bevName;
+
+
 DELIMITER ||
 CREATE TRIGGER addBevsToTables AFTER INSERT ON Bevs
 FOR EACH ROW
