@@ -40,6 +40,7 @@ function likeBev(){
             //user is disliking a drink
             $like = false;
         }
+        $_POST['choice'] = "";
     }
     else{
         return;
