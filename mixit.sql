@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS Users (
     `email` VARCHAR(60) NOT NULL,
     `status` VARCHAR(60) DEFAULT "user",
     PRIMARY KEY (`username`),
-    FOREIGN KEY (`username`) references Fav_Bevs(`username`)
+    FOREIGN KEY (`username`) references User_Liked(`username`)
         ON UPDATE CASCADE
         ON DELETE CASCADE
 );
@@ -53,6 +53,12 @@ CREATE TABLE IF NOT EXISTS Bev_Likes (
     `likes` INT(10) DEFAULT 0,
     PRIMARY KEY (`bevName`)
 );
+
+
+CREATE VIEW BevsUsersLike AS
+    SELECT username, User_Liked.bevName, photo
+    FROM User_Liked, Bevs
+    WHERE User_Liked.bevName = Bevs.bevName;
 
 
 DELIMITER ||
