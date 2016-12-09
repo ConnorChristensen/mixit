@@ -283,7 +283,7 @@ function generateHTMLOfQuery(){
                 </div>
                     <h2>'.$query[$x]['name'].'</h2>
                     <h4>Ingredients</h4>';
-                 
+
         //get all the ingredients
         $card = $card.'<ul>';
         for($y=0; $y<count($ingredients); $y++){
