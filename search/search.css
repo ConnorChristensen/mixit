@@ -112,11 +112,32 @@ body {
   .topTens .list {
     position: relative;
     overflow: hidden;
-    background: rgba(0, 0, 0, 0.6); }
+    background: rgba(0, 0, 0, 0.6);
+    height: 140px; }
+    .topTens .list .leftClick, .topTens .list .rightClick {
+      position: absolute;
+      height: 140px;
+      width: 50px;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 10;
+      cursor: pointer;
+      transition: .5s; }
+      .topTens .list .leftClick:hover, .topTens .list .rightClick:hover {
+        background: rgba(0, 255, 186, 0.58);
+        transition: .5s; }
+    .topTens .list .leftClick {
+      left: 0; }
+    .topTens .list .rightClick {
+      right: 0; }
     .topTens .list .scrollContainer {
-      width: 2000px; }
+      position: absolute;
+      display: flex;
+      align-items: center;
+      left: 0;
+      transition: 1s;
+      width: 0px; }
       .topTens .list .scrollContainer .item {
-        float: left;
+        display: inline-block;
         margin: 10px;
         background: #ffffff;
         width: 15vmin;

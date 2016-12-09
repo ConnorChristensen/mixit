@@ -89,11 +89,35 @@ $item-min-height: 120px;
         position: relative;
         overflow: hidden;
         background: rgba(0, 0, 0, 0.6);
+        height: 140px;
+        .leftClick, .rightClick {
+            position: absolute;
+            height: 140px;
+            width: 50px;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 10;
+            cursor: pointer;
+            transition: .5s;
+            &:hover {
+                background: rgba(0, 255, 186, 0.58);
+                transition: .5s;
+            }
+        }
+        .leftClick {
+            left: 0;
+        }
+        .rightClick {
+            right: 0;
+        }
         .scrollContainer {
-//            position: absolute;
-            width: 2000px;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            left: 0;
+            transition: 1s;
+            width: 0px;
             .item {
-                float: left;
+                display: inline-block;
                 margin: 10px;
                 background: #ffffff;
                 width: $item-width;

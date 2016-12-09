@@ -101,6 +101,8 @@ if(array_key_exists('searched', $_SESSION)){
 
         <h2>Top 10</h2>
         <div class="list">
+            <div class="rightClick"></div>
+            <div class="leftClick"></div>
             <div class="scrollContainer">
                 <?php
 
@@ -113,7 +115,9 @@ if(array_key_exists('searched', $_SESSION)){
         </div>
         <h2>Top 10 coctails</h2>
         <div class="list">
-           <div class="scrollContainer">
+            <div class="rightClick"></div>
+            <div class="leftClick"></div>
+            <div class="scrollContainer">
             <?php
 
             //get top 10 bevs of a type, cocktail hardcoded right now
@@ -127,7 +131,9 @@ if(array_key_exists('searched', $_SESSION)){
         </div>
         <h2>Top 10 with Banana</h2>
         <div class="list">
-           <div class="scrollContainer">
+            <div class="rightClick"></div>
+            <div class="leftClick"></div>
+            <div class="scrollContainer">
             <?php
             //get top 10 bevs using a particular ingredient, banana at the moment
             //TODO: make ingredient not hard-coded <--
