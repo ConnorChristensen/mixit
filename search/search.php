@@ -41,10 +41,12 @@ if(array_key_exists('searched', $_SESSION)){
    
     <div class="wrapper">
         <div class="search">
+<!--
             <div class="by">
                 <h2 class="name">Name</h2>
                 <h2 class="ingrediants">Ingrediants</h2>
             </div>
+-->
             <form method="POST" action="../results/results.php">
                 <div class="inputFeilds">
                     <div class="have">
@@ -148,7 +150,7 @@ if(array_key_exists('searched', $_SESSION)){
         });
     }
     </script>
-    <button onclick="requestLogOut()">LogOut</button>
+    <button onclick="requestLogOut()" id="logOut">Log Out</button>
         <?php
         //Inteded to work with logOut only
         //if there was a get request and the key call is inside get

@@ -50,7 +50,7 @@
         });
     }
     </script>
-    <button onclick="requestLogOut()">LogOut</button>
+    <button onclick="requestLogOut()" id="logOut">Log Out</button>
         <?php
         //Inteded to work with logOut only
         //if there was a get request and the key call is inside get
