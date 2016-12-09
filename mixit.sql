@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS Users (
     `email` VARCHAR(60) NOT NULL,
     `status` VARCHAR(60) DEFAULT "user",
     PRIMARY KEY (`username`),
-    FOREIGN KEY (`username`) references Fav_Bevs(`username`)
+    FOREIGN KEY (`username`) references User_Liked(`username`)
         ON UPDATE CASCADE
         ON DELETE CASCADE
 );
