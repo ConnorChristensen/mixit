@@ -309,16 +309,16 @@ function generateHTMLOfQuery(){
         
         //add in the like button
         //If already logged in
-        if(array_key_exists('login', $_SESSION)){
-            if($_SESSION['login'] == 1){
-                $card = $card.'<div class="unselected like">
-                            <div class="likeContainer">
-                            <img src="../images/icons/likeWhite.png">
-                            <img src="../images/icons/likeGreen.png">
-                            </div>
-                        </div>';
-            }
-        }
+//        if(array_key_exists('login', $_SESSION)){
+//            if($_SESSION['login'] == 1){
+//                $card = $card.'<div class="unselected like">
+//                            <div class="likeContainer">
+//                            <img src="../images/icons/likeWhite.png">
+//                            <img src="../images/icons/likeGreen.png">
+//                            </div>
+//                        </div>';
+//            }
+//        }
         
         
         //close card and echo it
