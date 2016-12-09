@@ -13,6 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <title>Results</title>
     <link rel="stylesheet" href="results.css">
+    <script type="text/javascript" src="results.js"></script>
 </head>
 
 <body>

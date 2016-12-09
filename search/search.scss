@@ -67,6 +67,9 @@ body {
             background: $selectionBlue;
         }
     }
+    .control {
+        width: 100vw;
+    }
     input[type="checkbox"] {
 //        display: none;
         width: 20px;
@@ -89,10 +92,10 @@ $item-min-height: 120px;
         position: relative;
         overflow: hidden;
         background: rgba(0, 0, 0, 0.6);
-        height: 140px;
+        height: 20vmin;
         .leftClick, .rightClick {
             position: absolute;
-            height: 140px;
+            height: 20vmin;
             width: 50px;
             background: rgba(0, 0, 0, 0.4);
             z-index: 10;
@@ -117,12 +120,12 @@ $item-min-height: 120px;
             transition: 1s;
             width: 0px;
             .item {
-                display: inline-block;
+//                display: inline-block;
                 margin: 10px;
                 background: #ffffff;
-                width: $item-width;
-                height: $item-height;
-                min-width: $item-min-width;
+//                width: $item-width;
+//                height: $item-height;
+//                min-width: $item-min-width;
                 min-height: $item-min-height;
                 .imgContainer {
                     min-height: $item-min-height*.8;

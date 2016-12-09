@@ -44,25 +44,42 @@ $(document).ready(function() {
         }
     });
     
-//         numBoxes = 0;
-//        $(".scrollContainer .item").each(function() {
-//             numBoxes++;
-//        });
-    
+    //set a var that will contain the number of boxes
     var numBoxes = 10;
+    
+    //set a var that will contain the length of the list container
     var foreverWidth = parseInt($(".list").css("width"));
-     $(".rightClick").click(function() {
+    
+    $(".rightClick").click(function() {
+        //reset numBoxes to zero to get a proper count
+//        numBoxes = 0;
+        //get the width of the scroll container
         var containerWidth = parseInt($(".scrollContainer").css("width"));
-        console.log(foreverWidth, containerWidth, numBoxes, -(foreverWidth+containerWidth),
-                    parseInt($(".scrollContainer").css("left")),
-                   parseInt($(".scrollContainer").css("left")) > -(foreverWidth+containerWidth));
-        if (parseInt($(".scrollContainer").css("left")) > -(foreverWidth+containerWidth)) {
-            $(".scrollContainer").css("left", "-="+foreverWidth/(numBoxes/4)+"px");
+        
+        //count the number of items in the container
+//        $(this).siblings(".scrollContainer .item").each(function() {
+//            numBoxes++;
+//        });
+
+        
+        if (parseInt($(this).siblings(".scrollContainer").css("left")) > -(foreverWidth+containerWidth)) {
+            $(this).siblings(".scrollContainer").css("left", "-="+foreverWidth/(numBoxes/4)+"px");
+        } else {
+            $(this).siblings(".scrollContainer").css("left", -(numBoxes*100)+"px");
         }
-     });
+    });
     $(".leftClick").click(function() {
-        if (parseInt($(".scrollContainer").css("left")) < 0) {
-            $(".scrollContainer").css("left", "+="+foreverWidth/(numBoxes/4)+"px");
+//        numBoxes = 0;
+        
+        //count the number of items in the container
+//        $(this).siblings(".scrollContainer .item").each(function() {
+//            numBoxes++;
+//        });
+        
+        if (parseInt($(this).siblings(".scrollContainer").css("left")) < 0) {
+            $(this).siblings(".scrollContainer").css("left", "+="+foreverWidth/(numBoxes/4)+"px");
+        } else {
+            $(this).siblings(".scrollContainer").css("left", "0px");
         }
-     });
+    });
 });
