@@ -33,49 +33,45 @@ session_start();
 </script>
 
 <body>
-     <div class="wrapper">
-        <a class="search" href="search/search.php">
-            <div>Click Here To Search</div>
+    <div class="nav">
+        <a href="login/login.php">
+            <div>Login</div>
         </a>
-        <div id="middle">
-            <div class="headline">
-                <div class="contents">
-                    <h1>Mixit</h1>
-                    <p>Take what you have and make the perfect drink</p>
-                </div>
-            </div>
-            <div class="signIn">
-                <a href="login/login.php">
-                    <div class="box">
-                        Login
-                    </div>
-                </a>
-                <a href="register/register.php">
-                    <div class="box">
-                        Register
-                    </div>
-                </a>
-            </div>
-            <div class="more">
-                <a href="#about">Learn More</a>
-            </div>
+        <a href="search/search.php">
+            <div>Search</div>
+        </a>
+        <a href="register/register.php">
+            <div>Register</div>
+        </a>
+    </div>
+    <div class="imgContainer">
+        <div class="tag">
+            <h1>Mixit</h1>
+            <p>Take what you have and make the perfect drink</p>
+            <svg id="draw" viewBox="0 0 100 100">
+                <circle cx="50" cy="30" r="6" stroke="white" stroke-width="1" fill="none"></circle>
+                <polyline fill="none" stroke="white" stroke-width="2" points="10,10 50,40 50,90 30,96 50,95 70,96 50,90" />
+                <polyline fill="none" stroke="white" stroke-width="2" points="90,10 50,40" />
+            </svg>
         </div>
     </div>
     <div id="about">
         <div class="whatWhy">
             <div class="what">
                 <h2>What is this site?</h2>
-                <p>This site is where you can take ingredients that you already have and find out what kinds of mixed drinks you can make from them.</p>
+                <p>This is a site that contains information on hundreds of mixed drinks and all their ingredients. You can search this database of information for all the drinks you can make with only the ingredients you have with you.</p>
             </div>
+            <!--
             <div class="what">
                 <h2>Instructions</h2>
                 <p>
                     In the haves section, type in the ingredients that you have to make a drink. If there are any ingredients that you know you do not want to have in your drink, include them in the don't want section. If you would like to make your search not exclusive to the ingredients that you listed, check the box. This will make it so that all of the drinks that are returned contain the ingredients you have, but they will have others as well. Search by main ingredients, garnishes will show up in the ingredients lists but are not searchable.
                 </p>
             </div>
+-->
             <div class="why">
                 <h2>Why use this site?</h2>
-                <p>There are a few other sites out there on the internet that do what we do, but we have done our best to run this site quickly, beautifully and make everything you need right at your finger tips. Our website is free and add free, and always will be. It also lets you create an account to keep a list of drinks you like, but you can search for whatever you want without having to sign in.</p>
+                <p>There are a few other sites out there on the internet that do what we do, but we have done our best to run this site quickly, beautifully and make everything you need right at your finger tips. Our website is free and advertisement free, and always will be. It also lets you create an account to keep a list of drinks you like, but you can search for whatever you want without having to sign in.</p>
             </div>
         </div>
         <h2 class="policiesHeader">Specific Policies</h2>
@@ -106,7 +102,7 @@ session_start();
             </div>
             <div class="policyBox">
                 <h2>Drink Database</h2>
-                <p>The drink database contains like...10 drinks. It will increase in the near future.</p>
+                <p>The drink database is consitently being updated with drinks as we continue to develop the site.</p>
             </div>
             <div class="policyBox">
                 <h2>Email Policy</h2>

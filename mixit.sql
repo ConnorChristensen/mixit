@@ -1,14 +1,8 @@
-CREATE TABLE IF NOT EXISTS Users (
-    `username` VARCHAR(30) UNIQUE NOT NULL,
-    `password` VARCHAR(120) NOT NULL,
-    `email` VARCHAR(60) NOT NULL,
-    `status` VARCHAR(60) DEFAULT "user",
-    PRIMARY KEY (`username`),
-    FOREIGN KEY (`username`) references User_Liked(`username`)
-        ON UPDATE CASCADE
-        ON DELETE CASCADE
+CREATE TABLE IF NOT EXISTS Bev_Likes (
+    `bevName` VARCHAR(30) NOT NULL,
+    `likes` INT(10) DEFAULT 0,
+    PRIMARY KEY (`bevName`)
 );
-
 
 CREATE TABLE IF NOT EXISTS Bevs (
     `bevName` VARCHAR(30) UNIQUE NOT NULL,
@@ -22,7 +16,6 @@ CREATE TABLE IF NOT EXISTS Bevs (
     FOREIGN KEY (`bevName`) references Bev_Likes(`bevName`) 
 );
 
-
 CREATE TABLE IF NOT EXISTS User_Liked (
     `username` VARCHAR(30) NOT NULL,
     `bevName` VARCHAR(30) NOT NULL,                  
@@ -30,6 +23,16 @@ CREATE TABLE IF NOT EXISTS User_Liked (
     FOREIGN KEY (`bevName`) references Bevs(`bevName`)
 );
 
+CREATE TABLE IF NOT EXISTS Users (
+    `username` VARCHAR(30) UNIQUE NOT NULL,
+    `password` VARCHAR(120) NOT NULL,
+    `email` VARCHAR(60) NOT NULL,
+    `status` VARCHAR(60) DEFAULT "user",
+    PRIMARY KEY (`username`),
+    FOREIGN KEY (`username`) references User_Liked(`username`)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+);
 
 CREATE TABLE IF NOT EXISTS Ingredients (
     `ingredName` VARCHAR(30) NOT NULL,
@@ -45,13 +48,6 @@ CREATE TABLE IF NOT EXISTS Type (
     `bevName` VARCHAR(30) NOT NULL,
     PRIMARY KEY (`typeName`, `bevName`),
     FOREIGN KEY (`bevName`) references Bevs(`bevName`)
-);
-
-
-CREATE TABLE IF NOT EXISTS Bev_Likes (
-    `bevName` VARCHAR(30) NOT NULL,
-    `likes` INT(10) DEFAULT 0,
-    PRIMARY KEY (`bevName`)
 );
 
 

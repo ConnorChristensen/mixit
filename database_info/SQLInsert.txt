@@ -21,7 +21,15 @@ VALUES
 	('grasshopper', 'cocktail', '5oz champagne saucer', 'images/drinks/grasshopper.jpg', 'description/grasshopper.txt', 'instructions/grasshopper.txt', 'ingredients/grasshopper.txt'),
 	('violet slumber', 'shooter', 'cordial', 'images/drinks/violet_slumber.jpg', 'description/violet_slumber.txt', 'instructions/violet_slumber.txt', 'ingredients/violet_slumber.txt'),
 	('vodka-tini', 'shooter', 'codial', 'images/drinks/vodka-tini.jpg', 'description/vodka-tini.txt', 'instructions/vodka-tini.txt', 'ingredients/vodka-tini.txt'),
-	('after eight', 'shooter', 'cordial', 'images/drinks/after_eight.jpg', 'description/after_eight.txt', 'instructions/after_eight.txt', 'ingredients/after_eight.txt');
+	('after eight', 'shooter', 'cordial (embassy)', 'images/drinks/after_eight.jpg', 'description/after_eight.txt', 'instructions/after_eight.txt', 'ingredients/after_eight.txt'),
+	('atomic bomb', 'shooter', 'tall dutch cordial', 'images/drinks/atomic_bomb.jpg', 'description/atomic_bomb.txt', 'instructions/atomic_bomb.txt', 'ingredients/atomic_bomb.txt'),
+	('b&b shooter', 'shooter', 'cordial (lexington)', 'images/drinks/b&b_shooter.jpg', 'description/b&b_shooter.txt', 'instructions/b&b_shooter.txt', 'ingredients/b&b_shooter.txt'),
+	('banana split', 'shooter', 'tall dutch cordial', 'images/drinks/banana_split.jpg', 'description/banana_split.txt', 'instructions/banana_split.txt', 'ingredients/banana_split.txt'),
+	('bee sting', 'shooter', 'cordial (embassy)', 'images/drinks/bee_sting.jpg', 'description/bee_sting.txt', 'instructions/bee_sting.txt', 'ingredients/bee_sting.txt'),
+	('black nuts', 'shooter', 'cordial (embassy)', 'images/drinks/black_nuts.jpg', 'description/black_nuts.txt', 'instructions/black_nuts.txt', 'ingredients/black_nuts.txt'),
+	('black widow', 'shooter', 'cordial (embassy)', 'images/drinks/black_widow.jpg', 'description/black_widow.txt', 'instructions/black_widow.txt', 'ingredients/black_widow.txt'),
+	('blood bath', 'shooter', 'whisky shot', 'images/drinks/blood_bath.jpg', 'description/blood_bath.txt', 'instructions/blood_bath.txt', 'ingredients/blood_bath.txt'),
+	('brain damage', 'shooter', 'cordial (embassy)', 'images/drinks/brain_damage.jpg', 'description/brain_damage.txt', 'instructions/brain_damage.txt', 'ingredients/brain_damage.txt');
 
 INSERT INTO Ingredients (`ingredName`, `bevName`)
 VALUES ('martell cognac', 'b & b'), ('benedictine', 'b & b');
@@ -88,4 +96,28 @@ VALUES ('vodka', 'vodka-tini'), ('dry vermouth', 'vodka-tini');
 
 INSERT INTO Ingredients (`ingredName`, `bevName`)
 VALUES ('kahlua', 'after eight'), ('creme de menthe', 'after eight'), ('baileys irish cream', 'after eight'), ('southern comfort', 'after eight');
+
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('tia maria', 'atomic bomb'), ('gin', 'atomic bomb'), ('cream', 'atomic bomb');
+
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('cognac', 'b&b shooter'), ('dom denedictine', 'b&b shooter');
+
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('kahlua', 'banana split'), ('lena banana liqeur', 'banana split'), ('strawberry liqeur', 'banana split');
+
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('tequila', 'bee sting'), ('yellow chartreuse', 'bee sting');
+
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('black sambucca', 'black nuts'), ('frangelico', 'black nuts');
+
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('strawberry liqueur', 'black widow'), ('black sambuca', 'black widow'), ('cream', 'black widow');
+
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('rosso vermouth', 'blood bath'), ('strawberry liqueur', 'blood bath'), ('tequila', 'blood bath');
+
+INSERT INTO Ingredients (`ingredName`, `bevName`)
+VALUES ('coconut liqueur', 'brain damage'), ('parfait amour liqueur', 'brain damage'), ('advocaat liqueur', 'brain damage');
 

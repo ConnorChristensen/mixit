@@ -1,4 +1,5 @@
 @import "variables.scss";
+@import "logoSVG.scss";
 $middle-height: 25vh;
 $middle-min-height: 200px;
 
@@ -8,112 +9,66 @@ $middle-max-width: 600px;
 
 $colorTime: 1s;
 
-//* {
-//    font-weight: 100;
-//    font-family: 'Lato', sans-serif;
-//}
-
 body {
     min-height: 200vh;
     margin: 0;
 }
 
-.wrapper {
-    @include totalCenter;
-    margin-top: 60px;
-    height: calc(100vh - 60px);
+h1, h2, a {
+    @include fonts($weight: 300);
+    text-align: center;
+}
+
+p {
+    @include fonts;
+}
+
+.nav {
+    position: absolute;
+    display: flex;
+    flex-grow: 1;
+    text-align: center;
+    font-size: 14pt;
+    top: 0;
+    left: 0;
+    right: 0;
     width: 100vw;
-    @include gradient;
-    .search {
-        position: absolute;
-        @include aStripStyle(white);
-        font-size: 14pt;
-        text-align: center;
-        
-        
-        top: 0px;
-        left: 0;
-        right: 0;
-        
-        width: 100vw;
-        line-height: 60px;
-        
-        background: #474a3d;
-        @include transitionBackground($colorTime);
-        border-bottom: 1px solid white;
-        
+    line-height: 60px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.49);
+    a {
+        background: rgb(0, 150, 166);
+        text-decoration: none;
+        @include transitionBackground(1s);
+        &:not(:nth-child(2)) {
+            width: 20vw;
+        }
+        &:nth-child(2) {
+            width: 60vw;
+        }
         &:hover {
-            @include transitionBackground($colorTime);
-            background: #48aaff;
-        }
-    }
-    #middle {
-        background: $semiClearBlack;
-        @include widthRange($middle-min-width, $middle-width, $middle-max-width);
-        min-height: $middle-min-height;
-        height: $middle-height;
-        border: 2px solid white;
-        .headline {
-            min-height: $middle-min-height*.75;
-            height: $middle-height*.75;
-            @include totalCenter;
-            .contents {
-                text-align: center;
-                @include fonts;
-                h1 {
-                    @include fonts;
-                    font-size: 32pt;
-                    margin: 0;
-                    padding: 0;
-                }
-            }
-        }
-    }
-    .signIn {
-        display: flex;
-        a:nth-of-type(2) {
-            border-left: 1px solid black;
-        }
-        .box {
-            border-top: 1px solid black;
-            min-height: $middle-min-height*.25;
-            height: $middle-height*.25;
-            @include totalCenter;
-            width: 100%;
-            &:hover {
-                @include transitionBackground($colorTime);
-                background: #48aaff;
-            }
-        }
-        a {
-            @include aStripStyle(white);
-            height: 100%;
-            width: 50%;
-            font-size: 18pt;
-            @include transitionBackground($colorTime);
-        }
-    }
-    .more {
-        margin: auto;
-        margin-top: 12vh;
-        text-align: center;
-        a {
-            @include aStripStyle(white);
-            background: $semiClearBlack;
-            font-size: 14pt;
-            padding: 20px;
-            border: 1px solid white;
-            @include transitionBackground($colorTime);
-            &:hover {
-                @include transitionBackground($colorTime);
-                background: #48aaff;
-            }
+            @include transitionBackground(1s);
+            background: $selectionBlue;
         }
     }
 }
 
+.imgContainer {
+    height: 80vh;
+    background: url(images/drinkBackground.jpg) no-repeat center center fixed;
+    @include centerBackgroundPhoto;
+    display: flex;
+    overflow: hidden;
+    .tag {
+        @include widthRange(200px, 50vw, 500px);
+        margin: auto;
+        text-align: center;
+        background: rgb(0, 150, 166);
+        padding: 20px 0;
+        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.63);
+    }
+}
+
 #about {
-    background: #e5eec1;
     min-height: 100vh;
     padding-bottom: 10vh;
     .whatWhy {
@@ -121,40 +76,38 @@ body {
         align-items: stretch;
         justify-content: space-around;
         padding: 20px 0px;
+        .what h2, .why h2, .policiesHeader h2, .policyBox h2 {
+            color: $textGrey;
+        }
+
         .what, .why {
-            background: #88ba88;
             padding: 20px;
             min-height: 200px;
             min-width: 200px;
-            p {
-                font-weight: 300;
-                font-family: 'Lato', sans-serif;
-                text-indent: 20px;
-            }
         }
-    }
-    h2 {
-        font-weight: 300;
-        font-family: 'Lato', sans-serif;
-        text-align: center;
+
+        .what p, .why p, .policyBox p {
+            font-weight: 300;
+            text-indent: 20px;
+            line-height: 1.5;
+            padding: 0 10px;
+            text-align: justify;
+            color: $textGrey;
+        }
     }
     .policiesHeader {
-        color: black;
-        font-weight: 300;
+        color: $textGrey;
+        font-weight: 500;
+        padding: 10px 0;
+        font-size: 24pt;
+        margin: 5vh auto 3vh auto;
+        width: 90vw;
     }
+
     .policies {
-         display: flex;
+        display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-        .policyBox {
-            margin: 1vw;
-            background: #88ba88;
-            p {
-                font-weight: 300;
-                font-family: 'Lato', sans-serif;
-                padding: 0 10px;
-            }
-        }
     }
 }
 

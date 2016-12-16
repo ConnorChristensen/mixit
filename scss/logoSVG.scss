@@ -1,0 +1,24 @@
+svg {
+    height: 150px;
+    width: 150px;
+    display: block;
+    margin: auto;
+}
+
+circle {
+    stroke-dasharray: 230;
+    animation: dash 8s linear forwards;
+    stroke-dashoffset: 230;
+}
+
+polyline {
+    stroke-dasharray: 230;
+    animation: dash 2s linear forwards;
+    stroke-dashoffset: 230;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}

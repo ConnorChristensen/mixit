@@ -1,7 +1,5 @@
-@mixin fonts {
-    font-weight: 100;
+@mixin fonts($weight: 100, $color: white) {
     font-family: 'Lato', sans-serif;
-    color: white;
 }
 
 @mixin totalCenter {
@@ -44,6 +42,15 @@
     );
 }
 
+@mixin centerBackgroundPhoto {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    max-width: 2000px;
+    animation: fadein .5s;
+}
+
 
 /*Colors*/
 $semiClearBlack:rgba(0, 0, 0, 0.6);
@@ -53,3 +60,4 @@ $mintGreen:     #a2d4ab;
 $lightBlue:     #3eaca8;
 $deepBlue:      #457a82; 
 $grey:          #5a5050;
+$textGrey:      #626262;
